@@ -13,7 +13,7 @@ export class Comment {
     @Prop()
     text: string;
 
-    @Prop({ type: [ { type: mongoose.Schema.Types.ObjectId, ref: "Track" } ] })
+    @Prop({ type: mongoose.Schema.Types.ObjectId, ref: "Track" })
     track: Track;
 }
 
