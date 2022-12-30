@@ -18,8 +18,7 @@ export class TrackService {
         return this.trackModel.find().exec();
     }
 
-    async getCurrentTrack(id: mongoose.ObjectId): Promise<Track[]> {
-        return this.trackModel.find({ _id: id }).exec();
-
+    async getCurrentTrack(id: mongoose.ObjectId): Promise<Track> {
+        return this.trackModel.findById(id).exec();
     }
 }
