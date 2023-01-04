@@ -1,5 +1,5 @@
 import { TrackService } from "./track.service";
-import { Body, Controller, Get, Param, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Post } from "@nestjs/common";
 import { CreateTrackDto } from "./dto/create-track.dto";
 import mongoose from "mongoose";
 
@@ -21,5 +21,10 @@ export class TrackController {
     @Get(':id')
     getCurrentTrack(@Param('id') id: mongoose.ObjectId) {
         return this.trackService.getCurrentTrack(id);
+    }
+
+    @Delete(':id')
+    delete(@Param('id') id: mongoose.ObjectId) {
+        return this.trackService.delete(id);
     }
 }
