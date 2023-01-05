@@ -15,15 +15,17 @@ export class TrackService {
         return createdTrack.save();
     }
     async getAllTracks(): Promise<Track[]> {
-        return  await this.trackModel.find().exec();
+        const tracks = await this.trackModel.find();
+        return tracks;
     }
 
     async getCurrentTrack(id: mongoose.ObjectId): Promise<Track> {
-        return this.trackModel.findById(id).exec();
+        const track = await this.trackModel.findById(id).populate('comments');
+        return track;
     }
 
     async delete(id: mongoose.ObjectId): Promise<mongoose.ObjectId> {
-        await this.trackModel.findByIdAndDelete(id).exec();
+        await this.trackModel.findByIdAndDelete(id);
         return id;
     }
 
