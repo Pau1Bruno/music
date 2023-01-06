@@ -10,7 +10,7 @@ import { CreateCommentDto } from "./dto/create-comment.dto";
 export class TrackService {
     constructor( @InjectModel(Track.name) private trackModel: Model<TrackDocument>, // needed for using model in our service
                  @InjectModel(Comment.name) private commentModel: Model<CommentDocument> ) {} // to pass to it use "this"
-    async create(dto: CreateTrackDto): Promise<Track> {
+    async create(dto: CreateTrackDto, picture, audio): Promise<Track> {
         const createdTrack = new this.trackModel({...dto, listens: 0});
         return createdTrack.save();
     }
