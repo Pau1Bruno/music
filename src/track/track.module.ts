@@ -9,10 +9,11 @@ import { FileService } from "../file/file.service";
 
 @Module({
     imports: [
-        MongooseModule.forFeature([{name: Track.name, schema: TrackSchema}]),
-        MongooseModule.forFeature([{name: Comment.name, schema: CommentSchema}]),
+        MongooseModule.forFeature([ { name: Track.name, schema: TrackSchema } ]),
+        MongooseModule.forFeature([ { name: Comment.name, schema: CommentSchema } ])
     ],
     providers: [ TrackService, FileService ],
     controllers: [ TrackController ]
 })
-export class TrackModule {}
+export class TrackModule {
+}
