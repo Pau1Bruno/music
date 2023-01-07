@@ -28,9 +28,14 @@ export class TrackService {
         return track;
     }
 
-    async delete(id: mongoose.ObjectId): Promise<mongoose.ObjectId> {
+    async deleteCurrentTrack(id: mongoose.ObjectId): Promise<mongoose.ObjectId> {
         await this.trackModel.findByIdAndDelete(id);
         return id;
+    }
+
+    async deleteAllTracks() {
+        await this.trackModel.deleteMany();
+        return "all tracks are deleted";
     }
 
     async addComment(dto: CreateCommentDto): Promise<Comment> {

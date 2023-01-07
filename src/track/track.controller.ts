@@ -30,9 +30,13 @@ export class TrackController {
         return this.trackService.getCurrentTrack(id);
     }
 
+    @Delete()
+    deleteALl() {
+        return this.trackService.deleteAllTracks();
+    }
     @Delete(':id')
     delete(@Param('id') id: mongoose.ObjectId) {
-        return this.trackService.delete(id);
+        return this.trackService.deleteCurrentTrack(id);
     }
 
     @Post('/comment')
