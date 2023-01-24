@@ -5,7 +5,7 @@
 $ npm install
 ```
 
-## Running the app (server-side from core path)
+## Running the app (server-side from server path)
 
 ```bash
 # development
@@ -18,7 +18,7 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test (server-side from core path)
+## Test (server-side from server path)
 
 ```bash
 # unit tests
