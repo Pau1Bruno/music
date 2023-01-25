@@ -38,11 +38,14 @@ export class TrackService {
     }
 
     async deleteCurrentTrack( id: mongoose.ObjectId ): Promise<mongoose.ObjectId> {
+        const track = await this.trackModel.findById(id);
+        this.fileService.removeFile(track.audio);
+        this.fileService.removeFile(track.picture);
         await this.trackModel.findByIdAndDelete(id);
         return id;
     }
 
-    async deleteAllTracks() {
+    async deleteAllTracks(): Promise<string> {
         await this.trackModel.deleteMany();
         return "all tracks are deleted";
     }
@@ -55,7 +58,7 @@ export class TrackService {
         return comment;
     }
 
-    async listen( id: mongoose.ObjectId ) {
+    async listen( id: mongoose.ObjectId ): Promise<string> {
         const track = await this.trackModel.findById(id);
         track.listens += 1;
         await track.save();

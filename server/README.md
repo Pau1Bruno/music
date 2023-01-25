@@ -18,19 +18,6 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test (server-side from server path)
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
 ## About 
 
  This is a **music player** \
