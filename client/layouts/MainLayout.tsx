@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import classes from "../styles/content.module.css";
 
 type MainLayoutProps = {
-    children: ReactNode;
+    children?: ReactNode;
 }
 
 const MainLayout: FC<MainLayoutProps> = ({children}) => {
