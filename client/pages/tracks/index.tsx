@@ -4,7 +4,7 @@ import { Button, Card, Grid } from "@mui/material";
 import { useRouter } from "next/router";
 import Box from "@mui/material/Box";
 import { ITrack } from "../../types/tracks";
-import TrackList from "../../layouts/TrackList";
+import TrackList from "../../components/TrackList";
 
 const Index = () => {
     let router = useRouter();
@@ -53,7 +53,7 @@ const Index = () => {
                     <Box p={2}>
                         <Grid container justifyContent="space-around" >
                             <h1>List of tracks</h1>
-                            <Button onClick={ () => router.push("tracks/create") }>Download</Button>
+                            <Button onClick={ () => router.push("tracks/create") }>Upload your track</Button>
                         </Grid>
                     </Box>
                     <TrackList tracks={ tracks } />

@@ -11,7 +11,7 @@ import * as path from "path";
         ServeStaticModule.forRoot({ rootPath: path.resolve(__dirname, "static") }),
         TrackModule,
         FileModule,
-        MongooseModule.forRoot("")
+        MongooseModule.forRoot("mongodb+srv://admin:admin@cluster0.d8w57qv.mongodb.net/?retryWrites=true&w=majority")
     ]
 })
 export class AppModule {

@@ -51,7 +51,7 @@ const DrawerHeader = styled("div")(( { theme } ) => ( {
 export default function Navbar() {
     const menuItems = [
         {text:"Main Page", href: "/"},
-        {text:"All Tracks", href: "/tracks"},
+        {text:"All track", href: "/tracks"},
         {text:"Albums", href: "/albums"},
     ]
     const router = useRouter();
