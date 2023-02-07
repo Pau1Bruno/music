@@ -38,14 +38,14 @@ const Create = () => {
                     <FileUpload
                         setFile={ setPicture }
                         accept={ "image/*" }>
-                        <Button>Upload logo</Button>
+                        <Button style={{height: '100%', width: '100%'}}>Upload logo</Button>
                     </FileUpload>
                 }
                 { activeStep === 2 &&
                     <FileUpload
                         setFile={ setAudio }
                         accept={ "audio/*" }>
-                        <Button>Upload audio</Button>
+                        <Button style={{height: '100%', width: '100%'}}>Upload audio</Button>
                     </FileUpload>
                 }
 

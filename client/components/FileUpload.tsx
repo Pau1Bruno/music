@@ -17,7 +17,7 @@ const FileUpload: React.FC<FileUploadProps> = ( { setFile, accept, children } ) 
         }
     };
     return (
-        <div onClick={ () => ref.current?.click() }>
+        <div style={{display: 'flex' ,justifyContent: 'center', alignItems: 'center', height: '100%'}} onClick={ () => ref.current?.click() }>
             <input
                 style={ { display: "none" } }
                 type="file"
