@@ -5,9 +5,10 @@ import styles from "../styles/Player.module.scss";
 import { Grid } from "@mui/material";
 import { ITrack } from "../types/tracks";
 import TrackProgress from "./TrackProgress";
+import { useTypedSelector } from "../hooks/useTypedSelector";
+import { useAction } from "../hooks/useAction";
 
 const Player = () => {
-    const active = false;
     const track: ITrack = {
         "_id": "63d0631137e1bfd6c63ff3d0",
         "name": "4",
@@ -19,10 +20,20 @@ const Player = () => {
         "comments": []
     }
 
+    const {active, volume, pause, duration, currentTime} = useTypedSelector(state => state.player);
+    const {playTrack, pauseTrack} = useAction();
+
+    const play = () => {
+        if (pause) playTrack();
+        else pauseTrack();
+
+
+    }
+
     return (
         <div className={styles.player}>
-            <IconButton onClick={ e => e.stopPropagation() }>
-                { !active
+            <IconButton onClick={ play }>
+                { !pause
                     ? <PlayArrow />
                     : <Pause/>
                 }

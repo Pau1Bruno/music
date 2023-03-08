@@ -2,7 +2,6 @@ import React from "react";
 import { useRouter } from "next/router";
 import MainLayout from "../../layouts/MainLayout";
 import { Button, Grid } from "@mui/material";
-import styles from "../../styles/track/TrackPage.module.scss";
 import { ITrack } from "../../types/tracks";
 
 const TrackPage = () => {
