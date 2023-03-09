@@ -20,14 +20,16 @@ const Player = () => {
         "comments": []
     }
 
-    const {active, volume, pause, duration, currentTime} = useTypedSelector(state => state.player);
+    const {active, pause, volume, currentTime, duration} = useTypedSelector(state => state.player)
     const {playTrack, pauseTrack} = useAction();
-
+    console.log(active, pause);
     const play = () => {
-        if (pause) playTrack();
-        else pauseTrack();
-
-
+        if (pause) {
+            playTrack();
+        }
+        else {
+            pauseTrack();
+        }
     }
 
     return (

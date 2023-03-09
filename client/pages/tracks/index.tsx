@@ -8,7 +8,7 @@ import TrackList from "../../components/TrackList";
 import "../../styles/track/TrackIndex.module.scss";
 
 const Index = () => {
-    let router = useRouter();
+    const router = useRouter();
     const tracks: ITrack[] = [ {
         "_id": "63d0631137e1bfd6c63ff3d0",
         "name": "4",

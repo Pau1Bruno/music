@@ -6,6 +6,7 @@ import { HYDRATE } from "next-redux-wrapper";
 export const rootReducer = combineReducers({
     player: playerReducer
 });
+export type RootState = ReturnType<typeof rootReducer>;
 
 
 // create your reducer
@@ -21,4 +22,3 @@ export const reducer = ( state: RootState, action: AnyAction ) => {
     }
 };
 
-export type RootState = ReturnType<typeof rootReducer>;
