@@ -4,7 +4,7 @@ import { reducer } from "./reducers";
 
 const store = () =>
     configureStore({
-        reducer
+        reducer,
     });
 
 export const wrapper = createWrapper(store, {debug: true});

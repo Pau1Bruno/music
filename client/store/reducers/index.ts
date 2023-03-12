@@ -3,14 +3,15 @@ import { playerReducer } from "./playerReducer";
 import { HYDRATE } from "next-redux-wrapper";
 
 
-export const rootReducer = combineReducers({
+const RootReducer = combineReducers({
     player: playerReducer
 });
-export type RootState = ReturnType<typeof rootReducer>;
+export type RootState = ReturnType<typeof RootReducer>;
 
 
 // create your reducer
-export const reducer = ( state: RootState, action: AnyAction ) => {
+//There is problem with reducer declaration type (without any, there will be errors)
+export const reducer: any = ( state: RootState, action: AnyAction): RootState => {
     if ( action.type === HYDRATE ) {
         const nextState = {
             ...state, // use previous state
@@ -18,7 +19,6 @@ export const reducer = ( state: RootState, action: AnyAction ) => {
         };
         return nextState;
     } else {
-        return rootReducer(state, action);
+        return RootReducer(state, action);
     }
 };
-

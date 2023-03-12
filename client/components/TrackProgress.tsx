@@ -1,4 +1,5 @@
 import React from "react";
+import { useTimeConverter } from "../hooks/useTimeConverter";
 
 interface TrackProgressProps {
     left: number;
@@ -7,16 +8,20 @@ interface TrackProgressProps {
 }
 
 const TrackProgress: React.FC<TrackProgressProps> = ( { left, right, onChange } ) => {
+    let curTime = useTimeConverter(left);
+    let dur = useTimeConverter(right);
+
+
     return (
         <div style={{display: "flex"}}>
             <input
                 type="range"
-                min={left}
+                min={0}
                 max={right}
                 value={left}
                 onChange={onChange}
             />
-            <div>{left} / {right}</div>
+            <div>{curTime} / {dur}</div>
         </div>
     );
 };
