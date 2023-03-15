@@ -1,9 +1,9 @@
 import * as React from "react";
-import { styled, useTheme } from "@mui/material/styles";
+import {styled, useTheme} from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
+import MuiAppBar, {AppBarProps as MuiAppBarProps} from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import IconButton from "@mui/material/IconButton";
@@ -12,10 +12,9 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import { useRouter } from "next/router";
+import {useRouter} from "next/router";
 
 const drawerWidth = 240;
-
 
 
 interface AppBarProps extends MuiAppBarProps {
@@ -23,15 +22,15 @@ interface AppBarProps extends MuiAppBarProps {
 }
 
 const AppBar = styled(MuiAppBar, {
-    shouldForwardProp: ( prop ) => prop !== "open"
-})<AppBarProps>(( { theme, open } ) => ( {
+    shouldForwardProp: (prop) => prop !== "open"
+})<AppBarProps>(({ theme, open }) => ( {
     transition: theme.transitions.create([ "margin", "width" ], {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen
     }),
     ...( open && {
-        width: `calc(100% - ${ drawerWidth }px)`,
-        marginLeft: `${ drawerWidth }px`,
+        width: `calc(100% - ${drawerWidth}px)`,
+        marginLeft: `${drawerWidth}px`,
         transition: theme.transitions.create([ "margin", "width" ], {
             easing: theme.transitions.easing.easeOut,
             duration: theme.transitions.duration.enteringScreen
@@ -39,7 +38,7 @@ const AppBar = styled(MuiAppBar, {
     } )
 } ));
 
-const DrawerHeader = styled("div")(( { theme } ) => ( {
+const DrawerHeader = styled("div")(({ theme }) => ( {
     display: "flex",
     alignItems: "center",
     padding: theme.spacing(0, 1),
@@ -50,10 +49,10 @@ const DrawerHeader = styled("div")(( { theme } ) => ( {
 
 export default function Navbar() {
     const menuItems = [
-        {text:"Main Page", href: "/"},
-        {text:"All track", href: "/tracks"},
-        {text:"Albums", href: "/albums"},
-    ]
+        { text: "Main Page", href: "/" },
+        { text: "All track", href: "/tracks" },
+        { text: "Albums", href: "/albums" }
+    ];
     const router = useRouter();
 
 
@@ -71,12 +70,12 @@ export default function Navbar() {
     return (
         <Box>
             <CssBaseline />
-            <AppBar position="fixed" open={ open }>
+            <AppBar position="fixed" open={open}>
                 <Toolbar>
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
-                        onClick={ handleDrawerOpen }
+                        onClick={handleDrawerOpen}
                         edge="start"
                     >
                         <MenuIcon />
@@ -84,32 +83,32 @@ export default function Navbar() {
                 </Toolbar>
             </AppBar>
             <Drawer
-                sx={ {
+                sx={{
                     width: drawerWidth,
                     flexShrink: 0,
                     "& .MuiDrawer-paper": {
                         width: drawerWidth,
                         boxSizing: "border-box"
                     }
-                } }
+                }}
                 variant="persistent"
                 anchor="left"
-                open={ open }
+                open={open}
             >
                 <DrawerHeader>
-                    <IconButton onClick={ handleDrawerClose }>
-                        { theme.direction === "ltr" ? <ChevronLeftIcon /> : <ChevronRightIcon /> }
+                    <IconButton onClick={handleDrawerClose}>
+                        {theme.direction === "ltr" ? <ChevronLeftIcon /> : <ChevronRightIcon />}
                     </IconButton>
                 </DrawerHeader>
 
                 <List>
-                    { menuItems.map(( { text, href } ) => (
-                        <ListItem key={ href } disablePadding onClick={() => router.push(href)}>
+                    {menuItems.map(({ text, href }) => (
+                        <ListItem key={href} disablePadding onClick={() => router.push(href)}>
                             <ListItemButton>
                                 {text}
                             </ListItemButton>
                         </ListItem>
-                    )) }
+                    ))}
                 </List>
             </Drawer>
         </Box>

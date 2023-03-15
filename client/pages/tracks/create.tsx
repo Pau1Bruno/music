@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import MainLayout from "../../layouts/MainLayout";
 import StepWrapper from "../../components/StepWrapper";
-import { Button, Grid, TextField } from "@mui/material";
+import {Button, Grid, TextField} from "@mui/material";
 import FileUpload from "../../components/FileUpload";
 
 const Create = () => {
@@ -10,7 +10,7 @@ const Create = () => {
     const [ audio, setAudio ] = useState(null);
 
     const next = () => {
-        if ( activeStep !== 2 ) {
+        if (activeStep !== 2) {
             setActiveStep(step => step + 1);
         }
     };
@@ -20,39 +20,39 @@ const Create = () => {
 
     return (
         <MainLayout>
-            <StepWrapper activeStep={ activeStep }>
-                { activeStep === 0 &&
-                    <Grid p={ 2 } gap={ "10px" } container justifyContent={ "center" } direction={ "column" }>
+            <StepWrapper activeStep={activeStep}>
+                {activeStep === 0 &&
+                    <Grid p={2} gap={"10px"} container justifyContent={"center"} direction={"column"}>
                         <TextField
-                            label={ "Song" } />
+                            label={"Song"} />
                         <TextField
-                            label={ "Artist" } />
+                            label={"Artist"} />
                         <TextField
-                            label={ "Text" }
+                            label={"Text"}
                             multiline
-                            rows={ 4 }
+                            rows={4}
                         />
                     </Grid>
                 }
-                { activeStep === 1 &&
+                {activeStep === 1 &&
                     <FileUpload
-                        setFile={ setPicture }
-                        accept={ "image/*" }>
-                        <Button style={{height: '100%', width: '100%'}}>Upload logo</Button>
+                        setFile={setPicture}
+                        accept={"image/*"}>
+                        <Button style={{ height: "100%", width: "100%" }}>Upload logo</Button>
                     </FileUpload>
                 }
-                { activeStep === 2 &&
+                {activeStep === 2 &&
                     <FileUpload
-                        setFile={ setAudio }
-                        accept={ "audio/*" }>
-                        <Button style={{height: '100%', width: '100%'}}>Upload audio</Button>
+                        setFile={setAudio}
+                        accept={"audio/*"}>
+                        <Button style={{ height: "100%", width: "100%" }}>Upload audio</Button>
                     </FileUpload>
                 }
 
             </StepWrapper>
-            <Grid container justifyContent="space-around" marginTop={ "30px" }>
-                <Button onClick={ back } disabled={ activeStep < 1 }>previous</Button>
-                <Button onClick={ next }>next</Button>
+            <Grid container justifyContent="space-around" marginTop={"30px"}>
+                <Button onClick={back} disabled={activeStep < 1}>previous</Button>
+                <Button onClick={next}>next</Button>
             </Grid>
         </MainLayout>
     );

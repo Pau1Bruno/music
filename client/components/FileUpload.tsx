@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, {useRef} from "react";
 
 interface FileUploadProps {
     setFile: Function;
@@ -6,26 +6,27 @@ interface FileUploadProps {
     children: React.ReactNode;
 }
 
-const FileUpload: React.FC<FileUploadProps> = ( { setFile, accept, children } ) => {
+const FileUpload: React.FC<FileUploadProps> = ({ setFile, accept, children }) => {
     const ref = useRef<HTMLInputElement>(null);
 
-    const onChange = ( e: React.ChangeEvent<HTMLInputElement> ) => {
-        if ( !e.target.files ) return;
+    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (!e.target.files) return;
         else {
             setFile(e.target.files[0]);
             console.log(e.target.files);
         }
     };
     return (
-        <div style={{display: 'flex' ,justifyContent: 'center', alignItems: 'center', height: '100%'}} onClick={ () => ref.current?.click() }>
+        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100%" }}
+             onClick={() => ref.current?.click()}>
             <input
-                style={ { display: "none" } }
+                style={{ display: "none" }}
                 type="file"
-                accept={ accept }
-                ref={ ref }
-                onChange={ onChange }
+                accept={accept}
+                ref={ref}
+                onChange={onChange}
             />
-            { children }
+            {children}
         </div>
     );
 };

@@ -1,17 +1,12 @@
 import React from "react";
-import {useTimeConverter} from "../hooks/useTimeConverter";
 
-interface TrackProgressProps {
+interface VolumeProgressProps {
     left: number;
     right: number;
     onChange: (e: any) => void;
 }
 
-const TrackProgress: React.FC<TrackProgressProps> = ({ left, right, onChange }) => {
-    let curTime = useTimeConverter(left);
-    let dur = useTimeConverter(right);
-
-
+const VolumeProgress: React.FC<VolumeProgressProps> = ({ left, right, onChange }) => {
     return (
         <div style={{ display: "flex" }}>
             <input
@@ -21,9 +16,9 @@ const TrackProgress: React.FC<TrackProgressProps> = ({ left, right, onChange }) 
                 max={right}
                 onChange={onChange}
             />
-            <div>{curTime} / {dur}</div>
+            <div>{left} / {right}</div>
         </div>
     );
 };
 
-export default TrackProgress;
+export default VolumeProgress;
