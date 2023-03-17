@@ -1,5 +1,7 @@
-import { PlayerAction, PlayerActionTypes, PlayerState } from "../../types/player";
+import {PlayerAction, PlayerActionTypes, PlayerState} from "../../types/player";
 
+
+// Начальное состояние playerReducer
 const initialState: PlayerState = {
     pause: true,
     active: null,
@@ -8,8 +10,8 @@ const initialState: PlayerState = {
     volume: 50
 };
 
-export const playerReducer = ( state: PlayerState = initialState, action: PlayerAction ): PlayerState => {
-    switch ( action.type ) {
+export const playerReducer = (state: PlayerState = initialState, action: PlayerAction): PlayerState => {
+    switch (action.type) {
         case PlayerActionTypes.PLAY:
             return { ...state, pause: false };
 
@@ -17,7 +19,7 @@ export const playerReducer = ( state: PlayerState = initialState, action: Player
             return { ...state, pause: true };
 
         case PlayerActionTypes.SET_ACTIVE:
-            return { ...state, active: action.payload, duration: 0, currentTime: 0 };
+            return { ...state, active: action.payload };
 
         case PlayerActionTypes.SET_VOLUME:
             return { ...state, volume: action.payload };
