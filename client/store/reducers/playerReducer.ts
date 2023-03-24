@@ -1,6 +1,5 @@
 import {PlayerAction, PlayerActionTypes, PlayerState} from "../../types/player";
 
-
 // Начальное состояние playerReducer
 const initialState: PlayerState = {
     active: null,

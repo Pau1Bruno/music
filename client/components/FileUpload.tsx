@@ -16,6 +16,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ setFile, accept, children }) =>
             console.log(e.target.files);
         }
     };
+
     return (
         <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100%" }}
              onClick={() => ref.current?.click()}>

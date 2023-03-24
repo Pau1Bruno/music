@@ -16,6 +16,7 @@ const VolumeProgress: React.FC<VolumeProgressProps> = ({ left, right, onChange }
                 max={right}
                 onChange={onChange}
             />
+
             <div>{left} / {right}</div>
         </div>
     );

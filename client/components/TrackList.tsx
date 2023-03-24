@@ -5,20 +5,29 @@ import Box from "@mui/material/Box";
 import TrackItem from "./TrackItem";
 
 interface TrackListProps {
-    tracks: ITrack[];
+    serverTracks: ITrack[];
 }
 
-const TrackList: React.FC<TrackListProps> = ({ tracks }) => {
+const TrackList: React.FC<TrackListProps> = ({ serverTracks }) => {
+    // const deleteTrack = async (id: string) => {
+    //     try {
+    //         await axios.delete(`http://localhost:5000/tracks/${track._id}`);
+    //         console.log(track);
+    //         setTracks({ tracks.filter(comm => comm._id !== id) ] });
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // };
+
     return (
         <Grid container direction="column">
             <Box p={2}>
-                {tracks.map(track =>
+                {serverTracks.map(track =>
                     <TrackItem
                         key={track._id}
                         track={track} />
                 )}
             </Box>
-
         </Grid>
     );
 };

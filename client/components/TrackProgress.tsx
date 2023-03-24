@@ -11,7 +11,6 @@ const TrackProgress: React.FC<TrackProgressProps> = ({ left, right, onChange }) 
     let curTime = useTimeConverter(left);
     let dur = useTimeConverter(right);
 
-
     return (
         <div style={{ display: "flex" }}>
             <input

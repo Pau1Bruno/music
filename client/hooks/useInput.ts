@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 
-
 export const useInput = (initialValue: any) => {
     const [value, setValue] = useState(initialValue);
 

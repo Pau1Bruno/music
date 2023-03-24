@@ -3,13 +3,12 @@ import {playerReducer} from "./playerReducer";
 import {HYDRATE} from "next-redux-wrapper";
 import {trackReducer} from "./trackReducer";
 
-
 const RootReducer = combineReducers({
     player: playerReducer,
     track: trackReducer,
 });
-export type RootState = ReturnType<typeof RootReducer>;
 
+export type RootState = ReturnType<typeof RootReducer>;
 
 // Create reducer for the store
 // There is problem with reducer declaration type (without any, there will be errors)

@@ -18,7 +18,6 @@ const TrackPage = ({ serverTrack }: { serverTrack: ITrack }) => {
 
     const addComment = async () => {
         try {
-
             const response = await axios.post("http://localhost:5000/tracks/comment/", {
                 username: username.value,
                 text: comment.value,
@@ -26,30 +25,37 @@ const TrackPage = ({ serverTrack }: { serverTrack: ITrack }) => {
             });
             setTrack({ ...track, comments: [ ...track.comments, response.data ] });
         } catch (e) {
-            console.log(e);
+            console.error(e);
         }
     };
-
 
     const deleteComment = async (id: string) => {
         try {
-            await axios.delete(`http://localhost:5000/tracks/${track._id}/comments/${id}`)
-            console.log(track.comments);
+            await axios.delete(`http://localhost:5000/tracks/${track._id}/comments/${id}`);
             setTrack({ ...track, comments: [ ...track.comments.filter(comm => comm._id !== id) ] });
         } catch (error) {
-            console.log(error);
+            console.error(error);
         }
     };
 
+    const backToTracksHandler = () => {
+        router.push("/tracks").then();
+    }
+
     return (
-        <MainLayout>
+        <MainLayout
+            title={track.name + ' - ' + track.artist}
+            keywords={'music, artist, ' + track.name + ', ' + track.artist}
+        >
+
             <Grid container direction="column" alignItems="center">
-                <Button onClick={() => router.push("/tracks")}>Return to track list</Button>
+                <Button onClick={backToTracksHandler}>Return to track list</Button>
                 <h1>Track id: {track._id}</h1>
                 <Image src={`http://localhost:5000/${track.picture}`} alt="no image" width={100} height={100}
                        unoptimized={true} />
                 <h1>Track name: {track.name}</h1>
             </Grid>
+
             <Grid container direction="column" textAlign="center" width={600} gap={1}>
                 <h1>Your opinion about track:</h1>
                 <TextField
@@ -61,6 +67,7 @@ const TrackPage = ({ serverTrack }: { serverTrack: ITrack }) => {
                     {...comment}
                 />
                 <Button onClick={addComment}>Send comment</Button>
+
                 <h2>All comments:</h2>
                 {track.comments.map(comm =>
                     <Grid key={comm._id} display="flex" gap={1}>
@@ -71,7 +78,9 @@ const TrackPage = ({ serverTrack }: { serverTrack: ITrack }) => {
                         </IconButton>
                     </Grid>
                 )}
+
             </Grid>
+
         </MainLayout>
     );
 };

@@ -16,7 +16,6 @@ import {useRouter} from "next/router";
 
 const drawerWidth = 240;
 
-
 interface AppBarProps extends MuiAppBarProps {
     open?: boolean;
 }

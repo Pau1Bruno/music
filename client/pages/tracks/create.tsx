@@ -28,9 +28,8 @@ const Create = () => {
             formData.append("audio", audio);
             // Отправка на сервер поста и переход на страницу со всеми треками
             axios.post("http://localhost:5000/tracks", formData)
-                .then(resp => router.push('/tracks'))
+                .then(() => router.push('/tracks'))
                 .catch(e => console.log(e))
-
         }
     };
     const back = () => {
@@ -39,6 +38,7 @@ const Create = () => {
 
     return (
         <MainLayout>
+
             <StepWrapper activeStep={activeStep}>
                 {activeStep === 0 &&
                     <Grid p={2} gap={"10px"} container justifyContent={"center"} direction={"column"}>
@@ -56,6 +56,7 @@ const Create = () => {
                         />
                     </Grid>
                 }
+
                 {activeStep === 1 &&
                     <FileUpload
                         setFile={setPicture}
@@ -63,6 +64,7 @@ const Create = () => {
                         <Button style={{ height: "100%", width: "100%" }}>Upload logo</Button>
                     </FileUpload>
                 }
+
                 {activeStep === 2 &&
                     <FileUpload
                         setFile={setAudio}
@@ -72,10 +74,12 @@ const Create = () => {
                 }
 
             </StepWrapper>
+
             <Grid container justifyContent="space-around" marginTop={"30px"}>
                 <Button onClick={back} disabled={activeStep < 1}>previous</Button>
                 <Button onClick={next}>next</Button>
             </Grid>
+
         </MainLayout>
     );
 };

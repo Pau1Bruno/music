@@ -6,7 +6,6 @@ import { Track, TrackSchema } from "./schemas/track.schema";
 import { Comment, CommentSchema } from "./schemas/comment.schema";
 import { FileService } from "../file/file.service";
 
-
 @Module({
     imports: [
         MongooseModule.forFeature([ { name: Track.name, schema: TrackSchema } ]),
@@ -15,5 +14,5 @@ import { FileService } from "../file/file.service";
     providers: [ TrackService, FileService ],
     controllers: [ TrackController ]
 })
-export class TrackModule {
-}
+
+export class TrackModule {}

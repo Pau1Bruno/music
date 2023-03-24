@@ -21,8 +21,20 @@ export interface TrackState {
 }
 
 export enum TrackActionTypes {
+    SEARCH_FETCH_TRACKS = 'SEARCH_FETCH_TRACKS',
+    SEARCH_FETCH_TRACKS_ERROR = 'SEARCH_FETCH_TRACKS_ERROR',
     FETCH_TRACKS = 'FETCH_TRACKS',
     FETCH_TRACKS_ERROR = 'FETCH_TRACKS_ERROR',
+}
+
+interface SearchFetchTracksAction {
+    type: TrackActionTypes.SEARCH_FETCH_TRACKS,
+    payload: ITrack[]
+}
+
+interface SearchFetchTracksErrorAction {
+    type: TrackActionTypes.SEARCH_FETCH_TRACKS_ERROR,
+    payload: string
 }
 
 interface FetchTracksAction {
@@ -35,4 +47,8 @@ interface FetchTracksErrorAction {
     payload: string
 }
 
-export type TrackAction = FetchTracksAction | FetchTracksErrorAction;
+export type TrackAction =
+    FetchTracksAction
+    | FetchTracksErrorAction
+    | SearchFetchTracksAction
+    | SearchFetchTracksErrorAction;
