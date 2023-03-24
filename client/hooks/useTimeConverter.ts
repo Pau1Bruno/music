@@ -7,7 +7,6 @@ export const useTimeConverter = (seconds: number): string => {
         seconds -= 60;
     }
 
-
     sec = seconds;
     if (sec < 10) {
         return min + ":" + "0" + sec;

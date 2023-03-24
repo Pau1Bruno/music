@@ -8,7 +8,6 @@ import {useTypedSelector} from "../hooks/useTypedSelector";
 import {useAction} from "../hooks/useAction";
 import VolumeProgress from "./VolumeProgress";
 
-
 let audio: HTMLAudioElement; //Объявляем переменную audio, браузерное API
 
 const Player = () => {
@@ -18,11 +17,8 @@ const Player = () => {
     useEffect(() => {
         if (!audio) {
             audio = new Audio();
-        } else {
-            setAudio();
-            play();
-        }
-    }, [active]);
+        } else setAudio();
+    }, [ active ]);
 
     const setAudio = () => {
         if (active) {
@@ -38,16 +34,27 @@ const Player = () => {
                 setCurrentTime(Math.trunc(audio.currentTime));
             };
         }
-    }
+    };
+
+    // для того, чтобы пауза и проигрывание работали из списка
+    useEffect(() => {
+        if (!pause) {
+            audio.play().then(() => undefined);
+        } else {
+            audio.pause();
+        }
+    }, [ pause ]);
+
     const play = () => {
         if (pause) {
             playTrack();
-            audio.play().then(() => console.log(audio));
+            audio.play().then(() => undefined);
         } else {
             pauseTrack();
             audio.pause();
         }
     };
+
     const changeVolume = (e: React.ChangeEvent<HTMLInputElement>) => {
         audio.volume = Number(e.target.value) / 100;
         setVolume(Number(e.target.value));
@@ -57,7 +64,6 @@ const Player = () => {
         audio.currentTime = Number(e.target.value);
         setCurrentTime(Number(e.target.value));
     };
-
 
     // Если трек не выбран, то плеера не будет видно
     if (!active) {

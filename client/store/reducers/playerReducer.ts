@@ -3,8 +3,8 @@ import {PlayerAction, PlayerActionTypes, PlayerState} from "../../types/player";
 
 // Начальное состояние playerReducer
 const initialState: PlayerState = {
-    pause: true,
     active: null,
+    pause: true,
     currentTime: 0,
     duration: 0,
     volume: 50

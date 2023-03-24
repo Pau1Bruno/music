@@ -13,7 +13,6 @@ const Index = () => {
     const router = useRouter();
     const { tracks, error } = useTypedSelector(state => state.track);
 
-
     if (error) {
         return (
             <MainLayout>
@@ -32,7 +31,7 @@ const Index = () => {
                             <Button onClick={() => router.push("tracks/create")}>Upload your track</Button>
                         </Grid>
                     </Box>
-                    <TrackList tracks={tracks} />
+                    <TrackList serverTracks={tracks} />
                 </Card>
             </Grid>
         </MainLayout>

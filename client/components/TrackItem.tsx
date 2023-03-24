@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {ITrack} from "../types/tracks";
 import {Card, Grid} from "@mui/material";
 import styles from "../styles/track/TrackItem.module.scss";
@@ -6,64 +6,45 @@ import IconButton from "@mui/material/IconButton";
 import {Delete, PauseCircle, PlayArrow} from "@mui/icons-material";
 import {useRouter} from "next/router";
 import {useAction} from "../hooks/useAction";
-
+import {useTypedSelector} from "../hooks/useTypedSelector";
+import {useTimeConverter} from "../hooks/useTimeConverter";
 
 interface TrackItemProps {
     track: ITrack,
-    active?: boolean,
 }
 
-const TrackItem: React.FC<TrackItemProps> = ({ track, active = false }) => {
+const TrackItem: React.FC<TrackItemProps> = ({ track }) => {
     const router = useRouter();
+    const { active, pause, currentTime, duration } = useTypedSelector(state => state.player);
     const { playTrack, pauseTrack, setActiveTrack } = useAction();
-
-    // useEffect(() => {
-    //     console.log(track, active);
-    //     if (!active) {
-    //         setActiveTrack(track);
-    //         playTrack();
-    //     } else {
-    //         pauseTrack();
-    //     }
-    // }, [active]);
+    const left = useTimeConverter(currentTime);
+    const right = useTimeConverter(duration);
 
     const play = (e: React.MouseEvent) => {
         e.stopPropagation();
-        if (!active) {
-            // active = true
-            setActiveTrack(track);
+        setActiveTrack(track);
+        if (pause) {
             playTrack();
         } else {
             pauseTrack();
-            // active = false
         }
     };
-
-    // const play = () => {
-    //     if (pause) {
-    //         playTrack();
-    //         audio.play().then(() => console.log(audio));
-    //     } else {
-    //         pauseTrack();
-    //         audio.pause();
-    //     }
-    // };
-
 
     return (
         <Card className={styles.track} onClick={() => router.push("tracks/" + track._id)}>
             <IconButton onClick={play}>
-                {active
+                {!pause && active === track
                     ? <PauseCircle />
                     : <PlayArrow />
                 }
             </IconButton>
-            <img className={styles.picture} src={`http://localhost:5000/${track.picture}`} alt={"track logo"} key={track._id}/>
+            <img className={styles.picture} src={`http://localhost:5000/${track.picture}`} alt={"track logo"}
+                 key={track._id} />
             <Grid container direction={"column"} style={{ width: 200, margin: "0 20px" }}>
                 <div>{track.name}</div>
                 <div>{track.artist}</div>
             </Grid>
-            {active && <div className={styles.trackTime}> 2/3 </div>}
+            {active === track && <div className={styles.trackTime}> {left}/{right} </div>}
             <IconButton onClick={(e) => e.stopPropagation()} className={styles.delete}>
                 <Delete />
             </IconButton>
