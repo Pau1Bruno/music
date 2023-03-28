@@ -9,16 +9,6 @@ interface TrackListProps {
 }
 
 const TrackList: React.FC<TrackListProps> = ({ serverTracks }) => {
-    // const deleteTrack = async (id: string) => {
-    //     try {
-    //         await axios.delete(`http://localhost:5000/tracks/${track._id}`);
-    //         console.log(track);
-    //         setTracks({ tracks.filter(comm => comm._id !== id) ] });
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // };
-
     return (
         <Grid container direction="column">
             <Box p={2}>

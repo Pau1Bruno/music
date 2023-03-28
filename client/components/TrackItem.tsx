@@ -8,6 +8,7 @@ import {useRouter} from "next/router";
 import {useAction} from "../hooks/useAction";
 import {useTypedSelector} from "../hooks/useTypedSelector";
 import {useTimeConverter} from "../hooks/useTimeConverter";
+import {useDeleteTrackMutation} from "../store/reducers/apiSlice";
 
 interface TrackItemProps {
     track: ITrack,
@@ -18,6 +19,7 @@ const TrackItem: React.FC<TrackItemProps> = ({ track }) => {
 
     const { active, pause, currentTime, duration } = useTypedSelector(state => state.player);
     const { playTrack, pauseTrack, setActiveTrack } = useAction();
+    const [ deleteTrack ] = useDeleteTrackMutation();
 
     const left = useTimeConverter(currentTime);
     const right = useTimeConverter(duration);
@@ -30,6 +32,11 @@ const TrackItem: React.FC<TrackItemProps> = ({ track }) => {
         } else {
             pauseTrack();
         }
+    };
+
+    const deleteTrackFunction = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        deleteTrack(track._id);
     };
 
     return (
@@ -52,7 +59,7 @@ const TrackItem: React.FC<TrackItemProps> = ({ track }) => {
 
             {active === track && <div className={styles.trackTime}> {left}/{right} </div>}
 
-            <IconButton onClick={(e) => e.stopPropagation()} className={styles.delete}>
+            <IconButton onClick={deleteTrackFunction} className={styles.delete}>
                 <Delete />
             </IconButton>
 

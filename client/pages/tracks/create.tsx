@@ -4,8 +4,8 @@ import StepWrapper from "../../components/StepWrapper";
 import {Button, Grid, TextField} from "@mui/material";
 import FileUpload from "../../components/FileUpload";
 import {useInput} from "../../hooks/useInput";
-import axios from "axios";
 import {useRouter} from "next/router";
+import {useAddTrackMutation} from "../../store/reducers/apiSlice";
 
 const Create = () => {
     const [ activeStep, setActiveStep ] = useState(0);
@@ -15,6 +15,7 @@ const Create = () => {
     const name = useInput("");
     const artist = useInput("");
     const text = useInput("");
+    const [addTrack] = useAddTrackMutation();
 
     const next = () => {
         if (activeStep !== 2) {
@@ -27,9 +28,9 @@ const Create = () => {
             formData.append("picture", picture);
             formData.append("audio", audio);
             // Отправка на сервер поста и переход на страницу со всеми треками
-            axios.post("http://localhost:5000/tracks", formData)
-                .then(() => router.push('/tracks'))
-                .catch(e => console.log(e))
+            console.log(formData);
+            addTrack(formData)
+            router.push('/tracks').then();
         }
     };
     const back = () => {

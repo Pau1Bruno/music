@@ -4,18 +4,17 @@ import {Button, Card, Grid, TextField} from "@mui/material";
 import {useRouter} from "next/router";
 import Box from "@mui/material/Box";
 import TrackList from "../../components/TrackList";
-import {useTypedSelector} from "../../hooks/useTypedSelector";
 import {NextThunkDispatch, wrapper} from "../../store";
-import {fetchTracks, searchTracks} from "../../store/action-creators/tracks";
-import {useDispatch} from "react-redux";
+import {fetchTracks} from "../../store/action-creators/tracks";
 import "../../styles/track/TrackIndex.module.scss";
+import {useSearchTracksQuery} from "../../store/reducers/apiSlice";
 
 const Index = () => {
     const router = useRouter();
-    const { tracks, error } = useTypedSelector(state => state.track);
     const [ query, setQuery ] = useState<string>("");
-    const dispatch = useDispatch() as NextThunkDispatch;
-    const [ timer, setTimer ] = useState<null | ReturnType<typeof setTimeout>>(null);
+
+    const { data: searchData, isLoading, error } = useSearchTracksQuery(query);
+    console.log(searchData, isLoading);
 
     if (error) {
         return (
@@ -24,24 +23,6 @@ const Index = () => {
             </MainLayout>
         );
     }
-
-    // Функция отправки на сервер поискового запроса
-    const search = async (e: React.ChangeEvent<HTMLInputElement>) => {
-        setQuery(e.target.value);
-
-        // обнуление таймера, если строка запроса меняется в течение 500 мс
-        if (timer) {
-            clearTimeout(timer);
-        }
-
-        // создаёт таймер каждый раз после последнего действия на 500 мс,
-        // если 500 мс проходят без изменений строки поиска, то запрос отправляется
-        await setTimer(
-            setTimeout(async () => {
-                await dispatch(await searchTracks(e.target.value));
-            }, 500)
-        );
-    };
 
     return (
         <MainLayout title={"Tracks"}>
@@ -58,10 +39,10 @@ const Index = () => {
                     <TextField
                         fullWidth
                         value={query}
-                        onChange={search}
+                        onChange={(e) => setQuery(e.target.value)}
                     />
 
-                    <TrackList serverTracks={tracks} />
+                    {!isLoading && <TrackList serverTracks={searchData} />}
 
                 </Card>
             </Grid>
