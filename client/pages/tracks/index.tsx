@@ -12,9 +12,18 @@ import {useSearchTracksQuery} from "../../store/reducers/apiSlice";
 const Index = () => {
     const router = useRouter();
     const [ query, setQuery ] = useState<string>("");
+    const [ timer, setTimer ] = useState<null | ReturnType<typeof setTimeout>>(null);
+    const [ skip, setSkip ] = useState(false);
 
-    const { data: searchData, isLoading, error } = useSearchTracksQuery(query);
-    console.log(searchData, isLoading);
+    const {
+        data: tracks,
+        isFetching,
+        currentData,
+        error
+    } = useSearchTracksQuery(query, {
+        skip: skip,
+        pollingInterval: 50000
+    });
 
     if (error) {
         return (
@@ -23,6 +32,25 @@ const Index = () => {
             </MainLayout>
         );
     }
+
+    // Функция отправки на сервер поискового запроса
+    const search = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSkip(true);
+        setQuery(e.target.value);
+
+        // обнуление таймера, если строка запроса меняется в течение 500 мс
+        if (timer) {
+            clearTimeout(timer);
+        }
+
+        // создаёт таймер каждый раз после последнего действия на 500 мс,
+        // если 500 мс проходят без изменений строки поиска, то запрос отправляется
+        await setTimer(
+            setTimeout(async () => {
+                setSkip(false);
+            }, 500)
+        );
+    };
 
     return (
         <MainLayout title={"Tracks"}>
@@ -39,11 +67,9 @@ const Index = () => {
                     <TextField
                         fullWidth
                         value={query}
-                        onChange={(e) => setQuery(e.target.value)}
+                        onChange={search}
                     />
-
-                    {!isLoading && <TrackList serverTracks={searchData} />}
-
+                    {!isFetching && currentData && <TrackList serverTracks={tracks} />}
                 </Card>
             </Grid>
         </MainLayout>

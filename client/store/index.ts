@@ -5,12 +5,15 @@ import thunk from "redux-thunk";
 import {AnyAction} from "redux";
 import {api} from "./reducers/apiSlice";
 
-const store = () =>
+export const makeStore = () =>
     configureStore({
         reducer,
         middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk, api.middleware)
     });
 
-export const wrapper = createWrapper(store, { debug: true });
+export type AppStore = ReturnType<typeof makeStore>;
+export const wrapper
+    =
+    createWrapper<AppStore>(makeStore, { debug: true });
 
 export type NextThunkDispatch = ThunkDispatch<RootState, void, AnyAction>;
