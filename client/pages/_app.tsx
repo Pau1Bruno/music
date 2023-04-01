@@ -14,9 +14,9 @@ const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
         <Provider store={store}>
             <>
                 <Head>
-                    <link rel="apple-touch-icon" sizes="96x96" href="../public/image/icons96.png" />
-                    <link rel="icon" type="image/png" sizes="32x32" href="../public/image/icons32.png" />
-                    <link rel="icon" type="image/png" sizes="16x16" href="../public/image/icons16.png" />
+                    <link rel="apple-touch-icon" sizes="96x96" href="/icons96.png" />
+                    <link rel="icon" type="image/png" sizes="32x32" href="/icons32.png" />
+                    <link rel="icon" type="image/png" sizes="16x16" href="/icons16.png" />
                 </Head>
                 <Component {...props.pageProps} />
             </>
