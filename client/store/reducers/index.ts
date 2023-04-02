@@ -1,12 +1,10 @@
 import {AnyAction, combineReducers} from "redux";
 import playerReducer from "./playerSlice";
 import {HYDRATE} from "next-redux-wrapper";
-import {trackReducer} from "./trackReducer";
 import {api} from "./apiSlice";
 
 const RootReducer = combineReducers({
     player: playerReducer,
-    track: trackReducer,
     [api.reducerPath]: api.reducer
 });
 

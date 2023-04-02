@@ -15,7 +15,8 @@ const TrackList: React.FC<TrackListProps> = ({ serverTracks }) => {
                 {serverTracks.map(track =>
                     <TrackItem
                         key={track._id}
-                        track={track} />
+                        track={track}
+                    />
                 )}
             </Box>
         </Grid>

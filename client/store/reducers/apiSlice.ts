@@ -6,16 +6,19 @@ export const api = createApi({
         baseUrl: "http://localhost:5000/"
     }),
     refetchOnFocus: true,
+    refetchOnReconnect: true,
     tagTypes: [ "Tracks" ],
     endpoints: build => ( {
         getTracks: build.query({
             query: () => "tracks/"
         }),
+
         // A query endpoint with an argument
         searchTracks: build.query({
             query: search => `tracks/search?query=${search}`,
             providesTags: [ "Tracks" ]
         }),
+
         deleteTrack: build.mutation(( {
             query: (id: string) => ( {
                 url: "/tracks/" + id,
@@ -24,6 +27,7 @@ export const api = createApi({
             } ),
             invalidatesTags: [ "Tracks" ]
         } )),
+
         addTrack: build.mutation(( {
             query: (track: FormData) => ( {
                 url: "/tracks/",
@@ -31,9 +35,16 @@ export const api = createApi({
                 body: track
             } ),
             invalidatesTags: [ "Tracks" ]
-        } ))
+        } )),
 
+        addListen: build.mutation(( {
+            query: (id: string) => ( {
+                url: "http://localhost:5000/tracks/listen/" + id,
+                method: "POST",
+                body: id
+            } )
+        } ))
     } )
 });
 
-export const { useSearchTracksQuery, useDeleteTrackMutation, useAddTrackMutation } = api;
+export const { useAddListenMutation, useSearchTracksQuery, useDeleteTrackMutation, useAddTrackMutation } = api;

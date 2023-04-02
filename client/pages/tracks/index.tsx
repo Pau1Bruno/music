@@ -4,8 +4,6 @@ import {Button, Card, Grid, TextField} from "@mui/material";
 import {useRouter} from "next/router";
 import Box from "@mui/material/Box";
 import TrackList from "../../components/TrackList";
-import {NextThunkDispatch, wrapper} from "../../store";
-import {fetchTracks} from "../../store/action-creators/tracks";
 import "../../styles/track/TrackIndex.module.scss";
 import {useSearchTracksQuery} from "../../store/reducers/apiSlice";
 
@@ -77,11 +75,3 @@ const Index = () => {
 };
 
 export default Index;
-
-export const getServerSideProps = wrapper.getServerSideProps(
-    store => async () => {
-        const dispatch = store.dispatch as NextThunkDispatch;
-        await dispatch(fetchTracks());
-        return { props: {} };
-    }
-);

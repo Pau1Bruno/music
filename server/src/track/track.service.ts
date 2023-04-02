@@ -59,11 +59,11 @@ export class TrackService {
         return comment;
     }
 
-    async listen(id: mongoose.ObjectId): Promise<string> {
+    async listen(id: mongoose.ObjectId): Promise<number> {
         const track = await this.trackModel.findById(id);
         track.listens += 1;
         await track.save();
-        return "+1 listen";
+        return track.listens;
     }
 
     async getAllComments(id: mongoose.ObjectId): Promise<Comment[]> {

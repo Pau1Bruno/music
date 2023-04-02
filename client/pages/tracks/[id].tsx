@@ -95,5 +95,4 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
             serverTrack: response.data
         }
     };
-
 };

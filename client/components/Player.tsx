@@ -7,12 +7,14 @@ import TrackProgress from "./TrackProgress";
 import {useTypedSelector} from "../hooks/useTypedSelector";
 import {useAction} from "../hooks/useAction";
 import VolumeProgress from "./VolumeProgress";
+import {useAddListenMutation} from "../store/reducers/apiSlice";
 
-let audio: HTMLAudioElement; //Объявляем переменную audio, браузерное API
+let audio: HTMLAudioElement; // declare variable, browser API
 
 const Player = () => {
     const { active, pause, volume, currentTime, duration } = useTypedSelector(state => state.player);
     const { playTrack, pauseTrack, setVolume, setCurrentTime, setDuration } = useAction();
+    const [ addListen ] = useAddListenMutation();
 
     useEffect(() => {
         if (!audio) {
@@ -24,12 +26,20 @@ const Player = () => {
         if (active) {
             audio.src = `http://localhost:5000/${active.audio}`;
             audio.volume = volume / 100;
-            // После того, как трек загрузился
+
+            // As track downloaded
             audio.onloadedmetadata = () => {
-                // Math.trunc - возвращает целую часть
                 setDuration(Math.trunc(audio.duration));
+                console.log("(");
             };
-            // При проигрывании трека меняет текущее время
+
+            // Add listen to a server after track is ended / autoplay
+            audio.onended = () => {
+                addListen(active._id);
+                audio.play();
+            };
+
+            // On playing track
             audio.ontimeupdate = () => {
                 setCurrentTime(Math.trunc(audio.currentTime));
             };
@@ -39,7 +49,7 @@ const Player = () => {
     // для того, чтобы пауза и проигрывание работали из списка
     useEffect(() => {
         if (!pause) {
-            audio.play().then(() => undefined);
+            audio.play();
         } else {
             audio.pause();
         }
@@ -48,7 +58,7 @@ const Player = () => {
     const play = () => {
         if (pause) {
             playTrack();
-            audio.play().then(() => undefined);
+            audio.play();
         } else {
             pauseTrack();
             audio.pause();
@@ -62,7 +72,7 @@ const Player = () => {
 
     const changeCurrentTime = (e: React.ChangeEvent<HTMLInputElement>) => {
         audio.currentTime = Number(e.target.value);
-        setCurrentTime(Number(e.target.value));
+        setCurrentTime(Math.trunc(audio.currentTime));
     };
 
     // Если трек не выбран, то плеера не будет видно
