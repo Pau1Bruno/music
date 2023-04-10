@@ -1,7 +1,7 @@
 import React, {FC, ReactNode} from "react";
-import Navbar from "../components/Navbar";
 import classes from "../styles/content.module.css";
 import Head from "next/head";
+import Navbar from "../components/Navbar/Navbar";
 
 type MainLayoutProps = {
     title?: string;

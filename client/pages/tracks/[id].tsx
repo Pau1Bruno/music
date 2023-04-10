@@ -18,7 +18,7 @@ const TrackPage = ({ serverTrack }: { serverTrack: ITrack }) => {
 
     const addComment = async () => {
         try {
-            const response = await axios.post("http://localhost:5000/tracks/comment/", {
+            const response = await axios.post("http://192.168.0.106:5000/tracks/comment/", {
                 username: username.value,
                 text: comment.value,
                 trackId: track._id
@@ -31,7 +31,7 @@ const TrackPage = ({ serverTrack }: { serverTrack: ITrack }) => {
 
     const deleteComment = async (id: string) => {
         try {
-            await axios.delete(`http://localhost:5000/tracks/${track._id}/comments/${id}`);
+            await axios.delete(`http://192.168.0.106:5000/tracks/${track._id}/comments/${id}`);
             setTrack({ ...track, comments: [ ...track.comments.filter(comm => comm._id !== id) ] });
         } catch (error) {
             console.error(error);
@@ -51,7 +51,7 @@ const TrackPage = ({ serverTrack }: { serverTrack: ITrack }) => {
             <Grid container direction="column" alignItems="center">
                 <Button onClick={backToTracksHandler}>Return to track list</Button>
                 <h1>Track id: {track._id}</h1>
-                <Image src={`http://localhost:5000/${track.picture}`} alt="no image" width={100} height={100}
+                <Image src={`http://192.168.0.106:5000/${track.picture}`} alt="no image" width={100} height={100}
                        unoptimized={true} />
                 <h1>Track name: {track.name}</h1>
             </Grid>
@@ -88,7 +88,7 @@ const TrackPage = ({ serverTrack }: { serverTrack: ITrack }) => {
 export default TrackPage;
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-    const response = await axios.get("http://localhost:5000/tracks/" + params?.id);
+    const response = await axios.get("http://192.168.0.106:5000/tracks/" + params?.id);
 
     return {
         props: {

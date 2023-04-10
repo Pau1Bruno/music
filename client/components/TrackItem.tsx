@@ -49,7 +49,7 @@ const TrackItem: React.FC<TrackItemProps> = ({ track }) => {
                 }
             </IconButton>
 
-            <img className={styles.picture} src={`http://localhost:5000/${track.picture}`} alt={"track logo"}
+            <img className={styles.picture} src={`http://192.168.0.106:5000/${track.picture}`} alt={"track logo"}
                  key={track._id} />
 
             <Grid container direction={"column"} style={{ width: 200, margin: "0 20px" }}>
