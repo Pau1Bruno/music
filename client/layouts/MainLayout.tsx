@@ -1,7 +1,6 @@
 import React, {FC, ReactNode} from "react";
 import Navbar from "../components/Navbar";
 import classes from "../styles/content.module.css";
-import Player from "../components/Player";
 import Head from "next/head";
 
 type MainLayoutProps = {
@@ -37,8 +36,6 @@ const MainLayout: FC<MainLayoutProps> =
                 <div className={classes.content}>
                     {children}
                 </div>
-
-                <Player />
             </>
         );
     };

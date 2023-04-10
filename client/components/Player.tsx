@@ -30,7 +30,6 @@ const Player = () => {
             // As track downloaded
             audio.onloadedmetadata = () => {
                 setDuration(Math.trunc(audio.duration));
-                console.log("(");
             };
 
             // Add listen to a server after track is ended / autoplay

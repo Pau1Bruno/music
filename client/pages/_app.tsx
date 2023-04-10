@@ -4,6 +4,7 @@ import {AppProps} from "next/app";
 import {wrapper} from "../store";
 import Head from "next/head";
 import {setupListeners} from "@reduxjs/toolkit/query";
+import Player from "../components/Player";
 
 const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
     const { store, props } = wrapper.useWrappedStore(rest);
@@ -19,6 +20,7 @@ const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
                     <link rel="icon" type="image/png" sizes="16x16" href="/icons16.png" />
                 </Head>
                 <Component {...props.pageProps} />
+                <Player />
             </>
         </Provider>
     );
