@@ -1,33 +1,60 @@
-//$primary-color: #b7b2d1;
-//$secondary-color: #6c757d;
-//
-//.navbar {
-//  background-color: $primary-color;
-//  color: white;
-//  display: flex;
-//  justify-content: space-between;
-//  padding: 10px;
-//}
+//Primary color: Charcoal gray (#333333)
+//Secondary color: Electric blue (#7DF9FF)
+//Accent color: Bright red (#FF5E5E)
+//Background color: Black (#000000)
+//Text color: White (#FFFFFF)
+$primary_color: #333333;
+$secondary_color: #7DF9FF;
+$accent_color: #FF5E5E;
+$background_color: #000000;
+$text_color: #FFFFFF;
 
 
 .navbar {
-    background-color: #dda1a1;
-    color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: $primary-color;
+  color: $secondary-color;
+  font-size: 1.2rem;
+
+  .left {
     display: flex;
+
+    a {
+      padding: 0 10px;
+    }
+
+    span {
+      color: $text_color;
+    }
+  }
+
+  .right {
+    display: flex;
+  }
+}
+
+// Responsive
+@media only screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
     justify-content: space-between;
-    padding: 10px;
-  //.left {
-  //  color: #2764d9;
-  //}
-  //
-  //.right {
-  //  .user {
-  //    img {
-  //      margin: 0 5px;
-  //      border-radius: 50%;
-  //      width: 32px;
-  //      height: 32px;
-  //    }
-  //  }
-  //}
+    height: auto;
+  }
+
+  .logo {
+    margin-bottom: 1rem;
+  }
+
+  .nav {
+    flex-direction: column;
+    align-items: center;
+
+    li {
+      margin-right: 0;
+      margin-bottom: 1rem;
+    }
+  }
 }

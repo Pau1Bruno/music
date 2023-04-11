@@ -29,8 +29,8 @@ const Create = () => {
             formData.append("audio", audio);
             // Отправка на сервер поста и переход на страницу со всеми треками
             console.log(formData);
-            router.push('/tracks').then();
             addTrack(formData);
+            router.push('/tracks').then();
         }
     };
     const back = () => {

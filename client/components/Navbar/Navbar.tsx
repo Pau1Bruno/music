@@ -6,7 +6,7 @@ import styles from './Navbar.module.scss';
 const Navbar = () => {
     return (
         <div className={styles.navbar}>
-            <div className="left">
+            <div className={styles.left}>
                 <Link href="/">
                     <span>home</span>
                 </Link>
@@ -20,7 +20,7 @@ const Navbar = () => {
                 </Link>
             </div>
 
-            <div className="right">
+            <div className={styles.right}>
                 <Brightness6Icon />
                 <div className="user">
                     {/*<img src="/ryo.jpg" alt="ryo" />*/}

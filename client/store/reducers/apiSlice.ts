@@ -3,7 +3,7 @@ import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 export const api = createApi({
     reducerPath: "api",
     baseQuery: fetchBaseQuery({
-        baseUrl: "http://192.168.0.106:5000/"
+        baseUrl: "http://localhost:5000/"
     }),
     refetchOnFocus: true,
     refetchOnReconnect: true,
@@ -30,7 +30,7 @@ export const api = createApi({
 
         addTrack: build.mutation(( {
             query: (track: FormData) => ( {
-                url: "/tracks/",
+                url: "/tracks",
                 method: "POST",
                 body: track
             } ),

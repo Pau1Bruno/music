@@ -4,7 +4,9 @@ import {AppProps} from "next/app";
 import {wrapper} from "../store";
 import Head from "next/head";
 import {setupListeners} from "@reduxjs/toolkit/query";
-import Player from "../components/Player";
+import Player from "../components/Player/Player";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './../styles/global.css';
 
 const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
     const { store, props } = wrapper.useWrappedStore(rest);

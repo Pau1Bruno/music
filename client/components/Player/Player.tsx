@@ -1,13 +1,12 @@
 import React, {useEffect} from "react";
 import IconButton from "@mui/material/IconButton";
 import {Pause, PlayArrow, VolumeUp} from "@mui/icons-material";
-import styles from "../styles/Player.module.scss";
-import {Grid} from "@mui/material";
+import styles from "./Player.module.scss";
 import TrackProgress from "./TrackProgress";
-import {useTypedSelector} from "../hooks/useTypedSelector";
-import {useAction} from "../hooks/useAction";
+import {useTypedSelector} from "../../hooks/useTypedSelector";
+import {useAction} from "../../hooks/useAction";
 import VolumeProgress from "./VolumeProgress";
-import {useAddListenMutation} from "../store/reducers/apiSlice";
+import {useAddListenMutation} from "../../store/reducers/apiSlice";
 
 let audio: HTMLAudioElement; // declare variable, browser API
 
@@ -24,7 +23,7 @@ const Player = () => {
 
     const setAudio = () => {
         if (active) {
-            audio.src = `http://192.168.0.106:5000/${active.audio}`;
+            audio.src = `http://localhost:5000/${active.audio}`;
             audio.volume = volume / 100;
 
             // As track downloaded
@@ -81,20 +80,34 @@ const Player = () => {
 
     return (
         <div className={styles.player}>
-            <IconButton onClick={play}>
-                {pause
-                    ? <PlayArrow />
-                    : <Pause />
-                }
-            </IconButton>
-            <Grid container direction={"column"} style={{ width: 200, margin: "0 20px" }}>
-                <div>{active?.name}</div>
-                <div>{active?.artist}</div>
-            </Grid>
-            <TrackProgress left={currentTime} right={duration} onChange={changeCurrentTime} />
-            <VolumeUp style={{ marginLeft: "auto" }} />
-            <VolumeProgress left={volume} right={100} onChange={changeVolume} />
+            <div className={styles.left}>
+                <IconButton onClick={play} className={styles.play_pause}>
+                    {pause
+                        ? <PlayArrow />
+                        : <Pause />
+                    }
+                </IconButton>
+
+                <div className={styles.song_info}>
+                    <div>{active?.name}</div>
+                    <div>{active?.artist}</div>
+                </div>
+
+                <div>
+                    <TrackProgress left={currentTime} right={duration} onChange={changeCurrentTime}></TrackProgress>
+                </div>
+            </div>
+
+            <div className={styles.right}>
+
+                <div className={styles.volume}>
+                    <VolumeUp />
+                    <VolumeProgress left={volume} right={100} onChange={changeVolume} />
+                </div>
+
+            </div>
         </div>
+
     );
 };
 

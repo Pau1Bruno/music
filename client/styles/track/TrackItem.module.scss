@@ -1,3 +1,9 @@
+$primary_color: #333333;
+$secondary_color: #7DF9FF;
+$accent_color: #FF5E5E;
+$background_color: #000000;
+$text_color: #FFFFFF;
+
 .track {
   display: flex;
   justify-content: space-between;
@@ -6,12 +12,10 @@
   padding-left: 5px;
   border-radius: 12px;
   background-color: #9dbed9;
-}
-
-
-.track:hover {
-  background-color: #7b98c1;
-  box-shadow: 5px 5px 10px black;
+  &hover {
+    background-color: #7b98c1;
+    box-shadow: 5px 5px 10px black;
+  }
 }
 
 .picture {

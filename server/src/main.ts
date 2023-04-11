@@ -16,7 +16,7 @@ const start = async () => {
 
         app.use(cors(corsOptions));
 
-        await app.listen(PORT, '192.168.0.106', () => {
+        await app.listen(PORT, () => {
             console.log(`server starts on PORT ${ PORT }`);
         });
     } catch ( e ) {
