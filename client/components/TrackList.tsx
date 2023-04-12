@@ -2,7 +2,7 @@ import React from "react";
 import {ITrack} from "../types/tracks";
 import {Grid} from "@mui/material";
 import Box from "@mui/material/Box";
-import TrackItem from "./TrackItem";
+import TrackItem from "./TrackItem/TrackItem";
 
 interface TrackListProps {
     serverTracks: ITrack[];

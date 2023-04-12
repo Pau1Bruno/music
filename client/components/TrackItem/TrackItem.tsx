@@ -1,15 +1,15 @@
 import React from "react";
-import {ITrack} from "../types/tracks";
-import {Card, Grid} from "@mui/material";
+import {ITrack} from "../../types/tracks";
+import {Card} from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import {Delete, PauseCircle, PlayArrow} from "@mui/icons-material";
 import {useRouter} from "next/router";
-import {useAction} from "../hooks/useAction";
-import {useTypedSelector} from "../hooks/useTypedSelector";
-import {useTimeConverter} from "../hooks/useTimeConverter";
-import {useDeleteTrackMutation} from "../store/reducers/apiSlice";
+import {useAction} from "../../hooks/useAction";
+import {useTypedSelector} from "../../hooks/useTypedSelector";
+import {useTimeConverter} from "../../hooks/useTimeConverter";
+import {useDeleteTrackMutation} from "../../store/reducers/apiSlice";
 import Link from "next/link";
-import styles from "../styles/track/TrackItem.module.scss";
+import styles from "./TrackItem.module.scss";
 
 interface TrackItemProps {
     track: ITrack,
@@ -58,10 +58,10 @@ const TrackItem: React.FC<TrackItemProps> = ({ track }) => {
                 <img className={styles.picture} src={`http://localhost:5000/${track.picture}`} alt={"track logo"}
                      key={track._id} />
 
-                <Grid container direction={"column"} style={{ width: 200, margin: "0 20px" }}>
+                <div className={styles.track_info}>
                     <div>{track.name}</div>
                     <div>{track.artist}</div>
-                </Grid>
+                </div>
 
                 {active === track && <div className={styles.trackTime}> {left}/{right} </div>}
 

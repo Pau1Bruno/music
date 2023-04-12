@@ -1,11 +1,10 @@
 import React, {useState} from "react";
 import MainLayout from "../../layouts/MainLayout";
-import {Button, Card, Grid, TextField} from "@mui/material";
 import {useRouter} from "next/router";
-import Box from "@mui/material/Box";
 import TrackList from "../../components/TrackList";
-import "../../styles/track/TrackIndex.module.scss";
 import {useSearchTracksQuery} from "../../store/reducers/apiSlice";
+import Link from "next/link";
+import styles from "./../../styles/track/TrackIndex.module.scss";
 
 const Index = () => {
     const router = useRouter();
@@ -52,24 +51,21 @@ const Index = () => {
 
     return (
         <MainLayout title={"Tracks"}>
-            <Grid container justifyContent="center">
-                <Card>
+            <div className={styles.track_container}>
 
-                    <Box p={2}>
-                        <Grid container justifyContent="space-around">
-                            <h1>List of tracks</h1>
-                            <Button onClick={() => router.push("tracks/create")}>Upload your track</Button>
-                        </Grid>
-                    </Box>
+                <div className={styles.tracks}>
+                    <h1>List of tracks</h1>
+                    <Link href={"tracks/create"}>Upload your track</Link>
+                </div>
 
-                    <TextField
-                        fullWidth
-                        value={query}
-                        onChange={search}
-                    />
-                    {!isFetching && currentData && <TrackList serverTracks={tracks} />}
-                </Card>
-            </Grid>
+                <input
+                    className={styles.search}
+                    value={query}
+                    onChange={search}
+                />
+                {!isFetching && currentData && <TrackList serverTracks={tracks} />}
+
+            </div>
         </MainLayout>
     );
 };

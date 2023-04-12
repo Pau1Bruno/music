@@ -1,5 +1,4 @@
 import React, {FC, ReactNode} from "react";
-import classes from "../styles/content.module.css";
 import Head from "next/head";
 import Navbar from "../components/Navbar/Navbar";
 
@@ -33,7 +32,7 @@ const MainLayout: FC<MainLayoutProps> =
 
                 <Navbar />
 
-                <div className={classes.content}>
+                <div>
                     {children}
                 </div>
             </>
