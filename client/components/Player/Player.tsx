@@ -2,8 +2,8 @@ import React from "react";
 import IconButton from "@mui/material/IconButton";
 import {Pause, PlayArrow, VolumeUp} from "@mui/icons-material";
 import styles from "./Player.module.scss";
-import TrackProgress from "./TrackProgress";
-import VolumeProgress from "./VolumeProgress";
+import TrackProgress from "./Player Bars/TrackProgress";
+import VolumeProgress from "./Player Bars/VolumeProgress";
 import useAudioPlayer from "../../hooks/useSetAudio";
 
 const Player = () => {
@@ -45,13 +45,10 @@ const Player = () => {
             </div>
 
             <div className={styles.right}>
-
-                <div className={styles.volume}>
-                    <VolumeUp />
-                    <VolumeProgress left={volume} right={100} onChange={changeVolume} />
-                </div>
-
+                <VolumeUp />
+                <VolumeProgress left={volume} right={100} onChange={changeVolume} />
             </div>
+
         </div>
 
     );
