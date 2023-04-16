@@ -1,23 +1,14 @@
-//Primary color: Charcoal gray (#333333)
-//Secondary color: Electric blue (#7DF9FF)
-//Accent color: Bright red (#FF5E5E)
-//Background color: Black (#000000)
-//Text color: White (#FFFFFF)
-$primary_color: #333333;
-$secondary_color: #7DF9FF;
-$accent_color: #FF5E5E;
-$background_color: #000000;
-$text_color: #FFFFFF;
+@import "../../styles/theme.module.scss";
 
-
-.navbar {
+.light {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
-  background-color: $primary-color;
-  color: $secondary-color;
+  border-radius: 0 0 20px 20px;
   font-size: 1.2rem;
+
+  background-color: $primary_light;
 
   .left {
     display: flex;
@@ -27,16 +18,94 @@ $text_color: #FFFFFF;
     }
 
     span {
-      color: $text_color;
+      color: $text_light;
+
+      &:hover {
+        color: $accent_light;
+      }
     }
   }
 
   .right {
     display: flex;
+    width: 180px;
+    flex-direction: row;
+    justify-content: space-around;
+    color: $text_light;
+
+    .theme {
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        color: $accent_light;
+      }
+    }
+
+    .user {
+      display: flex;
+      align-self: center;
+
+      &:hover {
+        color: $accent_light;
+      }
+    }
   }
 }
 
-// Responsive
+.dark {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-radius: 0 0 20px 20px;
+  font-size: 1.2rem;
+
+  background-color: $primary_dark;
+
+  .left {
+    display: flex;
+
+    a {
+      padding: 0 10px;
+    }
+
+    span {
+      color: $text_dark;
+
+      &:hover {
+        color: $accent_dark;
+      }
+    }
+  }
+
+  .right {
+    display: flex;
+    width: 180px;
+    flex-direction: row;
+    justify-content: space-around;
+    color: $text_dark;
+
+    .theme {
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        color: $accent_dark;
+      }
+    }
+
+    .user {
+      display: flex;
+      align-self: center;
+
+      &:hover {
+        color: $accent_dark;
+      }
+    }
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .navbar {
     flex-direction: column;
