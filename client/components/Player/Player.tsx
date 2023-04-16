@@ -1,12 +1,15 @@
-import React from "react";
+import React, {useContext} from "react";
 import IconButton from "@mui/material/IconButton";
 import {Pause, PlayArrow, VolumeUp} from "@mui/icons-material";
 import styles from "./Player.module.scss";
 import TrackProgress from "./Player Bars/TrackProgress";
 import VolumeProgress from "./Player Bars/VolumeProgress";
 import useAudioPlayer from "../../hooks/useSetAudio";
+import {DarkModeContext, DarkModeContextType} from "../../context/ThemesContext";
 
 const Player = () => {
+    const { darkMode } = useContext<DarkModeContextType>(DarkModeContext);
+
     const {
         active,
         pause,
@@ -18,13 +21,13 @@ const Player = () => {
         play
     } = useAudioPlayer();
 
-    // Если трек не выбран, то плеера не будет видно
+    // If there is no active track - Player doesn't display
     if (!active) {
         return null;
     }
 
     return (
-        <div className={styles.player}>
+        <div className={darkMode ? styles.dark : styles.light}>
             <div className={styles.left}>
 
                 <IconButton onClick={play} className={styles.play_pause}>

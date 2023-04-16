@@ -1,29 +1,36 @@
-import React from "react";
+import React, {useContext} from "react";
 import Link from "next/link";
 import Brightness6Icon from "@mui/icons-material/Brightness6";
-import styles from './Navbar.module.scss';
+import styles from "./Navbar.module.scss";
+import {DarkModeContext, DarkModeContextType} from "../../context/ThemesContext";
 
 const Navbar = () => {
+    const { darkMode, setDarkMode } = useContext<DarkModeContextType>(DarkModeContext);
+
+    const changingTheme = () => {
+        const newTheme = !darkMode;
+        setDarkMode(newTheme);
+    };
+
     return (
-        <div className={styles.navbar}>
+        <div id='navbar' className={darkMode ? styles.dark : styles.light}>
+
             <div className={styles.left}>
                 <Link href="/">
-                    <span>home</span>
+                    <span>Home</span>
                 </Link>
-
                 <Link href="/tracks">
-                    <span>all tracks</span>
+                    <span>Tracks</span>
                 </Link>
-
                 <Link href="/albums">
-                    <span>all albums</span>
+                    <span>Albums</span>
                 </Link>
             </div>
-
             <div className={styles.right}>
-                <Brightness6Icon />
-                <div className="user">
-                    {/*<img src="/ryo.jpg" alt="ryo" />*/}
+                <div className={styles.theme} onClick={changingTheme}>
+                    <Brightness6Icon />
+                </div>
+                <div className={styles.user}>
                     <span>Pavel Ushakov</span>
                 </div>
             </div>
