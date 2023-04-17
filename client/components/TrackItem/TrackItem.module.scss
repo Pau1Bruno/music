@@ -1,45 +1,80 @@
-$primary_color: #333333;
-$secondary_color: #7DF9FF;
-$third_color: #CCCCCC;
-$accent_color: #FF5E5E;
-$background_color: #000000;
-$text_color: #FFFFFF;
+@import "../../styles/theme.module";
 
-//Light gray: (#CCCCCC) - This could be used as a subtle background color or for text that needs to be less prominent than the white text.
-//Light blue: (#B3E5FC) - This is a softer, lighter version of the electric blue and could be used as a background color for certain elements, such as the volume control or equalizer.
-//Dark red: (#C62828) - This is a deeper, more intense version of the bright red and could be used as an accent color for elements that need to stand out more.
-//Gold: (#FFD700) - This is a warm, metallic color that could be used for special elements, such as awards or badges for top-rated or most-played songs.
-//Green: (#00C853) - This is a bright, lively color that could be used as an accent color for elements related to playlists or other user-generated content.
 
-.track {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 20px;
-  padding-left: 5px;
-  border-radius: 12px;
-  background-color: $third_color;
+.dark {
+  .track {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    padding-left: 5px;
+    border-radius: 12px;
+    background-color: $third_dark;
+
+    .track_info {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      width: 200px
+    }
+
+    .picture {
+      margin: 0 5px;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+    }
+
+    .trackTime {
+      font-size: 12px;
+      font-family: "Roboto Mono", monospace;
+    }
+
+    .delete {
+      margin-left: auto;
+    }
+  }
 }
 
-.track_info {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  width: 200px
+.light {
+
+  .track {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    padding-left: 5px;
+    border-radius: 12px;
+    background-color: $third_light;
+
+    .play_pause {
+      color: #4CAF50;
+    }
+
+    .track_info {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      width: 200px
+    }
+
+    .picture {
+      margin: 0 5px;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+    }
+
+    .trackTime {
+      font-size: 12px;
+      font-family: "Roboto Mono", monospace;
+    }
+
+    .delete {
+      margin-left: auto;
+      color: #388E3C;
+    }
+  }
 }
 
-.picture {
-  margin: 0 5px;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-}
 
-.trackTime {
-  font-size: 12px;
-  font-family: "Roboto Mono", monospace;
-}
-
-.delete {
-  margin-left: auto;
-}

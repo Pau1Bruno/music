@@ -1,16 +1,17 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import MainLayout from "../../layouts/MainLayout";
-import {useRouter} from "next/router";
 import TrackList from "../../components/TrackList";
 import {useSearchTracksQuery} from "../../store/reducers/apiSlice";
 import Link from "next/link";
+import {DarkModeContext} from "../../context/ThemesContext";
 import styles from "./../../styles/track/TrackIndex.module.scss";
 
 const Index = () => {
-    const router = useRouter();
     const [ query, setQuery ] = useState<string>("");
     const [ timer, setTimer ] = useState<null | ReturnType<typeof setTimeout>>(null);
     const [ skip, setSkip ] = useState(false);
+
+    const { darkMode } = useContext(DarkModeContext);
 
     const {
         data: tracks,
@@ -19,7 +20,7 @@ const Index = () => {
         error
     } = useSearchTracksQuery(query, {
         skip: skip,
-        pollingInterval: 50000
+        pollingInterval: 100000
     });
 
     if (error) {
@@ -51,20 +52,21 @@ const Index = () => {
 
     return (
         <MainLayout title={"Tracks"}>
-            <div className={styles.track_container}>
+            <div className={darkMode ? styles.dark : styles.light}>
+                <div className={styles.track_container}>
 
-                <div className={styles.tracks}>
-                    <h1>List of tracks</h1>
-                    <Link href={"tracks/create"}>Upload your track</Link>
+                    <div className={styles.tracks}>
+                        <h1>List of tracks</h1>
+                        <Link href={"tracks/create"}>Upload your track</Link>
+                    </div>
+
+                    <input
+                        className={styles.search}
+                        value={query}
+                        onChange={search}
+                    />
+                    {!isFetching && currentData && <TrackList serverTracks={tracks} />}
                 </div>
-
-                <input
-                    className={styles.search}
-                    value={query}
-                    onChange={search}
-                />
-                {!isFetching && currentData && <TrackList serverTracks={tracks} />}
-
             </div>
         </MainLayout>
     );

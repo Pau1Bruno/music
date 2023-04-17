@@ -27,6 +27,14 @@ const DarkModeContextProvider: React.FC<DarkModeContextProviderProps> = ({ child
 
     useEffect(() => {
         localStorage.setItem("DarkMode", JSON.stringify(darkMode));
+        document.body.style.background =
+            darkMode
+                ? "#212121" // for dark theme
+                : "#FFFFFF"; // for light theme
+        document.body.style.color =
+            darkMode
+                ? "white" // for dark theme
+                : "navy"; // for light theme
     }, [ darkMode ]);
 
     const contextValue: DarkModeContextType = {

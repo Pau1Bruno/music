@@ -1,54 +1,71 @@
-//light theme
-// $primary_color:#FFC4D6;
-//$secondary_color: #87CEEB;
-//$accent_color: #FFF44F;
-//$background_color: #FFFFFF;
-//$text_color: #FFFFFF;
+@import "../theme.module";
 
-//dark theme
-$primary_color: #333333;
-$secondary_color: #7DF9FF;
-$third_color: #CCCCCC;
-$accent_color: #FF5E5E;
-$background_color: #000000;
-$text_color: #FFFFFF;
+.dark {
 
-//.content {
-//  flex-direction: column;
-//  margin-top: 100px;
-//  width: 100%;
-//  display: flex;
-//  justify-content: center;
-//  align-items: center;
-//}
-
-.track_container {
+  .track_container {
     margin: 50px auto;
     width: 500px;
-
-    color: $text_color;
-    background-color: $primary_color;
+    color: $text_dark;
+    background-color: $primary_dark;
     border-radius: 20px;
     padding: 20px;
 
-
     .tracks {
-        display: flex;
-        justify-content: space-around;
+      display: flex;
+      justify-content: space-around;
 
-        a {
-            margin: auto 0;
-            font-size: 1.5rem;
-            color: $accent_color;
-        }
+      a {
+        margin: auto 0;
+        font-size: 1.5rem;
+        color: $accent_dark;
+      }
+
     }
+
+    .search {
+      display: flex;
+      justify-content: center;
+      width: 440px;
+      margin: 20px auto;
+      text-align: center;
+      background-color: $third_dark;
+      height: 50px;
+      border-radius: 20px;
+    }
+  }
 }
 
-.search {
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
-    background-color: $third_color;
-    height: 50px;
+.light {
+
+  .track_container {
+    margin: 50px auto;
+    width: 500px;
+    color: $text_light;
+    background-color: $primary_light;
     border-radius: 20px;
+    padding: 20px;
+
+    .tracks {
+      display: flex;
+      justify-content: space-around;
+
+      a {
+        margin: auto 0;
+        font-size: 1.5rem;
+        color: #00BFFF;
+      }
+
+    }
+
+    .search {
+      display: flex;
+      justify-content: center;
+      width: 440px;
+      margin: 20px auto;
+      text-align: center;
+      background-color: $third_light;
+      height: 50px;
+      border-radius: 20px;
+    }
+  }
 }

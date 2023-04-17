@@ -1,26 +1,26 @@
-import React from "react";
+import React, {useContext} from "react";
 import {ITrack} from "../../types/tracks";
 import {Card} from "@mui/material";
 import IconButton from "@mui/material/IconButton";
-import {Delete, PauseCircle, PlayArrow} from "@mui/icons-material";
-import {useRouter} from "next/router";
+import {Delete, Pause, PlayArrow} from "@mui/icons-material";
 import {useAction} from "../../hooks/useAction";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
 import {useTimeConverter} from "../../hooks/useTimeConverter";
 import {useDeleteTrackMutation} from "../../store/reducers/apiSlice";
 import Link from "next/link";
 import styles from "./TrackItem.module.scss";
+import {DarkModeContext} from "../../context/ThemesContext";
 
 interface TrackItemProps {
     track: ITrack,
 }
 
 const TrackItem: React.FC<TrackItemProps> = ({ track }) => {
-    const router = useRouter();
-
     const { active, pause, currentTime, duration } = useTypedSelector(state => state.player);
     const { playTrack, pauseTrack, setActiveTrack } = useAction();
     const [ deleteTrack ] = useDeleteTrackMutation();
+
+    const { darkMode } = useContext(DarkModeContext);
 
     const left = useTimeConverter(currentTime);
     const right = useTimeConverter(duration);
@@ -43,13 +43,13 @@ const TrackItem: React.FC<TrackItemProps> = ({ track }) => {
     };
 
     return (
-        <Link href={"tracks/" + track._id}>
+        <Link href={"tracks/" + track._id} className={darkMode ? styles.dark : styles.light}>
             <Card className={styles.track}>
 
 
-                <IconButton onClick={play}>
+                <IconButton onClick={play} className={styles.play_pause}>
                     {!pause && active === track
-                        ? <PauseCircle />
+                        ? <Pause />
                         : <PlayArrow />
                     }
                 </IconButton>

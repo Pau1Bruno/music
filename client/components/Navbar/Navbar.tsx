@@ -2,10 +2,10 @@ import React, {useContext} from "react";
 import Link from "next/link";
 import Brightness6Icon from "@mui/icons-material/Brightness6";
 import styles from "./Navbar.module.scss";
-import {DarkModeContext, DarkModeContextType} from "../../context/ThemesContext";
+import {DarkModeContext} from "../../context/ThemesContext";
 
 const Navbar = () => {
-    const { darkMode, setDarkMode } = useContext<DarkModeContextType>(DarkModeContext);
+    const { darkMode, setDarkMode } = useContext(DarkModeContext);
 
     const changingTheme = () => {
         const newTheme = !darkMode;
@@ -13,7 +13,7 @@ const Navbar = () => {
     };
 
     return (
-        <div id='navbar' className={darkMode ? styles.dark : styles.light}>
+        <div className={darkMode ? styles.dark : styles.light}>
 
             <div className={styles.left}>
                 <Link href="/">

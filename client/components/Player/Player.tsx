@@ -5,10 +5,10 @@ import styles from "./Player.module.scss";
 import TrackProgress from "./Player Bars/TrackProgress";
 import VolumeProgress from "./Player Bars/VolumeProgress";
 import useAudioPlayer from "../../hooks/useSetAudio";
-import {DarkModeContext, DarkModeContextType} from "../../context/ThemesContext";
+import {DarkModeContext} from "../../context/ThemesContext";
 
 const Player = () => {
-    const { darkMode } = useContext<DarkModeContextType>(DarkModeContext);
+    const { darkMode } = useContext(DarkModeContext);
 
     const {
         active,
