@@ -8,23 +8,23 @@ export type TrackDocument = HydratedDocument<Track>;
 export class Track {
     @Prop()
     name: string;
-
+    
     @Prop()
     artist: string;
-
+    
     @Prop()
     text: string;
-
+    
     @Prop()
     listens: number;
-
+    
     @Prop()
     picture: string;
-
+    
     @Prop()
     audio: string;
-
-    @Prop({type: [{type: mongoose.Types.ObjectId, ref: 'Comment'}]})
+    
+    @Prop({ type: [ { type: mongoose.Types.ObjectId, ref: "Comment" } ] })
     comments: mongoose.Types.ObjectId[];
 }
 
