@@ -9,9 +9,7 @@ export class UserService {
     constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
     
     async create(dto: CreateUserDto): Promise<User> {
-        console.log(dto);
         const createdUser = new this.userModel({ ...dto, role: "user" });
-        console.log(createdUser);
         return createdUser.save();
     }
     
@@ -32,7 +30,6 @@ export class UserService {
     
     async findOne(username: string): Promise<User | undefined> {
         const serverUser = await this.userModel.findOne({ username: username }).exec();
-        console.log(serverUser);
         return serverUser;
     }
 }
