@@ -37,7 +37,6 @@
       <option name="SPACES_WITHIN_OBJECT_LITERAL_BRACES" value="true" />
       <option name="SPACES_WITHIN_IMPORTS" value="true" />
       <option name="INDENT_CHAINED_CALLS" value="false" />
-      <option name="USE_CHAINED_CALLS_GROUP_INDENTS" value="true" />
       <option name="SPACES_WITHIN_INTERPOLATION_EXPRESSIONS" value="true" />
     </JSCodeStyleSettings>
     <TypeScriptCodeStyleSettings version="0">
@@ -49,7 +48,6 @@
       <option name="SPACES_WITHIN_OBJECT_LITERAL_BRACES" value="true" />
       <option name="SPACES_WITHIN_IMPORTS" value="true" />
       <option name="INDENT_CHAINED_CALLS" value="false" />
-      <option name="USE_CHAINED_CALLS_GROUP_INDENTS" value="true" />
       <option name="SPACE_WITHIN_TYPE_ASSERTION" value="true" />
     </TypeScriptCodeStyleSettings>
     <VueCodeStyleSettings>
@@ -79,10 +77,12 @@
       </indentOptions>
     </codeStyleSettings>
     <codeStyleSettings language="TypeScript">
+      <option name="KEEP_BLANK_LINES_IN_CODE" value="1" />
       <option name="SPACE_WITHIN_PARENTHESES" value="true" />
       <option name="KEEP_SIMPLE_METHODS_IN_ONE_LINE" value="true" />
       <option name="SOFT_MARGINS" value="80" />
       <indentOptions>
+        <option name="SMART_TABS" value="true" />
         <option name="KEEP_INDENTS_ON_EMPTY_LINES" value="true" />
       </indentOptions>
     </codeStyleSettings>

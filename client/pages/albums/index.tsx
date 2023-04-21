@@ -3,7 +3,7 @@ import MainLayout from "../../layouts/MainLayout";
 
 const Index = () => {
     return (
-        <MainLayout title={'Track Albums'}>
+        <MainLayout title={"Track Albums"}>
             <div>all albums</div>
         </MainLayout>
     );

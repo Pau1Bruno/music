@@ -1,4 +1,4 @@
-import React, {FC, ReactNode} from "react";
+import React, { FC, ReactNode } from "react";
 import Head from "next/head";
 
 type MainLayoutProps = {
@@ -14,8 +14,8 @@ const MainLayout: FC<MainLayoutProps> =
          title,
          description,
          keywords
-    }) => {
-
+     }) => {
+        
         return (
             <>
                 <Head>
@@ -28,11 +28,11 @@ const MainLayout: FC<MainLayoutProps> =
                     <meta name="keywords" content={keywords || "music, tracks, platform"} />
                     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 </Head>
-
+                
                 <div>
                     {children}
                 </div>
-
+            
             </>
         );
     };

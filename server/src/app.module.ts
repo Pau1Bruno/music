@@ -10,7 +10,7 @@ import { AuthModule } from "./auth/auth.module";
 import { UserModule } from "./users/user.module";
 
 config();
-const DB_URL = process.env.DB_URL;
+const DB_URL: string = process.env.DB_URL;
 
 @Module({
     imports: [

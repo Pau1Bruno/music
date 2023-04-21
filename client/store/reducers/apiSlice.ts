@@ -1,4 +1,4 @@
-import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const api = createApi({
     reducerPath: "api",
@@ -12,13 +12,13 @@ export const api = createApi({
         getTracks: build.query({
             query: () => "tracks/"
         }),
-
+        
         // A query endpoint with an argument
         searchTracks: build.query({
             query: search => `tracks/search?query=${search}`,
             providesTags: [ "Tracks" ]
         }),
-
+        
         deleteTrack: build.mutation(( {
             query: (id: string) => ( {
                 url: "/tracks/" + id,
@@ -27,7 +27,7 @@ export const api = createApi({
             } ),
             invalidatesTags: [ "Tracks" ]
         } )),
-
+        
         addTrack: build.mutation(( {
             query: (track: FormData) => ( {
                 url: "/tracks",
@@ -36,7 +36,7 @@ export const api = createApi({
             } ),
             invalidatesTags: [ "Tracks" ]
         } )),
-
+        
         addListen: build.mutation(( {
             query: (id: string) => ( {
                 url: "/tracks/listen/" + id,

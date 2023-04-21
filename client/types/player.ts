@@ -6,7 +6,7 @@ export interface PlayerState {
     duration: number;
     currentTime: number;
     pause: boolean;
-
+    
 }
 
 export enum PlayerActionTypes {
@@ -34,7 +34,7 @@ interface SetActiveAction {
 interface SetVolumeAction {
     type: PlayerActionTypes.SET_VOLUME;
     payload: number;
-
+    
 }
 
 interface SetDurationAction {

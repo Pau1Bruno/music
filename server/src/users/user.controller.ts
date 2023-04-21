@@ -3,7 +3,7 @@ import { UserService } from "./user.service";
 import { CreateUserDto } from "./dto/create-user.dto";
 import mongoose from "mongoose";
 
-@Controller("user")
+@Controller("users")
 export class UserController {
     constructor(private userService: UserService) {}
     
@@ -22,13 +22,13 @@ export class UserController {
         return this.userService.deleteAll();
     }
     
-    @Get(':username')
+    @Get(":username")
     findOne(@Param("username") username: string) {
         return this.userService.findOne(username);
     }
     
-    @Delete(':id')
-    deleteOne(@Param("id") id: mongoose.ObjectId ) {
+    @Delete(":id")
+    deleteOne(@Param("id") id: mongoose.ObjectId) {
         return this.userService.deleteOne(id);
     }
     

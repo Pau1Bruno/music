@@ -1,5 +1,5 @@
-import {PlayerState} from "../../types/player";
-import {createSlice} from "@reduxjs/toolkit";
+import { PlayerState } from "../../types/player";
+import { createSlice } from "@reduxjs/toolkit";
 
 // Начальное состояние playerReducer
 const initialState: PlayerState = {

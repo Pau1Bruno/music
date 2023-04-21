@@ -1,7 +1,7 @@
-import {configureStore} from "@reduxjs/toolkit";
-import {createWrapper} from "next-redux-wrapper";
+import { configureStore } from "@reduxjs/toolkit";
+import { createWrapper } from "next-redux-wrapper";
 import thunk from "redux-thunk";
-import {api} from "./reducers/apiSlice";
+import { api } from "./reducers/apiSlice";
 import playerReducer from "./reducers/playerSlice";
 
 export type RootState = {

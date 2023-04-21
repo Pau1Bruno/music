@@ -1,9 +1,9 @@
-import React, {FC} from "react";
-import {Provider} from "react-redux";
-import {AppProps} from "next/app";
-import {wrapper} from "../store";
+import React, { FC } from "react";
+import { Provider } from "react-redux";
+import { AppProps } from "next/app";
+import { wrapper } from "../store";
 import Head from "next/head";
-import {setupListeners} from "@reduxjs/toolkit/query";
+import { setupListeners } from "@reduxjs/toolkit/query";
 import Navbar from "../components/Navbar/Navbar";
 import Player from "../components/Player/Player";
 import DarkModeContextProvider from "../context/ThemesContext";
@@ -12,9 +12,9 @@ import "../styles/global.scss";
 
 const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
     const { store, props } = wrapper.useWrappedStore(rest);
-
+    
     setupListeners(store.dispatch);
-
+    
     return (
         <Provider store={store}>
             <>

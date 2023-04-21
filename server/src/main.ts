@@ -3,7 +3,6 @@ import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module";
 import { config } from "dotenv";
 
-
 const cors = require("cors");
 const corsOptions = { // разрешение на отправление запросов с localhost:3000 на localhost:5000
     origin: "*",

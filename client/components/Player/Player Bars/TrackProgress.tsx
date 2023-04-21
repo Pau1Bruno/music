@@ -1,5 +1,5 @@
 import React from "react";
-import {useTimeConverter} from "../../../hooks/useTimeConverter";
+import { useTimeConverter } from "../../../hooks/useTimeConverter";
 import styles from "../Player.module.scss";
 
 interface TrackProgressProps {
@@ -11,7 +11,7 @@ interface TrackProgressProps {
 const TrackProgress: React.FC<TrackProgressProps> = ({ left, right, onChange }) => {
     let curTime = useTimeConverter(left);
     let dur = useTimeConverter(right);
-
+    
     return (
         <div className={styles.track_progress_container}>
             <input
@@ -22,7 +22,7 @@ const TrackProgress: React.FC<TrackProgressProps> = ({ left, right, onChange }) 
                 max={right}
                 onChange={onChange}
             />
-
+            
             <div className={styles.track_timer}>{curTime} / {dur}</div>
         </div>
     );
