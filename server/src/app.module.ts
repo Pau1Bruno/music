@@ -15,11 +15,11 @@ const DB_URL: string = process.env.DB_URL;
 @Module({
     imports: [
         ServeStaticModule.forRoot({ rootPath: path.resolve(__dirname, "static") }),
+        MongooseModule.forRoot(DB_URL),
         TrackModule,
         FileModule,
-        MongooseModule.forRoot(DB_URL),
         AuthModule,
-        UserModule
+        UserModule,
     ]
 })
 

@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { Provider } from "react-redux";
 import { AppProps } from "next/app";
 import { wrapper } from "../store";
@@ -9,11 +9,24 @@ import Player from "../components/Player/Player";
 import DarkModeContextProvider from "../context/ThemesContext";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/global.scss";
+import { useRouter } from "next/router";
 
 const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
     const { store, props } = wrapper.useWrappedStore(rest);
     
+    const router = useRouter();
+    
+    useEffect(() => {
+        const jwt = localStorage.getItem("jwt");
+        if (!jwt && router.pathname !== "/login") {
+            router.push("/login");
+        }
+    }, [ router.pathname ]);
+    
     setupListeners(store.dispatch);
+    
+    // Conditionally render the Navbar
+    const showNavbar: boolean = router.pathname !== "/login";
     
     return (
         <Provider store={store}>
@@ -24,7 +37,7 @@ const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
                     <link rel="icon" type="image/png" sizes="16x16" href="/icons16.png" />
                 </Head>
                 <DarkModeContextProvider>
-                    <Navbar />
+                    {showNavbar && <Navbar />}
                     <Component {...props.pageProps} />
                     <Player />
                 </DarkModeContextProvider>

@@ -25,7 +25,7 @@ const Index = () => {
 
     if (error) {
         return (
-            <MainLayout>
+            <MainLayout title={"Track's downloading error :("}>
                 <h1>Ошибка при загрузке треков</h1>
             </MainLayout>
         );

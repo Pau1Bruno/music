@@ -10,16 +10,24 @@ export class AuthService {
         private readonly jwtService: JwtService
     ) {}
     
-    async signIn(username: string, password: string) {
-        const user = await this.usersService.findOne(username);
-        const passwordMatches = await bcrypt.compare(password, user.password);
+    async validateUser(username_check: string, password_check: string) {
+        const user = await this.usersService.findOne(username_check);
+        const passwordMatches = await bcrypt.compare(password_check, user.password);
+       
         if (!user || !passwordMatches) {
             throw new UnauthorizedException();
         }
         
-        const payload = { username: user.username };
+        // console.log("DATA",user.password, user.role, user.username);
+        const {username, role} = user;
+        return { username, role };
+    }
+    
+    async login(user: any) {
+        const payload = { username: user.username, role: user.role };
+        
         return {
-            access_token: await this.jwtService.signAsync(payload)
+            access_token: this.jwtService.sign(payload)
         };
     }
 }
