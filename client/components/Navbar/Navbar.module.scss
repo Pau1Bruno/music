@@ -28,7 +28,7 @@
 
   .right {
     display: flex;
-    width: 180px;
+    width: 250px;
     flex-direction: row;
     justify-content: space-around;
     color: $text_light;
@@ -43,6 +43,15 @@
     }
 
     .user {
+      display: flex;
+      align-self: center;
+
+      &:hover {
+        color: $accent_light;
+      }
+    }
+
+    .logout {
       display: flex;
       align-self: center;
 
@@ -81,7 +90,7 @@
 
   .right {
     display: flex;
-    width: 180px;
+    width: 250px;
     flex-direction: row;
     justify-content: space-around;
     color: $text_dark;
@@ -96,6 +105,15 @@
     }
 
     .user {
+      display: flex;
+      align-self: center;
+
+      &:hover {
+        color: $accent_dark;
+      }
+    }
+
+    .logout {
       display: flex;
       align-self: center;
 

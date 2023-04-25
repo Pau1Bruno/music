@@ -1,15 +1,23 @@
 import React, { useContext } from "react";
 import Link from "next/link";
 import Brightness6Icon from "@mui/icons-material/Brightness6";
+import LogoutIcon from "@mui/icons-material/Logout";
 import styles from "./Navbar.module.scss";
 import { DarkModeContext } from "../../context/ThemesContext";
+import { useRouter } from 'next/router';
 
 const Navbar = () => {
     const { darkMode, setDarkMode } = useContext(DarkModeContext);
+    const router = useRouter();
     
     const changingTheme = () => {
         const newTheme = !darkMode;
         setDarkMode(newTheme);
+    };
+    
+    const logout = async () => {
+        if (typeof localStorage !== 'undefined') localStorage.removeItem('jwt');
+        await router.push("/login");
     };
     
     return (
@@ -32,6 +40,9 @@ const Navbar = () => {
                 </div>
                 <div className={styles.user}>
                     <span>Pavel Ushakov</span>
+                </div>
+                <div className={styles.logout} onClick={logout}>
+                    <LogoutIcon />
                 </div>
             </div>
         </div>

@@ -1,0 +1,38 @@
+.modal {
+  display: none;
+}
+
+.modal_active {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .modal_content {
+    background-color: #333333;
+    color: white;
+    margin: 10px;
+    padding: 25px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+
+    .button {
+      border: none;
+      background: #f6b6b6;
+      border-radius: 16px;
+      box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+      width: 100px;
+
+      &:hover {
+        background: #f89595;
+
+      }
+    }
+  }
+}
