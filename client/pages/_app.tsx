@@ -18,7 +18,7 @@ const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
     
     useEffect(() => {
         const jwt = localStorage.getItem("jwt");
-        if (!jwt && router.pathname !== "/login") {
+        if (!jwt && router.pathname !== "/login" && router.pathname !== "/signup") {
             router.push("/login");
         }
     }, [ router.pathname ]);
@@ -26,7 +26,8 @@ const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
     setupListeners(store.dispatch);
     
     // Conditionally render the Navbar
-    const showNavbar: boolean = router.pathname !== "/login";
+    const showBars: boolean = router.pathname !== "/login" && router.pathname !== "/signup";
+
     
     return (
         <Provider store={store}>
@@ -37,9 +38,9 @@ const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
                     <link rel="icon" type="image/png" sizes="16x16" href="/icons16.png" />
                 </Head>
                 <DarkModeContextProvider>
-                    {showNavbar && <Navbar />}
+                    {showBars && <Navbar />}
                     <Component {...props.pageProps} />
-                    <Player />
+                    {showBars && <Player />}
                 </DarkModeContextProvider>
             </>
         </Provider>
