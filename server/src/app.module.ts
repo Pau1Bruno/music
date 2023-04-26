@@ -8,6 +8,7 @@ import * as path from "path";
 import { config } from "dotenv";
 import { AuthModule } from "./auth/auth.module";
 import { UserModule } from "./users/user.module";
+import { AppController } from "./app.controller";
 
 config();
 const DB_URL: string = process.env.DB_URL;
@@ -19,9 +20,11 @@ const DB_URL: string = process.env.DB_URL;
         TrackModule,
         FileModule,
         AuthModule,
-        UserModule,
-    ]
+        UserModule
+    ],
+    controllers: [AppController],
 })
 
 export class AppModule {
+
 }
