@@ -10,7 +10,10 @@ import Modal from "../../components/Modal/Modal";
 const Login = () => {
     const [ visible, setVisible ] = useState<boolean>(false);
     const [ modal, setModal ] = useState<boolean>(false);
-    const [ user, setUser ] = useState({ username: "", password: "" });
+    const [ user, setUser ] =
+        useState(
+            { username: "", password: "" }
+        );
     const router = useRouter();
     
     const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
@@ -19,24 +22,31 @@ const Login = () => {
     
     const handleLogin = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
+        
         if (!( user.username && user.password )) {
             setModal(true);
             return;
         }
-        const response = await fetch("http://localhost:5000/auth/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(user)
-        });
         
-        if (!( response.ok )) {
-            setModal(true);
-            return;
+        try {
+            const response = await fetch("http://localhost:5000/auth/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(user)
+            });
+            
+            if (!( response.ok )) {
+                setModal(true);
+                return;
+            }
+            
+            const { access_token } = await response.json();
+            localStorage.setItem("jwt", access_token);
+            await router.push("/tracks");
+        } catch (error) {
+            console.error(error);
         }
         
-        const { access_token } = await response.json();
-        localStorage.setItem("jwt", access_token);
-        await router.push("/");
     };
     
     return (
@@ -49,6 +59,8 @@ const Login = () => {
                             name="username"
                             type="text"
                             placeholder="Username"
+                            maxLength={20}
+                            minLength={6}
                             onChange={(e) => handleInput(e)}
                         />
                     </div>
@@ -59,6 +71,8 @@ const Login = () => {
                             name="password"
                             type={visible ? "text" : "password"}
                             placeholder="Password"
+                            maxLength={20}
+                            minLength={8}
                             onChange={(e) => handleInput(e)}
                         />
                         

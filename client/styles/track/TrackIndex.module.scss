@@ -1,9 +1,11 @@
 @import "../theme.module";
 
 .dark {
+  height: 100%;
+  width: 100%;
 
   .track_container {
-    margin: 50px auto;
+    margin: 40px auto 120px;
     width: 500px;
     color: $text_dark;
     background-color: $primary_dark;
@@ -35,10 +37,14 @@
   }
 }
 
+@import "../theme.module";
+
 .light {
+  height: 100%;
+  width: 100%;
 
   .track_container {
-    margin: 50px auto;
+    margin: 40px auto 120px;
     width: 500px;
     color: $text_light;
     background-color: $primary_light;
@@ -52,7 +58,7 @@
       a {
         margin: auto 0;
         font-size: 1.5rem;
-        color: #00BFFF;
+        color: $accent_light;
       }
 
     }

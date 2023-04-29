@@ -6,12 +6,18 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import MainLayout from "../../layouts/MainLayout";
+import Modal from "../../components/Modal/Modal";
 
 const Signup = () => {
-    const [ visible, setVisible ] = useState(false);
-    const [ user, setUser ] = useState({ username: "", password: "" });
-    const [ passwordCheck, setPasswordCheck ] = useState("");
+    const [ visible, setVisible ] = useState<boolean>(false);
+    const [ modal, setModal ] = useState<boolean>(false);
+    const [ passwordCheck, setPasswordCheck ] = useState<string>("");
+    const [ user, setUser ] =
+        useState(
+            { username: "", password: "" }
+        );
     const router = useRouter();
+    const [ busy, setBusy ] = useState(false);
     
     const handleUser = (e: React.ChangeEvent<HTMLInputElement>) => {
         setUser({ ...user, [e.target.name]: e.target.value });
@@ -22,8 +28,17 @@ const Signup = () => {
     };
     
     const handleSignup = async (e: React.MouseEvent<HTMLButtonElement>) => {
+        setModal(false);
         e.preventDefault();
-        if (!( user.username && user.password ) || user.password !== passwordCheck) return;
+        if (!( user.username && user.password )) {
+            setModal(true);
+            return;
+        }
+        
+        if (user.password !== passwordCheck) {
+            setModal(true);
+            return;
+        }
         
         const response = await fetch("http://localhost:5000/users", {
             method: "POST",
@@ -31,14 +46,19 @@ const Signup = () => {
             body: JSON.stringify(user)
         });
         
+        if (response.status === 409) {
+            // document.body.querySelector('[name = "username"]').style.border = "red 2px solid"
+            setBusy(true);
+            setModal(true);
+            
+            return;
+        }
+        
         if (response.ok) {
             await router.push("/login");
-        } else {
-            alert("Problem with adding to database");
+            return;
         }
     };
-    
-    console.log(user);
     
     return (
         <MainLayout title={"Sign Up"}>
@@ -50,6 +70,8 @@ const Signup = () => {
                         name="username"
                         type="text"
                         placeholder="Username"
+                        maxLength={20}
+                        minLength={6}
                         onChange={(e) => handleUser(e)}
                     />
                     
@@ -59,8 +81,11 @@ const Signup = () => {
                             name="password"
                             type={visible ? "text" : "password"}
                             placeholder="Password"
+                            maxLength={20}
+                            minLength={8}
                             onChange={(e) => handleUser(e)}
                         />
+                        
                         <div
                             className={styles.password_icon}
                             onClick={() => setVisible(!visible)}
@@ -72,11 +97,12 @@ const Signup = () => {
                         </div>
                     </div>
                     
-                    
                     <input
                         name="password"
                         type={visible ? "text" : "password"}
                         placeholder="Confirm Password"
+                        maxLength={20}
+                        minLength={8}
                         onChange={(e) => handlePasswordCheck(e)}
                     />
                     
@@ -84,8 +110,29 @@ const Signup = () => {
                         className={styles.sign_up}
                         onClick={(e) => handleSignup(e)}
                     >
-                        Sign Un
+                        Sign Up
                     </button>
+                    
+                    
+                    {/*User didn't provide any data*/}
+                    {!busy && !( user.username && user.password ) &&
+                        <Modal modal={modal} setModal={setModal}>
+                            <p>Please check all fields for data</p>
+                        </Modal>
+                    }
+                    
+                    {/*User entered different passwords*/}
+                    {!busy && user.username && user.password !== passwordCheck &&
+                        <Modal modal={modal} setModal={setModal}>
+                            <p>Your passwords do not match</p>
+                        </Modal>
+                    }
+                    
+                    {busy &&
+                        <Modal modal={modal} setModal={setModal}>
+                            <p>This username is busy</p>
+                        </Modal>
+                    }
                     
                     <div className={styles.links}>
                         

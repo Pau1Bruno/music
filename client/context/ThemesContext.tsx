@@ -42,8 +42,6 @@ const DarkModeContextProvider: React.FC<DarkModeContextProviderProps> = ({ child
         setDarkMode
     };
     
-    console.log(darkMode);
-    
     return (
         <DarkModeContext.Provider value={contextValue}>
             {children}
