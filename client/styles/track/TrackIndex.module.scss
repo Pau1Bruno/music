@@ -1,75 +1,35 @@
 @import "../theme.module";
 
-.dark {
-  height: 100%;
-  width: 100%;
-
-  .track_container {
-    margin: 40px auto 120px;
-    width: 500px;
-    color: $text_dark;
-    background-color: $primary_dark;
-    border-radius: 20px;
-    padding: 20px;
-
-    .tracks {
-      display: flex;
-      justify-content: space-around;
-
-      a {
-        margin: auto 0;
-        font-size: 1.5rem;
-        color: $accent_dark;
-      }
-
-    }
-
-    .search {
-      display: flex;
-      justify-content: center;
-      width: 440px;
-      margin: 20px auto;
-      text-align: center;
-      background-color: $third_dark;
-      height: 50px;
+.tracks_page {
+  @include themify() {
+    .track_container {
+      margin: 20px auto 100px;
+      width: 500px;
+      color: themed("text");
+      background-color: themed("primary");
       border-radius: 20px;
-    }
-  }
+      padding: 20px;
+
+      .tracks {
+        display: flex;
+        justify-content: space-around;
+
+        a {
+          margin: auto 0;
+          font-size: 1.5rem;
+          color: themed("accent");
+        }
+
+      }
 }
 
-@import "../theme.module";
-
-.light {
-  height: 100%;
-  width: 100%;
-
-  .track_container {
-    margin: 40px auto 120px;
-    width: 500px;
-    color: $text_light;
-    background-color: $primary_light;
-    border-radius: 20px;
-    padding: 20px;
-
-    .tracks {
-      display: flex;
-      justify-content: space-around;
-
-      a {
-        margin: auto 0;
-        font-size: 1.5rem;
-        color: $accent_light;
-      }
-
-    }
-
     .search {
       display: flex;
       justify-content: center;
       width: 440px;
       margin: 20px auto;
       text-align: center;
-      background-color: $third_light;
+      background-color: themed("third");
       height: 50px;
       border-radius: 20px;
     }

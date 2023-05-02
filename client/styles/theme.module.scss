@@ -13,3 +13,51 @@ $third_dark: #CCCCCC;
 $accent_dark: #FF5E5E;
 $background_dark: #000000;
 $text_dark: #FFFFFF;
+
+$themes: (
+    "dark": (
+        primary: #333333,
+        secondary: #7DF9FF,
+        third: #CCCCCC,
+        slight_accent: rgba(13, 39, 100, 0.62),
+        accent: #FF5E5E,
+        background: #000000,
+        text: #FFFFFF,
+        dark_text: #000000,
+        thumb: #a4f1a4,
+    ),
+    "light": (
+        primary: #FFC4D6,
+        secondary: #87CEEB,
+        third: #ddebdd,
+        slight_accent: #619361,
+        accent: #FFF44F,
+        background: #ffffff,
+        text: #FFFFFF,
+        dark_text: #000000,
+        thumb: #ef7b3f,
+    ),
+);
+
+@mixin themify() {
+    @each $theme, $map in $themes {
+        .#{$theme} {
+            $theme-map: () !global;
+            @each $key, $submap in $map {
+                $value: map-get(map-get($themes, $theme), "#{$key}");
+                $theme-map: map-merge(
+                        $theme-map,
+                        (
+                            $key: $value,
+                        )
+                ) !global;
+            }
+            @content;
+            $theme-map: null !global;
+        }
+    }
+}
+
+@function themed($key: "primary") {
+    @return map-get($theme-map, $key);
+}

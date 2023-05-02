@@ -1,124 +1,64 @@
 @import "../../styles/theme.module.scss";
 
-.light {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem;
-  border-radius: 0 0 20px 20px;
-  font-size: 1.2rem;
-
-  background-color: $primary_light;
-
-  .left {
+.navbar {
+  @include themify() {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: 0 0 20px 20px;
+    font-size: 1.2rem;
 
-    a {
-      padding: 0 10px;
-    }
+    background-color: themed("primary");
 
-    span {
-      color: $text_light;
-
-      &:hover {
-        color: $accent_light;
-      }
-    }
-  }
-
-  .right {
-    display: flex;
-    width: 250px;
-    flex-direction: row;
-    justify-content: space-around;
-    color: $text_light;
-
-    .theme {
+    .left {
       display: flex;
-      align-items: center;
 
-      &:hover {
-        color: $accent_light;
+      a {
+        padding: 0 10px;
+      }
+
+      span {
+        color: themed("text");
+
+        &:hover {
+          color: themed("accent");
+        }
       }
     }
 
-    .user {
+    .right {
       display: flex;
-      align-self: center;
+      width: 250px;
+      flex-direction: row;
+      justify-content: space-around;
+      color: themed("text");
 
-      &:hover {
-        color: $accent_light;
+      .theme {
+        display: flex;
+        align-items: center;
+
+        &:hover {
+          color: themed("accent");
+        }
       }
-    }
 
-    .logout {
-      display: flex;
-      align-self: center;
+      .user {
+        display: flex;
+        align-self: center;
 
-      &:hover {
-        color: $accent_light;
+        &:hover {
+          color: themed("accent");
+        }
       }
-    }
-  }
-}
 
-.dark {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem;
-  border-radius: 0 0 20px 20px;
-  font-size: 1.2rem;
+      .logout {
+        display: flex;
+        align-self: center;
 
-  background-color: $primary_dark;
-
-  .left {
-    display: flex;
-
-    a {
-      padding: 0 10px;
-    }
-
-    span {
-      color: $text_dark;
-
-      &:hover {
-        color: $accent_dark;
-      }
-    }
-  }
-
-  .right {
-    display: flex;
-    width: 250px;
-    flex-direction: row;
-    justify-content: space-around;
-    color: $text_dark;
-
-    .theme {
-      display: flex;
-      align-items: center;
-
-      &:hover {
-        color: $accent_dark;
-      }
-    }
-
-    .user {
-      display: flex;
-      align-self: center;
-
-      &:hover {
-        color: $accent_dark;
-      }
-    }
-
-    .logout {
-      display: flex;
-      align-self: center;
-
-      &:hover {
-        color: $accent_dark;
+        &:hover {
+          color: themed("accent");
+        }
       }
     }
   }

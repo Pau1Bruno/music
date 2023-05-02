@@ -1,5 +1,5 @@
 import React from "react";
-import { ITrack } from "../types/tracks";
+import { ITrack } from "../../types/tracks";
 import TrackItem from "./TrackItem/TrackItem";
 
 interface TrackListProps {
@@ -9,7 +9,7 @@ interface TrackListProps {
 const TrackList: React.FC<TrackListProps> = ({ serverTracks }) => {
     return (
         
-        <div style={{ display: "flex", flexDirection: "column" }}>
+        <div>
             {serverTracks.map(track =>
                 <TrackItem
                     key={track._id}

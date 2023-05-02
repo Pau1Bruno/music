@@ -1,436 +1,219 @@
 @import '../../styles/theme.module';
 
-.light {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  background-color: $primary_light;
-  padding: 1rem;
-  font-size: 1rem;
-  color: $text_light;
-
-  .left {
+.player {
+  @include themify() {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
     display: flex;
+    justify-content: space-between;
+    background-color: themed("primary");
+    padding: 1rem;
+    color: themed("text");
 
-    .play_pause {
-      margin-right: 1rem;
-      color: $accent_light;
+    .left {
+      display: flex;
+
+      .play_pause {
+        margin-right: 1rem;
+        color: themed("accent");
+
+        svg {
+          font-size: 2rem;
+        }
+      }
+
+      .song_info {
+        width: 200px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin: 0 20px;
+      }
+
+      .track_progress_container {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        width: 400px;
+
+        .track_bar {
+          margin: 0 30px;
+          flex-grow: 1;
+          -webkit-appearance: none;
+          width: 100%;
+          height: 10px;
+          outline: none;
+          border-radius: 30%;
+
+          &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            background: themed("text");
+            cursor: pointer;
+            border-radius: 50%;
+          }
+
+          &::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: themed("text");
+            cursor: pointer;
+            border-radius: 50%;
+          }
+
+          &::-webkit-slider-thumb:hover {
+            background-color: themed("thumb");
+          }
+
+          &::-moz-range-thumb:hover {
+            background-color: themed("thumb");
+          }
+
+          &::-moz-range-track {
+            background: linear-gradient(to right, themed("primary") 0%, themed("secondary") 50%, themed("accent") 100%);
+            border-radius: 20px;
+          }
+
+          &::-webkit-slider-runnable-track {
+            background: linear-gradient(to right, themed("primary") 0%, themed("secondary") 50%, themed("accent") 100%);
+            border-radius: 30px;
+          }
+
+          &::-moz-range-progress {
+            background-color: themed("text");
+          }
+
+          &::-webkit-progress-value {
+            background-color: themed("text");
+          }
+
+        }
+
+        .track_timer {
+          flex-grow: 1;
+          width: 100%;
+        }
+      }
+    }
+
+    .right {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
       svg {
+        color: themed("accent");
+        margin-right: 1rem;
         font-size: 2rem;
       }
     }
 
-    .song_info {
-      width: 200px;
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-      margin: 0 20px;
-    }
+    .volume_progress_container {
+      margin-right: 1rem;
 
-    .track_progress_container {
-      display: flex;
-      align-items: center;
-      height: 100%;
-      width: 400px;
-
-      .track_bar {
-        margin: 0 30px;
-        flex-grow: 1;
+      .volume_bar {
+        height: 25px;
         -webkit-appearance: none;
+        margin: 10px 0;
         width: 100%;
-        height: 10px;
-        outline: none;
-        border-radius: 30%;
+        background-color: themed("primary");
 
-        &::-webkit-slider-thumb {
-          -webkit-appearance: none;
-          appearance: none;
-          width: 15px;
-          height: 15px;
-          background: #ffffff;
-          cursor: pointer;
-          border-radius: 50%;
-        }
-
-        &::-moz-range-thumb {
-          width: 20px;
-          height: 20px;
-          background: #ffffff;
-          cursor: pointer;
-          border-radius: 50%;
-        }
-
-        &::-webkit-slider-thumb:hover {
-          background-color: #b3add9;
-        }
-
-        &::-moz-range-thumb:hover {
-          background-color: #b3add9;
-        }
-
-        &::-moz-range-track {
-          background: linear-gradient(to right, $primary_light 0%, $secondary_light 50%, $accent_light 100%);
-          border-radius: 20px;
+        &:focus {
+          outline: none;
         }
 
         &::-webkit-slider-runnable-track {
-          background: linear-gradient(to right, $primary_light 0%, $secondary_light 50%, $accent_light 100%);
-          border-radius: 30px;
+          width: 100%;
+          height: 7px;
+          cursor: pointer;
+          background: themed("third");
+          border-radius: 50px;
+          border: 0 solid #000000;
         }
-
-        &::-moz-range-progress {
-          background-color: $text_light;
-        }
-
-        &::-webkit-progress-value {
-          background-color: $text_light;
-        }
-
-      }
-
-      .track_timer {
-        flex-grow: 1;
-        width: 100%;
-      }
-    }
-  }
-
-  .right {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    svg {
-      color: $accent_light;
-      margin-right: 1rem;
-      font-size: 2rem;
-    }
-  }
-
-  .volume_progress_container {
-    margin-right: 1rem;
-
-    .volume_bar {
-      height: 25px;
-      -webkit-appearance: none;
-      margin: 10px 0;
-      width: 100%;
-      background-color: $primary_light;
-
-      &:focus {
-        outline: none;
-      }
-
-      &::-webkit-slider-runnable-track {
-        width: 100%;
-        height: 7px;
-        cursor: pointer;
-        background: $third_light;
-        border-radius: 50px;
-        border: 0 solid #000000;
-      }
-
-      &::-webkit-slider-thumb {
-        box-shadow: 1px 1px 0 $third_light;
-        border: 0 solid #D2E334;
-        height: 18px;
-        width: 7px;
-        border-radius: 25px;
-        background: $accent_light;
-        cursor: pointer;
-        appearance: none;
-        margin-top: -5.5px;
-      }
-
-      &:focus::-webkit-slider-runnable-track {
-        background: $third_light;
-      }
-
-      &::-moz-range-track {
-        width: 100%;
-        height: 7px;
-        cursor: pointer;
-        animate: 0.2s;
-        box-shadow: 0 0 0 #000000;
-        background: #7DF9FF;
-        border-radius: 50px;
-        border: 0 solid #000000;
-      }
-
-      &::-moz-range-thumb {
-        box-shadow: 1px 1px 0 $third_light;
-        border: 0 solid #D2E334;
-        height: 18px;
-        width: 18px;
-        border-radius: 25px;
-        background: #FF5E5E;
-        cursor: pointer;
-      }
-
-      &::-ms-track {
-        width: 100%;
-        height: 7px;
-        cursor: pointer;
-        animate: 0.2s;
-        background: transparent;
-        border-color: transparent;
-        color: transparent;
-      }
-
-      &::-ms-fill-lower {
-        background: $third_light;
-        border: 0 solid #000000;
-        border-radius: 100px;
-        box-shadow: 0 0 0 #000000;
-      }
-
-      &::-ms-fill-upper {
-        background: $third_light;
-        border: 0 solid #000000;
-        border-radius: 100px;
-        box-shadow: 0 0 0 #000000;
-      }
-
-      &::-ms-thumb {
-        margin-top: 1px;
-        box-shadow: 1px 1px 0 #7DF9FF;
-        border: 0 solid #D2E334;
-        height: 18px;
-        width: 18px;
-        border-radius: 25px;
-        background: #FF5E5E;
-        cursor: pointer;
-      }
-
-      &:focus::-ms-fill-lower {
-        background: $third_light;
-      }
-
-      &:focus::-ms-fill-upper {
-        background: $third_light;
-      }
-    }
-  }
-}
-
-.dark {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  background-color: $primary_dark;
-  padding: 1rem;
-  font-size: 1rem;
-  color: $text_dark;
-
-  .left {
-    display: flex;
-
-    .play_pause {
-      margin-right: 1rem;
-      color: $accent_dark;
-
-      svg {
-        font-size: 2rem;
-      }
-    }
-
-    .song_info {
-      width: 200px;
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-      margin: 0 20px;
-    }
-
-    .track_progress_container {
-      display: flex;
-      align-items: center;
-      height: 100%;
-      width: 400px;
-
-      .track_bar {
-        margin: 0 30px;
-        flex-grow: 1;
-        -webkit-appearance: none;
-        width: 100%;
-        height: 10px;
-        outline: none;
-        border-radius: 30%;
 
         &::-webkit-slider-thumb {
-          -webkit-appearance: none;
+          box-shadow: 1px 1px 0 themed("third");
+          border: 0 solid themed("accent");
+          height: 18px;
+          width: 7px;
+          border-radius: 25px;
+          background: themed("accent");
+          cursor: pointer;
           appearance: none;
-          width: 15px;
-          height: 15px;
-          background: #ffffff;
-          cursor: pointer;
-          border-radius: 50%;
+          margin-top: -5.5px;
         }
 
-        &::-moz-range-thumb {
-          width: 20px;
-          height: 20px;
-          background: #ffffff;
-          cursor: pointer;
-          border-radius: 50%;
-        }
-
-        &::-webkit-slider-thumb:hover {
-          background-color: #b3add9;
-        }
-
-        &::-moz-range-thumb:hover {
-          background-color: #b3add9;
+        &:focus::-webkit-slider-runnable-track {
+          background: themed("third");
         }
 
         &::-moz-range-track {
-          background: linear-gradient(to right, $primary_dark 0%, $secondary_dark 50%, $accent_dark 100%);
-          border-radius: 20px;
+          width: 100%;
+          height: 7px;
+          cursor: pointer;
+          animate: 0.2s;
+          box-shadow: 0 0 0 #000000;
+          background: themed("secondary");
+          border-radius: 50px;
+          border: 0 solid #000000;
         }
 
-        &::-webkit-slider-runnable-track {
-          background: linear-gradient(to right, $primary_dark 0%, $secondary_dark 50%, $accent_dark 100%);
-          border-radius: 30px;
+        &::-moz-range-thumb {
+          box-shadow: 1px 1px 0 themed("third");
+          border: 0 solid themed("accent");
+          height: 18px;
+          width: 18px;
+          border-radius: 25px;
+          background: black;
+          cursor: pointer;
         }
 
-        &::-moz-range-progress {
-          background-color: $text_dark;
+        &::-ms-track {
+          width: 100%;
+          height: 7px;
+          cursor: pointer;
+          animate: 0.2s;
+          background: transparent;
+          border-color: transparent;
+          color: transparent;
         }
 
-        &::-webkit-progress-value {
-          background-color: $text_dark;
+        &::-ms-fill-lower {
+          background: themed("third");
+          border: 0 solid #000000;
+          border-radius: 100px;
+          box-shadow: 0 0 0 #000000;
         }
 
-      }
+        &::-ms-fill-upper {
+          background: themed("third");
+          border: 0 solid #000000;
+          border-radius: 100px;
+          box-shadow: 0 0 0 #000000;
+        }
 
-      .track_timer {
-        flex-grow: 1;
-        width: 100%;
-      }
-    }
-  }
+        &::-ms-thumb {
+          margin-top: 1px;
+          box-shadow: 1px 1px 0 #7DF9FF;
+          border: 0 solid #D2E334;
+          height: 18px;
+          width: 18px;
+          border-radius: 25px;
+          background: #FF5E5E;
+          cursor: pointer;
+        }
 
-  .right {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+        &:focus::-ms-fill-lower {
+          background: themed("third");
+        }
 
-    svg {
-      color: $accent_dark;
-      margin-right: 1rem;
-      font-size: 2rem;
-    }
-  }
-
-  .volume_progress_container {
-    margin-right: 1rem;
-
-    .volume_bar {
-      height: 25px;
-      -webkit-appearance: none;
-      margin: 10px 0;
-      width: 100%;
-      background-color: $primary_dark;
-
-      &:focus {
-        outline: none;
-      }
-
-      &::-webkit-slider-runnable-track {
-        width: 100%;
-        height: 7px;
-        cursor: pointer;
-        background: $third_dark;
-        border-radius: 50px;
-        border: 0 solid #000000;
-      }
-
-      &::-webkit-slider-thumb {
-        box-shadow: 1px 1px 0 $third_dark;
-        border: 0 solid #D2E334;
-        height: 18px;
-        width: 7px;
-        border-radius: 25px;
-        background: $accent_dark;
-        cursor: pointer;
-        appearance: none;
-        margin-top: -5.5px;
-      }
-
-      &:focus::-webkit-slider-runnable-track {
-        background: $third_dark;
-      }
-
-      &::-moz-range-track {
-        width: 100%;
-        height: 7px;
-        cursor: pointer;
-        animate: 0.2s;
-        box-shadow: 0 0 0 #000000;
-        background: #7DF9FF;
-        border-radius: 50px;
-        border: 0 solid #000000;
-      }
-
-      &::-moz-range-thumb {
-        box-shadow: 1px 1px 0 $third_dark;
-        border: 0 solid #D2E334;
-        height: 18px;
-        width: 18px;
-        border-radius: 25px;
-        background: #FF5E5E;
-        cursor: pointer;
-      }
-
-      &::-ms-track {
-        width: 100%;
-        height: 7px;
-        cursor: pointer;
-        animate: 0.2s;
-        background: transparent;
-        border-color: transparent;
-        color: transparent;
-      }
-
-      &::-ms-fill-lower {
-        background: $third_dark;
-        border: 0 solid #000000;
-        border-radius: 100px;
-        box-shadow: 0 0 0 #000000;
-      }
-
-      &::-ms-fill-upper {
-        background: $third_dark;
-        border: 0 solid #000000;
-        border-radius: 100px;
-        box-shadow: 0 0 0 #000000;
-      }
-
-      &::-ms-thumb {
-        margin-top: 1px;
-        box-shadow: 1px 1px 0 #7DF9FF;
-        border: 0 solid #D2E334;
-        height: 18px;
-        width: 18px;
-        border-radius: 25px;
-        background: #FF5E5E;
-        cursor: pointer;
-      }
-
-      &:focus::-ms-fill-lower {
-        background: $third_dark;
-      }
-
-      &:focus::-ms-fill-upper {
-        background: $third_dark;
+        &:focus::-ms-fill-upper {
+          background: themed("third");
+        }
       }
     }
   }

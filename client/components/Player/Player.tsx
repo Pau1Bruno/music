@@ -27,31 +27,32 @@ const Player = () => {
     }
     
     return (
-        <div className={darkMode ? styles.dark : styles.light}>
-            <div className={styles.left}>
-                
-                <IconButton onClick={play} className={styles.play_pause}>
-                    {pause
-                        ? <PlayArrow />
-                        : <Pause />
-                    }
-                </IconButton>
-                
-                <div className={styles.song_info}>
-                    <div>{active?.name}</div>
-                    <div>{active?.artist}</div>
+        <div className={styles.player}>
+            <div className={darkMode ? styles.dark : styles.light}>
+                <div className={styles.left}>
+                    
+                    <IconButton onClick={play} className={styles.play_pause}>
+                        {pause
+                            ? <PlayArrow />
+                            : <Pause />
+                        }
+                    </IconButton>
+                    
+                    <div className={styles.song_info}>
+                        <div>{active?.name}</div>
+                        <div>{active?.artist}</div>
+                    </div>
+                    
+                    <div>
+                        <TrackProgress left={currentTime} right={duration} onChange={changeCurrentTime}></TrackProgress>
+                    </div>
                 </div>
                 
-                <div>
-                    <TrackProgress left={currentTime} right={duration} onChange={changeCurrentTime}></TrackProgress>
+                <div className={styles.right}>
+                    <VolumeUp />
+                    <VolumeProgress left={volume} right={100} onChange={changeVolume} />
                 </div>
             </div>
-            
-            <div className={styles.right}>
-                <VolumeUp />
-                <VolumeProgress left={volume} right={100} onChange={changeVolume} />
-            </div>
-        
         </div>
     
     );

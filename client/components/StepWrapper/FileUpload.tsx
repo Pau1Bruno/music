@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import styles from "./FileUpload.module.scss"
 
 interface FileUploadProps {
     setFile: Function;
@@ -18,10 +19,9 @@ const FileUpload: React.FC<FileUploadProps> = ({ setFile, accept, children }) =>
     };
     
     return (
-        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100%" }}
-             onClick={() => ref.current?.click()}>
+        <div className={styles.file_container} onClick={() => ref.current?.click()}>
             <input
-                style={{ display: "none" }}
+                className={styles.file}
                 type="file"
                 accept={accept}
                 ref={ref}

@@ -1,16 +1,17 @@
 import React from "react";
-import { Container } from "@mui/system";
-import { Card, Grid, Step, StepLabel, Stepper } from "@mui/material";
+import { Step, StepLabel, Stepper } from "@mui/material";
+import styles from "./StepWrapper.module.scss";
 
 interface StepWrapperProps {
     activeStep: number;
     children: React.ReactNode;
 }
 
-const steps: String[] = [ "Track Info", "Upload logo", "Upload audio" ];
 const StepWrapper: React.FC<StepWrapperProps> = ({ activeStep, children }) => {
+    const steps: String[] = [ "Info", "Logo", "Audio" ];
+    
     return (
-        <Container>
+        <div className={styles.create_page}>
             
             <Stepper activeStep={activeStep}>
                 {steps.map((step, index) =>
@@ -23,13 +24,11 @@ const StepWrapper: React.FC<StepWrapperProps> = ({ activeStep, children }) => {
                 )}
             </Stepper>
             
-            <Grid container justifyContent={"center"} style={{ height: "300px", marginTop: "20px" }}>
-                <Card style={{ width: "500px" }}>
-                    {children}
-                </Card>
-            </Grid>
+            <div className={styles.track_part}>
+                {children}
+            </div>
         
-        </Container>
+        </div>
     );
 };
 

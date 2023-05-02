@@ -34,7 +34,7 @@ const DarkModeContextProvider: React.FC<DarkModeContextProviderProps> = ({ child
         document.body.style.color =
             darkMode
                 ? "white" // for dark theme
-                : "navy"; // for light theme
+                : "black"; // for light theme
     }, [ darkMode ]);
     
     const contextValue: DarkModeContextType = {

@@ -97,7 +97,7 @@ const Login = () => {
                     {/*Modal window if user doesn't provide any data*/}
                     {user.username && user.password &&
                         <Modal modal={modal} setModal={setModal}>
-                            <ul>We can't find you :(
+                            <ul>We did not find you :(
                                 <li>You provide wrong username or password</li>
                                 <li>You don't have an account</li>
                             </ul>
