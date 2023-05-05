@@ -19,8 +19,9 @@ $themes: (
         primary: #333333,
         secondary: #7DF9FF,
         third: #CCCCCC,
-        slight_accent: rgba(13, 39, 100, 0.62),
+        accent_slight: rgba(13, 39, 100, 0.62),
         accent: #FF5E5E,
+        accent_bg: #52be4f,
         background: #000000,
         text: #FFFFFF,
         dark_text: #000000,
@@ -30,8 +31,9 @@ $themes: (
         primary: #FFC4D6,
         secondary: #87CEEB,
         third: #ddebdd,
-        slight_accent: #619361,
+        accent_slight: #619361,
         accent: #FFF44F,
+        accent_bg: #e33469,
         background: #ffffff,
         text: #FFFFFF,
         dark_text: #000000,
@@ -39,6 +41,9 @@ $themes: (
     ),
 );
 
+// import in any styles file, cover it by themify
+// and then themed("name_of_theme_key"), paint all component
+// at colors you choose
 @mixin themify() {
     @each $theme, $map in $themes {
         .#{$theme} {
@@ -58,6 +63,7 @@ $themes: (
     }
 }
 
+// using only inside "themify" function
 @function themed($key: "primary") {
     @return map-get($theme-map, $key);
 }

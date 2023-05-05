@@ -13,10 +13,15 @@
       .tracks {
         display: flex;
         justify-content: space-around;
+        text-align: center;
+
+        h3 {
+          margin: 0;
+
+        }
 
         a {
-          margin: auto 0;
-          font-size: 1.5rem;
+          font-size: 1.2rem;
           color: themed("accent");
         }
 

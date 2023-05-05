@@ -1,8 +1,26 @@
-.track_part {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@import "../../styles/theme.module";
 
-  height: 200px;
+@include themify() {
+  .stepper {
+
+    circle {
+      color: themed("accent_bg");
+    }
+    path {
+      color: themed("accent_bg");
+    }
+
+    span {
+      color: themed("accent_bg");
+    }
+  }
+
+  .track_part {
+    margin-top: 20px;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
+

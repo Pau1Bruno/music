@@ -14,7 +14,7 @@
       color: themed("color");
 
       .play_pause {
-        color: themed("slight_accent");
+        color: themed("accent_slight");
       }
 
       .track_info {
@@ -39,7 +39,7 @@
 
       .delete {
         margin-left: auto;
-        color: themed("slight_accent");
+        color: themed("accent_slight");
       }
     }
   }

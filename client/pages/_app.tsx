@@ -27,7 +27,6 @@ const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
     
     // Conditionally render the Navbar
     const showBars: boolean = router.pathname !== "/login" && router.pathname !== "/signup";
-
     
     return (
         <Provider store={store}>
@@ -37,6 +36,7 @@ const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
                     <link rel="icon" type="image/png" sizes="32x32" href="/icons32.png" />
                     <link rel="icon" type="image/png" sizes="16x16" href="/icons16.png" />
                 </Head>
+                
                 <DarkModeContextProvider>
                     {showBars && <Navbar />}
                     <Component {...props.pageProps} />

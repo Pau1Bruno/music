@@ -57,7 +57,7 @@ const Index = () => {
                     <div className={styles.track_container}>
                         
                         <div className={styles.tracks}>
-                            <h3>All Tracks:</h3>
+                            <h3>Tracks:</h3>
                             <Link href={"tracks/create"}>Upload track</Link>
                         </div>
                         

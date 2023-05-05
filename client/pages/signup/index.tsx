@@ -28,6 +28,7 @@ const Signup = () => {
     };
     
     const handleSignup = async (e: React.MouseEvent<HTMLButtonElement>) => {
+        setBusy(false);
         setModal(false);
         e.preventDefault();
         if (!( user.username && user.password )) {

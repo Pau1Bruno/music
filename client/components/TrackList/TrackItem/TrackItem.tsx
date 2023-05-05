@@ -71,8 +71,7 @@ const TrackItem: React.FC<TrackItemProps> = ({ track }) => {
                 </div>
             </Link>
         </div>
-    )
-        ;
+    );
 };
 
 export default TrackItem;

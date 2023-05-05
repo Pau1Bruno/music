@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Step, StepLabel, Stepper } from "@mui/material";
 import styles from "./StepWrapper.module.scss";
+import { DarkModeContext } from "../../context/ThemesContext";
 
 interface StepWrapperProps {
     activeStep: number;
@@ -10,10 +11,12 @@ interface StepWrapperProps {
 const StepWrapper: React.FC<StepWrapperProps> = ({ activeStep, children }) => {
     const steps: String[] = [ "Info", "Logo", "Audio" ];
     
+    const { darkMode } = useContext(DarkModeContext);
+    
     return (
-        <div className={styles.create_page}>
+        <div className={darkMode ? styles.dark : styles.light}>
             
-            <Stepper activeStep={activeStep}>
+            <Stepper className={styles.stepper} activeStep={activeStep}>
                 {steps.map((step, index) =>
                     <Step
                         key={index}
