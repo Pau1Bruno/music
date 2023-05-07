@@ -50,8 +50,6 @@ jobs:
             echo "Unable to determine package manager"
             exit 1
           fi
-      - name: cd to client
-        run: cd client
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
