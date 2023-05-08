@@ -108,7 +108,7 @@ const TrackPage = ({ serverTrack }: { serverTrack: ITrack }) => {
 
 export default TrackPage;
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+const getServerSideProps: GetServerSideProps = async ({ params }) => {
     const response = await axios.get("http://localhost:5000/tracks/" + params?.id);
     
     return {
