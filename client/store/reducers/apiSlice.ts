@@ -15,7 +15,7 @@ export const api = createApi({
         
         // A query endpoint with an argument
         searchTracks: build.query({
-            query: search => `tracks/search?query=${search}`,
+            query: ({ query, selectedSort }) => `tracks/search?query=${query}&sort=${selectedSort}`,
             providesTags: [ "Tracks" ]
         }),
         

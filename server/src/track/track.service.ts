@@ -27,10 +27,10 @@ export class TrackService {
         return tracks;
     }
     
-    async search(query: string): Promise<Track[]> {
+    async search(query: string, sort: string): Promise<Track[]> {
         const tracks = await this.trackModel.find({
             name: { $regex: new RegExp(query, "i") }
-        });
+        }).sort(sort);
         return tracks;
     };
     

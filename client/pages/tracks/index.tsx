@@ -5,23 +5,47 @@ import { useSearchTracksQuery } from "../../store/reducers/apiSlice";
 import Link from "next/link";
 import { DarkModeContext } from "../../context/ThemesContext";
 import styles from "../../styles/track/TrackIndex.module.scss";
+import MySelect from "../../components/MySelect/MySelect";
 
 const Index = () => {
     const [ query, setQuery ] = useState<string>("");
     const [ timer, setTimer ] = useState<null | ReturnType<typeof setTimeout>>(null);
     const [ skip, setSkip ] = useState(false);
+    const [ selectedSort, setSelectedSort ] = useState<string>("");
     
     const { darkMode } = useContext(DarkModeContext);
     
     const {
-        data: tracks,
+        data: serverTracks,
         isFetching,
         currentData,
         error
-    } = useSearchTracksQuery(query, {
+    } = useSearchTracksQuery({ query, selectedSort }, {
         skip: skip,
         pollingInterval: 100000
     });
+    
+    const sortTracks = (sort: React.ChangeEvent<HTMLSelectElement>) => {
+        setSelectedSort(sort.target.value);
+    };
+    
+    // Function which send get query to a server after you end typing in search field
+    const search = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSkip(true);
+        setQuery(e.target.value);
+        
+        // reset timer if you type during delay (500ms)
+        if (timer) {
+            clearTimeout(timer);
+        }
+        
+        // the timer, after 500 ms from the last typed character send a query
+        await setTimer(
+            setTimeout(async () => {
+                setSkip(false);
+            }, 500)
+        );
+    };
     
     if (error) {
         return (
@@ -30,25 +54,6 @@ const Index = () => {
             </MainLayout>
         );
     }
-    
-    // Функция отправки на сервер поискового запроса
-    const search = async (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSkip(true);
-        setQuery(e.target.value);
-        
-        // обнуление таймера, если строка запроса меняется в течение 500 мс
-        if (timer) {
-            clearTimeout(timer);
-        }
-        
-        // создаёт таймер каждый раз после последнего действия на 500 мс,
-        // если 500 мс проходят без изменений строки поиска, то запрос отправляется
-        await setTimer(
-            setTimeout(async () => {
-                setSkip(false);
-            }, 500)
-        );
-    };
     
     return (
         <MainLayout title={"Tracks"}>
@@ -66,7 +71,18 @@ const Index = () => {
                             value={query}
                             onChange={search}
                         />
-                        {!isFetching && currentData && <TrackList serverTracks={tracks} />}
+                        
+                        <MySelect
+                            value={selectedSort}
+                            onChange={sortTracks}
+                            defaultValue={"Sort by"}
+                            options={[
+                                { name: "name", value: "name" },
+                                { name: "popularity", value: "listens" }
+                            ]}
+                        />
+                        
+                        {!isFetching && currentData && <TrackList serverTracks={serverTracks} />}
                     </div>
                 </div>
             </div>
