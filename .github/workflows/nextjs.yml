@@ -85,8 +85,10 @@ jobs:
           npm i
           fi
       - name: Build with Next.js
+        working-directory: ./client
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Static HTML export with Next.js
+        working-directory: ./client
         run: ${{ steps.detect-package-manager.outputs.runner }} next export
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
