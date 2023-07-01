@@ -3,14 +3,13 @@ import { ITrack } from "../../types/tracks";
 import TrackItem from "./TrackItem/TrackItem";
 
 interface TrackListProps {
-    serverTracks: ITrack[];
+    serverTracks: ITrack[] | null;
 }
 
 const TrackList: React.FC<TrackListProps> = ({ serverTracks }) => {
     return (
-        
         <div>
-            {serverTracks.map(track =>
+            {serverTracks?.map(track =>
                 <TrackItem
                     key={track._id}
                     track={track}
