@@ -99,7 +99,7 @@ const Login = () => {
                         <Modal modal={modal} setModal={setModal}>
                             <ul>We did not find you :(
                                 <li>You provide wrong username or password</li>
-                                <li>You don't have an account</li>
+                                <li>You do not have an account</li>
                             </ul>
                         </Modal>
                     }

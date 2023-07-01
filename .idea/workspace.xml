@@ -4,53 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f023c745-049f-4c3f-b858-abef9b9c173f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/music-player.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/auth/auth.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/music player.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Navbar/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Navbar/Navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/context/ThemesContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/context/ThemesContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/next.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/_app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/.prettierrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app.controller.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/auth/auth.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/auth/auth.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/auth/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/auth/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/auth/constants.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/auth/jwt-auth.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/auth/jwt-auth.guard.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/auth/jwt.strategy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/auth/jwt.strategy.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/auth/local-auth.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/auth/local-auth.guard.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/auth/local.strategy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/auth/local.strategy.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/decorators/public.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/decorators/public.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/file/file.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/file/file.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/file/file.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/file/file.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/track/dto/create-comment.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/track/dto/create-comment.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/track/dto/create-track.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/track/dto/create-track.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/track/schemas/comment.schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/track/schemas/comment.schema.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/track/schemas/track.schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/track/schemas/track.schema.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/track/track.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/track/track.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/track/track.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/track/track.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/track/track.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/track/track.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/users/schemas/user.schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/users/schemas/user.schema.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/users/user.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/users/user.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/users/user.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/users/user.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/users/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/users/user.service.ts" afterDir="false" />
-    </list>
+    <list default="true" id="f023c745-049f-4c3f-b858-abef9b9c173f" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -77,7 +31,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "v1.0.0-initial-release",
+    "git-widget-placeholder": "master",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
