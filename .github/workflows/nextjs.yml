@@ -74,6 +74,8 @@ jobs:
           # If source files changed but packages didn't, rebuild from a prior cache.
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
+      - name: cd client
+        run: cd client
       - name: Install dependencies
         run: |
           if [ -e yarn.lock ]; then
