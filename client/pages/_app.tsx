@@ -18,7 +18,7 @@ const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
     
     useEffect(() => {
         const jwt = localStorage.getItem("jwt");
-        if (!jwt && router.pathname !== "/login" && router.pathname !== "/signup") {
+        if ( !jwt && router.pathname !== "/login" && router.pathname !== "/signup" ) {
             router.push("/login");
         }
     }, [ router.pathname ]);
@@ -35,6 +35,7 @@ const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
                     <link rel="apple-touch-icon" sizes="96x96" href="/icons96.png" />
                     <link rel="icon" type="image/png" sizes="32x32" href="/icons32.png" />
                     <link rel="icon" type="image/png" sizes="16x16" href="/icons16.png" />
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 </Head>
                 
                 <DarkModeContextProvider>
