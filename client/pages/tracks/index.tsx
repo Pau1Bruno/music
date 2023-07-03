@@ -1,4 +1,5 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
+import { useContextSelector } from "use-context-selector";
 import MainLayout from "../../layouts/MainLayout";
 import TrackList from "../../components/TrackList/TrackList";
 import { useSearchTracksQuery } from "../../store/reducers/apiSlice";
@@ -12,8 +13,9 @@ const Index = () => {
     const [ timer, setTimer ] = useState<null | ReturnType<typeof setTimeout>>(null);
     const [ skip, setSkip ] = useState(false);
     const [ selectedSort, setSelectedSort ] = useState<string>("");
-    
-    const { darkMode } = useContext(DarkModeContext);
+
+    const darkMode = useContextSelector(DarkModeContext,
+        (state) => state.darkMode);
     
     const {
         data: serverTracks,
@@ -24,7 +26,7 @@ const Index = () => {
         skip: skip,
         pollingInterval: 100000
     });
-    
+
     const sortTracks = (sort: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedSort(sort.target.value);
     };

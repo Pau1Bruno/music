@@ -7,7 +7,7 @@ const initialState: PlayerState = {
     pause: true,
     currentTime: 0,
     duration: 0,
-    volume: 50
+    volume: 10
 };
 
 const playerSlice = createSlice({

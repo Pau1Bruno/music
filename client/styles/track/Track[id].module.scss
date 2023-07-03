@@ -41,6 +41,10 @@
     }
 
     .user_comment_container {
+      @include mobile {
+        width: 80%;
+      }
+      width: 420px;
       margin: auto;
       padding: 10px;
       border-radius: 16px;
@@ -50,7 +54,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 400px;
         gap: 10px;
 
 

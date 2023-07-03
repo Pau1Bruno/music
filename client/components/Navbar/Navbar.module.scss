@@ -2,6 +2,9 @@
 
 .navbar {
   @include themify() {
+    @include mobile {
+      justify-content: center;
+    }
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -28,6 +31,10 @@
     }
 
     .right {
+      @include mobile {
+        display: none;
+      }
+
       display: flex;
       width: 250px;
       flex-direction: row;
@@ -60,28 +67,6 @@
           color: themed("accent");
         }
       }
-    }
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    justify-content: space-between;
-    height: auto;
-  }
-
-  .logo {
-    margin-bottom: 1rem;
-  }
-
-  .nav {
-    flex-direction: column;
-    align-items: center;
-
-    li {
-      margin-right: 0;
-      margin-bottom: 1rem;
     }
   }
 }

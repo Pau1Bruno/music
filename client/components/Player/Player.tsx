@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import React from "react";
+import { useContextSelector } from "use-context-selector";
 import IconButton from "@mui/material/IconButton";
 import { Pause, PlayArrow, VolumeUp } from "@mui/icons-material";
 import styles from "./Player.module.scss";
@@ -8,7 +9,8 @@ import useAudioPlayer from "../../hooks/useSetAudio";
 import { DarkModeContext } from "../../context/ThemesContext";
 
 const Player = () => {
-    const { darkMode } = useContext(DarkModeContext);
+    const darkMode = useContextSelector(DarkModeContext,
+        (state) => state.darkMode);
     
     const {
         active,
@@ -39,15 +41,23 @@ const Player = () => {
                     </IconButton>
                     
                     <div className={styles.song_info}>
-                        <div>{active?.name}</div>
-                        <div>{active?.artist}</div>
+                        <p>{active?.name}</p>
+                        <p>{active?.artist}</p>
                     </div>
+
+                    <IconButton onClick={play} className={styles.play_pause_mobile}>
+                        {pause
+                            ? <PlayArrow />
+                            : <Pause />
+                        }
+                    </IconButton>
                     
-                    <div>
-                        <TrackProgress left={currentTime} right={duration} onChange={changeCurrentTime}></TrackProgress>
-                    </div>
                 </div>
-                
+
+                <div className={styles.middle}>
+                    <TrackProgress left={currentTime} right={duration} onChange={changeCurrentTime}></TrackProgress>
+                </div>
+
                 <div className={styles.right}>
                     <VolumeUp />
                     <VolumeProgress left={volume} right={100} onChange={changeVolume} />

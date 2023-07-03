@@ -1,8 +1,10 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
+import { useContextSelector } from "use-context-selector";
 import { useRouter } from "next/router";
 import MainLayout from "../../layouts/MainLayout";
 import { GetServerSideProps } from "next";
 import axios from "axios";
+import Image from "next/image";
 import { ITrack } from "../../types/tracks";
 import { useInput } from "../../hooks/useInput";
 import { Delete } from "@mui/icons-material";
@@ -18,18 +20,19 @@ const TrackPage = ({ serverTrack }: { serverTrack: ITrack }) => {
     const username = useInput("");
     const comment = useInput("");
     const imgRef = useRef(null);
-    
-    const { darkMode } = useContext(DarkModeContext);
-    
+
+    const darkMode = useContextSelector(DarkModeContext,
+        (state) => state.darkMode);
+
     const addComment = async () => {
         try {
-            
+
             const response = await axios.post("http://localhost:5000/tracks/comment/", {
                 username: username.value,
                 text: comment.value,
                 trackId: track._id
             });
-            setTrack({ ...track, comments: [ ...track.comments, response.data ] });
+            setTrack({...track, comments: [ ...track.comments, response.data ]});
         } catch (e) {
             console.error(e);
         }
@@ -57,7 +60,7 @@ const TrackPage = ({ serverTrack }: { serverTrack: ITrack }) => {
                             Return to tracks
                         </Link>
                         <div className={styles.track}>
-                            <img
+                            <Image
                                 ref={imgRef}
                                 src={`http://localhost:5000/${track.picture}`}
                                 width={128}
@@ -73,7 +76,7 @@ const TrackPage = ({ serverTrack }: { serverTrack: ITrack }) => {
                     
                     <div className={styles.user_comment_container}>
                         <div className={styles.user_comment}>
-                            <h4>Your opinion about track:</h4>
+                            <p>Your comment:</p>
                             <input
                                 {...username}
                                 placeholder={"Username"}

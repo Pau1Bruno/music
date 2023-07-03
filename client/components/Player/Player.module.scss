@@ -2,6 +2,10 @@
 
 .player {
   @include themify() {
+    @include mobile {
+      display: flex;
+      justify-content: space-around;
+    }
     position: fixed;
     bottom: 0;
     left: 0;
@@ -13,9 +17,16 @@
     color: themed("text");
 
     .left {
+      @include mobile {
+        width: 150px;
+        justify-content: space-around;
+      }
       display: flex;
 
       .play_pause {
+        @include mobile {
+          display: none;
+        }
         margin-right: 1rem;
         color: themed("accent");
 
@@ -25,18 +36,40 @@
       }
 
       .song_info {
-        width: 200px;
+        p {
+          margin: 0;
+        width: fit-content;
+        }
         display: flex;
         flex-direction: column;
-        text-align: center;
-        margin: 0 20px;
+        margin: auto;
       }
 
+      .play_pause_mobile {
+        @include mobile {
+          display: block;
+        }
+        margin: auto;
+        display: none;
+
+        color: themed("accent");
+
+        svg {
+          font-size: 2rem;
+        }
+      }
+
+    }
+
+    .middle {
       .track_progress_container {
+        @include mobile {
+          display: none;
+        }
         display: flex;
         align-items: center;
         height: 100%;
-        width: 400px;
+        width: 100%;
 
         .track_bar {
           margin: 0 30px;

@@ -1,4 +1,5 @@
-import React, { FC, useContext } from "react";
+import React, { FC } from "react";
+import { useContextSelector } from "use-context-selector";
 import styles from "./MySelect.module.scss";
 import { DarkModeContext } from "../../context/ThemesContext";
 
@@ -15,7 +16,8 @@ interface MySelectProps {
 }
 
 const MySelect: FC<MySelectProps> = ({ options, defaultValue, value, onChange }) => {
-    const { darkMode } = useContext(DarkModeContext);
+    const darkMode = useContextSelector(DarkModeContext,
+        (state) => state.darkMode);
     
     return (
         <div className={darkMode ? styles.dark : styles.light}>

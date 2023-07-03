@@ -1,4 +1,5 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
+import { useContextSelector } from "use-context-selector";
 import MainLayout from "../../layouts/MainLayout";
 import StepWrapper from "../../components/StepWrapper/StepWrapper";
 import FileUpload from "../../components/StepWrapper/FileUpload";
@@ -17,13 +18,14 @@ const Create = () => {
     const artist = useInput("");
     const text = useInput("");
     const [ addTrack ] = useAddTrackMutation();
-    
-    const { darkMode } = useContext(DarkModeContext);
-    
+
+    const darkMode = useContextSelector(DarkModeContext,
+        (state) => state.darkMode);
+
     const next = () => {
         const nextButton = document.getElementsByName("navigation_button")[1];
         if (activeStep === 1) nextButton.innerText = "publish";
-        
+
         if (activeStep !== 2) {
             setActiveStep(step => step + 1);
         } else {

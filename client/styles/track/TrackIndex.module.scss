@@ -3,8 +3,11 @@
 .tracks_page {
   @include themify() {
     .track_container {
+      @include mobile {
+        width: 80%;
+      }
       margin: 20px auto 100px;
-      width: 500px;
+      width: 420px;
       color: themed("text");
       background-color: themed("primary");
       border-radius: 20px;
@@ -17,7 +20,6 @@
 
         h3 {
           margin: 0;
-
         }
 
         a {
@@ -31,7 +33,7 @@
     .search {
       display: flex;
       justify-content: center;
-      width: 440px;
+      width: 100%;
       margin: 20px auto;
       text-align: center;
       background-color: themed("third");

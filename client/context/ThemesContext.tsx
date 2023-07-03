@@ -1,4 +1,5 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import {createContext} from "use-context-selector";
 
 export interface DarkModeContextType {
         darkMode: boolean;
@@ -16,21 +17,14 @@ interface DarkModeContextProviderProps {
 }
 
 const DarkModeContextProvider: React.FC<DarkModeContextProviderProps> = ({ children }) => {
-        
-        //this arrow function is needed for dodging localStorage Error (is not defined)
         const [ darkMode, setDarkMode ] = useState(true);
-        
+
         useEffect(() => {
-                window.localStorage.getItem("DarkMode") == "true" ? setDarkMode(true) : setDarkMode(false);
+            window.localStorage.getItem("DarkMode") == "true" ? setDarkMode(true) : setDarkMode(false);
         }, []);
         
-        const contextValue: DarkModeContextType = {
-                darkMode,
-                setDarkMode
-        };
-        
         return (
-            <DarkModeContext.Provider value={contextValue}>
+            <DarkModeContext.Provider value={{darkMode, setDarkMode}}>
                     {children}
             </DarkModeContext.Provider>
         );

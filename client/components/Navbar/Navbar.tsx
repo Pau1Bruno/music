@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import React from "react";
+import { useContextSelector } from "use-context-selector";
 import Link from "next/link";
 import Brightness6Icon from "@mui/icons-material/Brightness6";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -7,17 +8,22 @@ import { DarkModeContext } from "../../context/ThemesContext";
 import { useRouter } from "next/router";
 
 const Navbar = () => {
-        const { darkMode, setDarkMode } = useContext(DarkModeContext);
-        const router = useRouter();
-        
-        const changingTheme = () => {
-                const newTheme = !darkMode;
-                setDarkMode(newTheme);
-                localStorage.setItem("DarkMode", JSON.stringify(newTheme));
-        };
-        
-        const logout = async () => {
-                if ( typeof localStorage !== "undefined" ) localStorage.removeItem("jwt");
+    const darkMode = useContextSelector(DarkModeContext,
+        (state) => state.darkMode);
+
+    const setDarkMode = useContextSelector(DarkModeContext,
+        (state) => state.setDarkMode);
+
+    const router = useRouter();
+
+    const changingTheme = () => {
+        const newTheme = !darkMode;
+        setDarkMode(newTheme);
+        localStorage.setItem("DarkMode", JSON.stringify(newTheme));
+    };
+
+    const logout = async () => {
+        if (typeof localStorage !== "undefined") localStorage.removeItem("jwt");
                 await router.push("/login");
         };
         

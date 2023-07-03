@@ -7,9 +7,9 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 import Navbar from "../components/Navbar/Navbar";
 import Player from "../components/Player/Player";
 import DarkModeContextProvider from "../context/ThemesContext";
+import { useRouter } from "next/router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/global.scss";
-import { useRouter } from "next/router";
 
 const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
     const { store, props } = wrapper.useWrappedStore(rest);
@@ -22,7 +22,8 @@ const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
             router.push("/login");
         }
     }, [ router.pathname ]);
-    
+
+    // For refetch rtk query
     setupListeners(store.dispatch);
     
     // Conditionally render the Navbar

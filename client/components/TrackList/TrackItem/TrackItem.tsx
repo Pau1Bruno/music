@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import React from "react";
+import { useContextSelector } from "use-context-selector";
 import { ITrack } from "../../../types/tracks";
 import IconButton from "@mui/material/IconButton";
 import { Delete, Pause, PlayArrow } from "@mui/icons-material";
@@ -6,6 +7,7 @@ import { useAction } from "../../../hooks/useAction";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { useTimeConverter } from "../../../hooks/useTimeConverter";
 import { useDeleteTrackMutation } from "../../../store/reducers/apiSlice";
+import Image from "next/image";
 import Link from "next/link";
 import { DarkModeContext } from "../../../context/ThemesContext";
 import styles from "./TrackItem.module.scss";
@@ -18,8 +20,9 @@ const TrackItem: React.FC<TrackItemProps> = ({ track }) => {
     const { active, pause, currentTime, duration } = useTypedSelector(state => state.player);
     const { playTrack, pauseTrack, setActiveTrack } = useAction();
     const [ deleteTrack ] = useDeleteTrackMutation();
-    
-    const { darkMode } = useContext(DarkModeContext);
+
+    const darkMode = useContextSelector(DarkModeContext,
+        (state) => state.darkMode);
     
     const left = useTimeConverter(currentTime);
     const right = useTimeConverter(duration);
@@ -40,6 +43,8 @@ const TrackItem: React.FC<TrackItemProps> = ({ track }) => {
         e.stopPropagation();
         deleteTrack(track._id);
     };
+
+    const trackLogo: string = 'http://localhost:5000/' + track.picture;
     
     return (
         <div className={styles.track_item}>
@@ -55,9 +60,8 @@ const TrackItem: React.FC<TrackItemProps> = ({ track }) => {
                     </IconButton>
                     
                     
-                    <img className={styles.picture} src={`http://localhost:5000/${track.picture}`} alt={"track logo"}
-                         key={track._id} />
-                    
+                    <Image className={styles.picture} src={trackLogo} alt={'track logo'} width={32} height={32} />
+
                     <div className={styles.track_info}>
                         <div>{track.name}</div>
                         <div>{track.artist}</div>
