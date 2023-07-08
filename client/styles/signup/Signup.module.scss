@@ -18,14 +18,14 @@
     align-items: center;
     width: 400px;
     padding: 25px 25px 15px 25px;
-    background-color: $primary_dark;
+    background-color: #333333;
     border-radius: 16px;
     gap: 10px;
 
     input {
       box-sizing: border-box;
       border: none;
-      background-color: $third_dark;
+      background-color: #CCCCCC;
       text-indent: 20px;
       width: 100%;
       height: 54px;
@@ -50,12 +50,12 @@
         right: 15px;
         bottom: 15px;
 
-        color: $primary_dark;
+        color: #333333;
       }
     }
 
     .sign_up {
-      background-color: $secondary_dark;
+      background-color: #7DF9FF;
       border: none;
       border-radius: 0 0 16px 16px;
       height: 27px;
@@ -71,7 +71,7 @@
         color: white;
 
         &:hover {
-          color: $secondary_dark;
+          color: #7DF9FF;
         }
       }
     }

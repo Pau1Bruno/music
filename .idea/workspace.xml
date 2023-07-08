@@ -4,7 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f023c745-049f-4c3f-b858-abef9b9c173f" name="Changes" comment="Add: responsive [id] and index pages&#10;Change: img to Image, react context to use-context-selector" />
+    <list default="true" id="f023c745-049f-4c3f-b858-abef9b9c173f" name="Changes" comment="Update: CI">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Navbar/Navbar.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Navbar/Navbar.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Navbar/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Navbar/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Player/Player.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Player/Player.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/Player/Player.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Player/Player.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/StepWrapper/FileUpload.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/StepWrapper/FileUpload.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/StepWrapper/StepWrapper.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/StepWrapper/StepWrapper.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/StepWrapper/StepWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/StepWrapper/StepWrapper.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/TrackList/TrackItem/TrackItem.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/TrackList/TrackItem/TrackItem.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/context/ThemesContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/context/ThemesContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/tracks/create.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/tracks/create.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/tracks/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/tracks/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/styles/global.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/styles/global.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/styles/login/Login.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/styles/login/Login.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/styles/signup/Signup.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/styles/signup/Signup.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/styles/theme.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/styles/theme.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/styles/track/TrackCreate.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/styles/track/TrackCreate.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/styles/track/TrackIndex.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/styles/track/TrackIndex.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/styles/track/Track[id].module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/styles/track/Track[id].module.scss" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -87,7 +107,11 @@
       <workItem from="1688240419021" duration="1874000" />
       <workItem from="1688293814125" duration="5449000" />
       <workItem from="1688378196648" duration="17383000" />
-      <workItem from="1688411464979" duration="1547000" />
+      <workItem from="1688411464979" duration="2598000" />
+      <workItem from="1688485215624" duration="5001000" />
+      <workItem from="1688723117040" duration="190000" />
+      <workItem from="1688741521935" duration="3900000" />
+      <workItem from="1688810448866" duration="15768000" />
     </task>
     <task id="LOCAL-00001" summary="Build client">
       <option name="closed" value="true" />
@@ -105,7 +129,23 @@
       <option name="project" value="LOCAL" />
       <updated>1688412742151</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Update: CI">
+      <option name="closed" value="true" />
+      <created>1688413177335</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1688413177335</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Update: CI">
+      <option name="closed" value="true" />
+      <created>1688413487780</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1688413487780</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,6 +166,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Build client" />
     <MESSAGE value="Add: responsive [id] and index pages&#10;Change: img to Image, react context to use-context-selector" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add: responsive [id] and index pages&#10;Change: img to Image, react context to use-context-selector" />
+    <MESSAGE value="Update: CI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update: CI" />
   </component>
 </project>

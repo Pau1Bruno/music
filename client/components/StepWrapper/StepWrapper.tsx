@@ -28,11 +28,9 @@ const StepWrapper: React.FC<StepWrapperProps> = ({ activeStep, children }) => {
                     </Step>
                 )}
             </Stepper>
-            
-            <div className={styles.track_part}>
-                {children}
-            </div>
-        
+
+            {children}
+
         </div>
     );
 };

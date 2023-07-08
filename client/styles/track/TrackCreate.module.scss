@@ -1,21 +1,22 @@
 @import "../theme.module";
 
-.page {
-  height: calc(100vh - 148px);
-  width: 100%;
-  @include themify() {
+@include themify() {
+  .page {
+    padding: 50px 0 100px 0;
 
     .container {
-      padding: 30px;
-      width: 50%;
-      margin: auto;
+      padding: 50px 10px 50px;
 
       .track_info {
+        @include mobile {
+          width: 80%;
+        }
         background-color: themed("primary");
+
         padding: 20px;
         border-radius: 8px;
-        width: 60%;
-        margin: auto;
+        width: 400px;
+        margin: 40px auto;
         display: flex;
         flex-direction: column;
 
@@ -31,24 +32,27 @@
         }
       }
 
-      .logo_button {
-        height: 100%;
-        width: 100%;
-        background: themed("third");
-        border-radius: 16px;
-      }
-
-      .audio_button {
-        height: 100%;
-        width: 100%;
+      .upload {
+        @include mobile {
+          width: 70%;
+        }
+        margin: 40px auto;
+        width: 500px;
+        height: 20vh;
         background: themed("third");
         border-radius: 16px;
       }
 
       .buttons {
-        margin: 20px 15px;
+        @include mobile {
+          width: 80%;
+          justify-content: space-between;
+        }
+
+        width: 500px;
+        margin: auto;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
 
         button {
           border-radius: 8px;

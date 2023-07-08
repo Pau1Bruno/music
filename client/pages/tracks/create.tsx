@@ -50,9 +50,8 @@ const Create = () => {
     
     return (
         <MainLayout title={"Upload Track"}>
-            
-            <div className={styles.page}>
-                <div className={darkMode ? styles.dark : styles.light}>
+            <div className={darkMode ? styles.dark : styles.light}>
+                <div className={styles.page}>
                     <div className={styles.container}>
                         <StepWrapper activeStep={activeStep}>
                             {activeStep === 0 &&
@@ -71,29 +70,39 @@ const Create = () => {
                                     />
                                 </div>
                             }
-                            
+
                             {activeStep === 1 &&
                                 <FileUpload
                                     setFile={setPicture}
                                     accept={"image/*"}>
-                                    <button className={styles.logo_button}>Upload logo</button>
+                                    <button className={styles.upload}>Upload logo</button>
                                 </FileUpload>
                             }
-                            
+
                             {activeStep === 2 &&
                                 <FileUpload
                                     setFile={setAudio}
                                     accept={"audio/*"}>
-                                    <button className={styles.audio_button}>Upload audio</button>
+                                    <button className={styles.upload}>Upload audio</button>
                                 </FileUpload>
                             }
-                        
+
                         </StepWrapper>
-                        
+
                         <div className={styles.buttons}>
-                            <button name={"navigation_button"} onClick={back} disabled={activeStep < 1}>previous
+                            <button
+                                name={"navigation_button"}
+                                onClick={back}
+                                disabled={activeStep < 1}
+                            >
+                                previous
                             </button>
-                            <button name={"navigation_button"} onClick={next}>next</button>
+                            <button
+                                name={"navigation_button"}
+                                onClick={next}
+                            >
+                                next
+                            </button>
                         </div>
                     </div>
                 </div>

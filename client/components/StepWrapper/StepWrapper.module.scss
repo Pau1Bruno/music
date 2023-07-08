@@ -2,25 +2,25 @@
 
 @include themify() {
   .stepper {
+    @include mobile {
+      width: 80%;
+    }
+    width: 450px;
+    margin: auto;
 
     circle {
       color: themed("accent_bg");
+      transition-duration: 0.5s;
     }
     path {
       color: themed("accent_bg");
+      transition-duration: 0.5s;
     }
 
     span {
       color: themed("accent_bg");
+      transition-duration: 0.5s;
     }
-  }
-
-  .track_part {
-    margin-top: 20px;
-    height: 40vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 }
 

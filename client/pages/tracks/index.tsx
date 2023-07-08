@@ -59,21 +59,21 @@ const Index = () => {
     
     return (
         <MainLayout title={"Tracks"}>
-            <div className={styles.tracks_page}>
-                <div className={darkMode ? styles.dark : styles.light}>
-                    <div className={styles.track_container}>
-                        
+            <div className={darkMode ? styles.dark : styles.light}>
+                <div className={styles.page}>
+                    <div className={styles.container}>
+
                         <div className={styles.tracks}>
                             <h3>Tracks:</h3>
                             <Link href={"tracks/create"}>Upload track</Link>
                         </div>
-                        
+
                         <input
                             className={styles.search}
                             value={query}
                             onChange={search}
                         />
-                        
+
                         <MySelect
                             value={selectedSort}
                             onChange={sortTracks}
@@ -83,7 +83,7 @@ const Index = () => {
                                 { name: "popularity", value: "listens" }
                             ]}
                         />
-                        
+
                         {!isFetching && currentData && <TrackList serverTracks={serverTracks} />}
                     </div>
                 </div>

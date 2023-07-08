@@ -2,10 +2,10 @@
 
 @include themify() {
   .page {
-
     display: grid;
     grid-template-rows: 200px 200px 1fr;
     grid-auto-rows: 100px;
+    color: themed("id_text");
 
     .head {
       display: flex;
@@ -55,6 +55,7 @@
         flex-direction: column;
         align-items: center;
         gap: 10px;
+
 
 
         input {

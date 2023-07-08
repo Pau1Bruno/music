@@ -1,12 +1,15 @@
 @import "../theme.module";
 
-.tracks_page {
-  @include themify() {
-    .track_container {
+@include themify() {
+  .page {
+    padding: 20px 0 100px 0;
+    .container {
+      margin: auto;
+
       @include mobile {
         width: 80%;
       }
-      margin: 20px auto 100px;
+
       width: 420px;
       color: themed("text");
       background-color: themed("primary");
@@ -28,7 +31,7 @@
         }
 
       }
-}
+    }
 
     .search {
       display: flex;

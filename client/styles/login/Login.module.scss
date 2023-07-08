@@ -13,7 +13,7 @@
 
 
   .form_container {
-    background-color: $primary_dark;
+    background-color: #333333;
     width: 400px;
     padding: 25px 25px 15px 25px;
     margin: 10px;
@@ -27,7 +27,7 @@
     input {
       box-sizing: border-box;
       border: none;
-      background-color: $third_dark;
+      background-color: #CCCCCC;
       text-indent: 20px;
       height: 54px;
       width: 100%;
@@ -55,12 +55,12 @@
         right: 15px;
         bottom: 15px;
 
-        color: $primary_dark;
+        color: #333333;
       }
     }
 
     .log_in {
-      background-color: $secondary_dark;
+      background-color: #7DF9FF;
       border: none;
       border-radius: 0 0 16px 16px;
       height: 27px;
@@ -82,10 +82,10 @@
 
       a {
         text-align: center;
-        color: $third_dark;
+        color: #CCCCCC;
 
         &:hover {
-          color: $secondary_dark;
+          color: #7DF9FF;
         }
       }
     }

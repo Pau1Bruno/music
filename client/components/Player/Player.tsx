@@ -29,17 +29,17 @@ const Player = () => {
     }
     
     return (
-        <div className={styles.player}>
-            <div className={darkMode ? styles.dark : styles.light}>
+        <div className={darkMode ? styles.dark : styles.light}>
+            <div className={styles.player}>
                 <div className={styles.left}>
-                    
+
                     <IconButton onClick={play} className={styles.play_pause}>
                         {pause
-                            ? <PlayArrow />
-                            : <Pause />
+                            ? <PlayArrow/>
+                            : <Pause/>
                         }
                     </IconButton>
-                    
+
                     <div className={styles.song_info}>
                         <p>{active?.name}</p>
                         <p>{active?.artist}</p>
@@ -51,7 +51,7 @@ const Player = () => {
                             : <Pause />
                         }
                     </IconButton>
-                    
+
                 </div>
 
                 <div className={styles.middle}>

@@ -1,43 +1,29 @@
-//light theme
-$primary_light: #FFC4D6;
-$secondary_light: #87CEEB;
-$third_light: #ddebdd;
-$accent_light: #FFF44F;
-$background_light: #ffffff;
-$text_light: #FFFFFF;
-
-// dark theme
-$primary_dark: #333333;
-$secondary_dark: #7DF9FF;
-$third_dark: #CCCCCC;
-$accent_dark: #FF5E5E;
-$background_dark: #000000;
-$text_dark: #FFFFFF;
-
 $themes: (
     "dark": (
-        primary: #333333,
-        secondary: #7DF9FF,
-        third: #CCCCCC,
-        accent_slight: rgba(13, 39, 100, 0.62),
-        accent: #FF5E5E,
-        accent_bg: #52be4f,
-        background: #000000,
-        text: #FFFFFF,
-        dark_text: #000000,
-        thumb: #a4f1a4,
+            primary: #333333,
+            secondary: #7DF9FF,
+            third: #CCCCCC,
+            accent_slight: rgba(13, 39, 100, 0.62),
+            accent: #FF5E5E,
+            accent_bg: #52be4f,
+            background: #000000,
+            text: #FFFFFF,
+            id_text: #FFFFFF,
+            dark_text: #000000,
+            thumb: #a4f1a4,
     ),
     "light": (
-        primary: #FFC4D6,
-        secondary: #87CEEB,
-        third: #ddebdd,
-        accent_slight: #619361,
-        accent: #FFF44F,
-        accent_bg: #e33469,
-        background: #ffffff,
-        text: #FFFFFF,
-        dark_text: #000000,
-        thumb: #ef7b3f,
+            primary: #FFC4D6,
+            secondary: #87CEEB,
+            third: #ddebdd,
+            accent_slight: #619361,
+            accent: #FFF44F,
+            accent_bg: #e33469,
+            background: #ffffff,
+            text: #FFFFFF,
+            id_text: #000000,
+            dark_text: #000000,
+            thumb: #ef7b3f,
     ),
 );
 

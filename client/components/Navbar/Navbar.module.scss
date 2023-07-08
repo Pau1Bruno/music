@@ -15,18 +15,34 @@
     background-color: themed("primary");
 
     .left {
+      @include mobile {
+        width: 100%;
+      }
       display: flex;
+      justify-content: space-around;
+      //padding: 0 10px;
+      align-items: center;
 
       a {
         padding: 0 10px;
       }
 
       span {
+
         color: themed("text");
 
         &:hover {
           color: themed("accent");
         }
+      }
+
+      .theme_mobile {
+        @include mobile {
+          display: flex;
+        }
+        color: themed("id_text");
+        display: none;
+        align-items: center;
       }
     }
 
