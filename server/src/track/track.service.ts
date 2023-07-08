@@ -35,11 +35,13 @@ export class TrackService {
     }
 
     async search(query: string, sort: string): Promise<Track[]> {
+        const sortObject= {};
+        sortObject[sort] = 'descending';
         const tracks = await this.trackModel
             .find({
                 name: {$regex: new RegExp(query, 'i')},
             })
-            .sort(sort);
+            .sort(sortObject)
         return tracks;
     }
 

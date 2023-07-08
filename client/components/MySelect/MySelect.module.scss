@@ -3,18 +3,20 @@
 @include themify() {
   .mySelect {
     border: 2px solid black;
-    border-radius: 8px 8px 0 0;
-    width: fit-content;
+    border-radius: 8px;
+
     text-align: center;
     padding: 5px;
     margin: 0 0 10px 10px;
     background-color: themed("third");
     outline: none;
 
+    .disabled {
+      border-radius: 8px 8px 0 0;
+    }
     option {
-      color: themed("dark_text");
-      padding: 10px;
-      //border: 2px solid black;
+      padding: 0;
+      text-align: center;
     }
   }
 }

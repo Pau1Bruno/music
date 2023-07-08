@@ -26,7 +26,7 @@ const MySelect: FC<MySelectProps> = ({ options, defaultValue, value, onChange })
                 value={value}
                 onChange={onChange}
             >
-                <option disabled value={""}>{defaultValue}</option>
+                <option className={styles.disabled} disabled value={""}>{defaultValue}</option>
                 {options.map(option =>
                     <option key={option.name} value={option.value}>{option.name}</option>
                 )}

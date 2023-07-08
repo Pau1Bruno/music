@@ -4,26 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f023c745-049f-4c3f-b858-abef9b9c173f" name="Changes" comment="Update: CI">
+    <list default="true" id="f023c745-049f-4c3f-b858-abef9b9c173f" name="Changes" comment="Add: responsive design in each page&#10;Fix: theme changing from localstorage by the first render">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Navbar/Navbar.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Navbar/Navbar.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Navbar/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Navbar/Navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Player/Player.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Player/Player.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Player/Player.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Player/Player.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/StepWrapper/FileUpload.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/StepWrapper/FileUpload.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/StepWrapper/StepWrapper.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/StepWrapper/StepWrapper.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/StepWrapper/StepWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/StepWrapper/StepWrapper.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.idea/client.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.idea/dbnavigator.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/MySelect/MySelect.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/MySelect/MySelect.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/MySelect/MySelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/MySelect/MySelect.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/components/TrackList/TrackItem/TrackItem.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/TrackList/TrackItem/TrackItem.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/context/ThemesContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/context/ThemesContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/tracks/create.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/tracks/create.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/TrackList/TrackItem/TrackItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/TrackList/TrackItem/TrackItem.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/pages/tracks/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/tracks/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/styles/global.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/styles/global.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/styles/login/Login.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/styles/login/Login.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/styles/signup/Signup.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/styles/signup/Signup.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/styles/theme.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/styles/theme.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/styles/track/TrackCreate.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/styles/track/TrackCreate.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/styles/track/TrackIndex.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/styles/track/TrackIndex.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/styles/track/Track[id].module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/styles/track/Track[id].module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/track/track.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/track/track.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +106,7 @@
       <workItem from="1688485215624" duration="5001000" />
       <workItem from="1688723117040" duration="190000" />
       <workItem from="1688741521935" duration="3900000" />
-      <workItem from="1688810448866" duration="15768000" />
+      <workItem from="1688810448866" duration="26650000" />
     </task>
     <task id="LOCAL-00001" summary="Build client">
       <option name="closed" value="true" />
@@ -145,7 +140,15 @@
       <option name="project" value="LOCAL" />
       <updated>1688413487780</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add: responsive design in each page&#10;Fix: theme changing from localstorage by the first render">
+      <option name="closed" value="true" />
+      <created>1688836828355</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1688836828355</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,6 +170,7 @@
     <MESSAGE value="Build client" />
     <MESSAGE value="Add: responsive [id] and index pages&#10;Change: img to Image, react context to use-context-selector" />
     <MESSAGE value="Update: CI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update: CI" />
+    <MESSAGE value="Add: responsive design in each page&#10;Fix: theme changing from localstorage by the first render" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add: responsive design in each page&#10;Fix: theme changing from localstorage by the first render" />
   </component>
 </project>

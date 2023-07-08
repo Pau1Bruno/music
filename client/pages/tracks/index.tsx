@@ -29,6 +29,7 @@ const Index = () => {
 
     const sortTracks = (sort: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedSort(sort.target.value);
+        console.log(sort.target.value)
     };
     
     // Function which send get query to a server after you end typing in search field
