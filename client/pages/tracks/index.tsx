@@ -12,7 +12,7 @@ const Index = () => {
     const [ query, setQuery ] = useState<string>("");
     const [ timer, setTimer ] = useState<null | ReturnType<typeof setTimeout>>(null);
     const [ skip, setSkip ] = useState(false);
-    const [ selectedSort, setSelectedSort ] = useState<string>("");
+    const [ selectedSort, setSelectedSort ] = useState<string>("name");
 
     const darkMode = useContextSelector(DarkModeContext,
         (state) => state.darkMode);

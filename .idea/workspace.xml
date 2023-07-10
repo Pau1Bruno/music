@@ -4,20 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f023c745-049f-4c3f-b858-abef9b9c173f" name="Changes" comment="Add: responsive design in each page&#10;Fix: theme changing from localstorage by the first render">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.idea/client.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.idea/dbnavigator.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/MySelect/MySelect.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/MySelect/MySelect.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/MySelect/MySelect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/MySelect/MySelect.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/TrackList/TrackItem/TrackItem.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/TrackList/TrackItem/TrackItem.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/TrackList/TrackItem/TrackItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/TrackList/TrackItem/TrackItem.tsx" afterDir="false" />
+    <list default="true" id="f023c745-049f-4c3f-b858-abef9b9c173f" name="Changes" comment="deploy">
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/music-player.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/client/pages/tracks/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/tracks/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/styles/track/Track[id].module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/styles/track/Track[id].module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/track/track.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/track/track.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,7 +42,8 @@
     &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;v2&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;L:/Projects/next-vercel&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -107,6 +102,7 @@
       <workItem from="1688723117040" duration="190000" />
       <workItem from="1688741521935" duration="3900000" />
       <workItem from="1688810448866" duration="26650000" />
+      <workItem from="1689003300791" duration="359000" />
     </task>
     <task id="LOCAL-00001" summary="Build client">
       <option name="closed" value="true" />
@@ -148,7 +144,15 @@
       <option name="project" value="LOCAL" />
       <updated>1688836828355</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="deploy">
+      <option name="closed" value="true" />
+      <created>1688997097675</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1688997097675</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,6 +175,7 @@
     <MESSAGE value="Add: responsive [id] and index pages&#10;Change: img to Image, react context to use-context-selector" />
     <MESSAGE value="Update: CI" />
     <MESSAGE value="Add: responsive design in each page&#10;Fix: theme changing from localstorage by the first render" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add: responsive design in each page&#10;Fix: theme changing from localstorage by the first render" />
+    <MESSAGE value="deploy" />
+    <option name="LAST_COMMIT_MESSAGE" value="deploy" />
   </component>
 </project>
