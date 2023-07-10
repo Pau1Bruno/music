@@ -4,15 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f023c745-049f-4c3f-b858-abef9b9c173f" name="Changes" comment="deploy">
+    <list default="true" id="f023c745-049f-4c3f-b858-abef9b9c173f" name="Changes" comment="Fix: first sorting and change it to descending order">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/nextjs.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/nextjs.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/music-player.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/tracks/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/tracks/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/track/track.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/track/track.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/client/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/next.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +103,7 @@
       <workItem from="1688723117040" duration="190000" />
       <workItem from="1688741521935" duration="3900000" />
       <workItem from="1688810448866" duration="26650000" />
-      <workItem from="1689003300791" duration="359000" />
+      <workItem from="1689003300791" duration="1240000" />
     </task>
     <task id="LOCAL-00001" summary="Build client">
       <option name="closed" value="true" />
@@ -152,7 +153,15 @@
       <option name="project" value="LOCAL" />
       <updated>1688997097675</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Fix: first sorting and change it to descending order">
+      <option name="closed" value="true" />
+      <created>1689003749682</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1689003749682</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,6 +185,7 @@
     <MESSAGE value="Update: CI" />
     <MESSAGE value="Add: responsive design in each page&#10;Fix: theme changing from localstorage by the first render" />
     <MESSAGE value="deploy" />
-    <option name="LAST_COMMIT_MESSAGE" value="deploy" />
+    <MESSAGE value="Fix: first sorting and change it to descending order" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix: first sorting and change it to descending order" />
   </component>
 </project>

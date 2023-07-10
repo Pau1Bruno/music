@@ -2,7 +2,7 @@
 
 #codux boards
 src/_codux
-
+../.idea
 # dependencies
 /node_modules
 /.pnp
