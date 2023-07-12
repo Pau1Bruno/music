@@ -1,0 +1,10 @@
+@import "../../styles/theme.module";
+
+@include themify {
+  .container {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    color: themed("id_text");
+  }
+}

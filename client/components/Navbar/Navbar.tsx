@@ -31,7 +31,7 @@ const Navbar = () => {
             <div className={styles.navbar}>
                 <div className={darkMode ? styles.dark : styles.light}>
                     <div className={styles.left}>
-                        <Link href="/">
+                        <Link href="/home">
                             <span>Home</span>
                         </Link>
 

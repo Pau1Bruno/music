@@ -46,7 +46,6 @@
       .buttons {
         @include mobile {
           width: 80%;
-          justify-content: space-between;
         }
 
         width: 500px;

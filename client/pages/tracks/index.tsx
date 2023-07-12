@@ -1,63 +1,34 @@
-import React, { useState } from "react";
+import React from "react";
 import { useContextSelector } from "use-context-selector";
 import MainLayout from "../../layouts/MainLayout";
 import TrackList from "../../components/TrackList/TrackList";
-import { useSearchTracksQuery } from "../../store/reducers/apiSlice";
 import Link from "next/link";
 import { DarkModeContext } from "../../context/ThemesContext";
 import styles from "../../styles/track/TrackIndex.module.scss";
 import MySelect from "../../components/MySelect/MySelect";
+import ErrorData from "../../components/ErrorData/ErrorData";
+import useSearch from "../../hooks/useSearch";
 
 const Index = () => {
-    const [ query, setQuery ] = useState<string>("");
-    const [ timer, setTimer ] = useState<null | ReturnType<typeof setTimeout>>(null);
-    const [ skip, setSkip ] = useState(false);
-    const [ selectedSort, setSelectedSort ] = useState<string>("");
+    const {
+        error,
+        query,
+        serverTracks,
+        selectedSort,
+        search,
+        sortTracks,
+        isFetching,
+        currentData
+    } = useSearch();
 
     const darkMode = useContextSelector(DarkModeContext,
         (state) => state.darkMode);
-    
-    const {
-        data: serverTracks,
-        isFetching,
-        currentData,
-        error
-    } = useSearchTracksQuery({ query, selectedSort }, {
-        skip: skip,
-        pollingInterval: 100000
-    });
 
-    const sortTracks = (sort: React.ChangeEvent<HTMLSelectElement>) => {
-        setSelectedSort(sort.target.value);
-        console.log(sort.target.value)
-    };
-    
-    // Function which send get query to a server after you end typing in search field
-    const search = async (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSkip(true);
-        setQuery(e.target.value);
-        
-        // reset timer if you type during delay (500ms)
-        if (timer) {
-            clearTimeout(timer);
-        }
-        
-        // the timer, after 500 ms from the last typed character send a query
-        await setTimer(
-            setTimeout(async () => {
-                setSkip(false);
-            }, 500)
-        );
-    };
-    
+
     if (error) {
-        return (
-            <MainLayout title={"Error server data"}>
-                <h1>Ошибка при загрузке треков</h1>
-            </MainLayout>
-        );
+        return <ErrorData/>;
     }
-    
+
     return (
         <MainLayout title={"Tracks"}>
             <div className={darkMode ? styles.dark : styles.light}>

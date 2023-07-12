@@ -40,9 +40,13 @@
         @include mobile {
           display: flex;
         }
-        color: themed("id_text");
+        color: themed("text");
         display: none;
         align-items: center;
+
+        &:hover {
+          color: themed("accent");
+        }
       }
     }
 

@@ -19,12 +19,21 @@
         }
 
         .info {
-          padding: 0 20px;
-          display: flex;
+          @include mobile {
+            width: fit-content;
+          }
+          @include mobile_s {
+            width: 100px;
+          }
+          padding: 0 10px;
           flex-direction: column;
-          text-align: center;
-          width: fit-content;
+          text-align: start;
           color: themed("dark_text");
+          width: 100%;
+          overflow:hidden;
+          display:inline-block;
+          text-overflow: ellipsis;
+          white-space: nowrap;
         }
 
         .logo {
