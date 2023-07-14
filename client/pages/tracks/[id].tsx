@@ -3,50 +3,43 @@ import { useContextSelector } from "use-context-selector";
 import { useRouter } from "next/router";
 import MainLayout from "../../layouts/MainLayout";
 import { GetServerSideProps } from "next";
-import axios from "axios";
 import Image from "next/image";
 import { ITrack } from "../../types/tracks";
 import { useInput } from "../../hooks/useInput";
-import { Delete } from "@mui/icons-material";
-import IconButton from "@mui/material/IconButton";
 import Link from "next/link";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import styles from "../../styles/track/Track[id].module.scss";
 import { DarkModeContext } from "../../context/ThemesContext";
+import { useAddCommentMutation, useGetAllCommentsQuery } from "../../store/reducers/apiSlice";
+import CommentList from "../../components/CommentList/CommentList";
+import { useAction } from "../../hooks/useAction";
 
-const TrackPage = ({ serverTrack }: { serverTrack: ITrack }) => {
+const TrackPage = ({serverTrack}: { serverTrack: ITrack }) => {
     const [ track, setTrack ] = useState<ITrack>(serverTrack);
     const router = useRouter();
     const username = useInput("");
     const comment = useInput("");
     const imgRef = useRef(null);
 
+    const {setTrackId} = useAction();
+
+    setTrackId(serverTrack._id);
+
     const darkMode = useContextSelector(DarkModeContext,
         (state) => state.darkMode);
 
-    const addComment = async () => {
-        try {
+    const {isFetching, currentData, data: allComments} = useGetAllCommentsQuery(track._id);
+    const [ addComment ] = useAddCommentMutation();
 
-            const response = await axios.post("http://localhost:5000/tracks/comment/", {
-                username: username.value,
-                text: comment.value,
-                trackId: track._id
-            });
-            setTrack({...track, comments: [ ...track.comments, response.data ]});
-        } catch (e) {
-            console.error(e);
+    const addComm = () => {
+        const commentBody = {
+            username: username.value,
+            text: comment.value,
+            trackId: track._id
         }
-    };
-    
-    const deleteComment = async (id: string) => {
-        try {
-            await axios.delete(`http://localhost:5000/tracks/${track._id}/comments/${id}`);
-            setTrack({ ...track, comments: [ ...track.comments.filter(comm => comm._id !== id) ] });
-        } catch (error) {
-            console.error(error);
-        }
-    };
-    
+        addComment(commentBody);
+    }
+
     return (
         <MainLayout
             title={track.name + " - " + track.artist}
@@ -85,23 +78,13 @@ const TrackPage = ({ serverTrack }: { serverTrack: ITrack }) => {
                                 {...comment}
                                 placeholder={"Comment"}
                             />
-                            <button onClick={addComment}>Publish</button>
+                            <button onClick={addComm}>Publish</button>
                         </div>
                     </div>
-                    
+
                     <div className={styles.comments_container}>
                         <h4>All comments:</h4>
-                        
-                        <div className={styles.comments}>
-                            {track.comments.map(comm =>
-                                <div key={comm._id} className={styles.single_comment}>
-                                    <p>{comm.username} : {comm.text}</p>
-                                    <IconButton className={styles.delete} onClick={() => deleteComment(comm._id)}>
-                                        <Delete />
-                                    </IconButton>
-                                </div>
-                            )}
-                        </div>
+                        {!isFetching && currentData && <CommentList allComments={allComments}/>}
                     </div>
                 </div>
             </div>
@@ -112,11 +95,12 @@ const TrackPage = ({ serverTrack }: { serverTrack: ITrack }) => {
 export default TrackPage;
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-    const response = await axios.get("http://localhost:5000/tracks/" + params?.id);
-    
+    const response = await fetch("http://localhost:5000/tracks/" + params?.id);
+    const res = await response.json();
+
     return {
         props: {
-            serverTrack: response.data
+            serverTrack: res
         }
     };
 };

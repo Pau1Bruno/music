@@ -1,6 +1,6 @@
 import React from "react";
 import { ITrack } from "../../types/tracks";
-import TrackItem from "./TrackItem/TrackItem";
+import TrackItem from "../TrackItem/TrackItem";
 
 interface TrackListProps {
     serverTracks: ITrack[] | null;

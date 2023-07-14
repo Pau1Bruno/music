@@ -15,7 +15,7 @@ const MainLayout: FC<MainLayoutProps> =
          description,
          keywords
      }) => {
-        
+
         return (
             <>
                 <Head>
@@ -24,13 +24,13 @@ const MainLayout: FC<MainLayoutProps> =
                         name="description"
                         content={"Music platform for free. You can listen and upload tracks. " + description}
                     />
-                    <meta name="robots" content="index follow" />
-                    <meta name="keywords" content={keywords || "music, tracks, platform"} />
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                    <meta name="robots" content="index follow"/>
+                    <meta name="keywords" content={keywords || "music, tracks, platform"}/>
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
                 </Head>
-                
+
                 {children}
-            
+
             </>
         );
     };

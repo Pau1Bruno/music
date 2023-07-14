@@ -16,12 +16,12 @@ interface DarkModeContextProviderProps {
     children: React.ReactNode;
 }
 
-const DarkModeContextProvider: React.FC<DarkModeContextProviderProps> = ({ children }) => {
+const DarkModeContextProvider: React.FC<DarkModeContextProviderProps> = ({children}) => {
     const [ darkMode, setDarkMode ] = useState(true);
 
     useEffect(() => {
         darkMode ? document.body.style.background = "#212121" : document.body.style.background = "#FFFFFF";
-    }, [darkMode])
+    }, [ darkMode ]);
 
     useEffect(() => {
         window.localStorage.getItem("DarkMode") == "true" ? setDarkMode(true) : setDarkMode(false);

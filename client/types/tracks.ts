@@ -6,11 +6,16 @@ export interface ITrack {
     listens: number,
     picture: string,
     audio: string,
-    comments: IComments[]
+    comments: IComment[]
 }
 
-export interface IComments {
+export interface IComment {
     _id: string,
     username: string,
     text: string
+}
+
+export interface ICommentWithTrackIds {
+    trackId: string | null,
+    commentId: string | null
 }

@@ -56,6 +56,10 @@
         align-items: center;
         gap: 10px;
 
+        p {
+          margin: 0;
+        }
+
         input {
           box-sizing: border-box;
           border: none;
@@ -83,36 +87,6 @@
       h4 {
         padding: 5px;
         text-align: center;
-      }
-
-      .comments {
-        width: 80%;
-        margin: 0 auto;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: start;
-        gap: 1rem;
-
-        .single_comment {
-          display: flex;
-          flex-grow: 1;
-
-          align-items: center;
-          justify-content: space-between;
-          background: themed("primary");
-          border-radius: 5px;
-
-
-          p {
-            margin: 0;
-            text-align: center;
-            padding: 0 5px;
-          }
-
-          .delete {
-            color: themed("accent");
-          }
-        }
       }
     }
   }

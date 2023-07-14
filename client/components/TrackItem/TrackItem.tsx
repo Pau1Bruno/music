@@ -1,14 +1,14 @@
 import React from "react";
 import { useContextSelector } from "use-context-selector";
-import { ITrack } from "../../../types/tracks";
+import { ITrack } from "../../types/tracks";
 import IconButton from "@mui/material/IconButton";
 import { Delete, Pause, PlayArrow } from "@mui/icons-material";
-import { useAction } from "../../../hooks/useAction";
-import { useTypedSelector } from "../../../hooks/useTypedSelector";
-import { useTimeConverter } from "../../../hooks/useTimeConverter";
-import { useDeleteTrackMutation } from "../../../store/reducers/apiSlice";
+import { useAction } from "../../hooks/useAction";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { useTimeConverter } from "../../hooks/useTimeConverter";
+import { useDeleteTrackMutation } from "../../store/reducers/apiSlice";
 import Image from "next/image";
-import { DarkModeContext } from "../../../context/ThemesContext";
+import { DarkModeContext } from "../../context/ThemesContext";
 import styles from "./TrackItem.module.scss";
 import { useRouter } from "next/router";
 
@@ -16,7 +16,7 @@ interface TrackItemProps {
     track: ITrack,
 }
 
-const TrackItem: React.FC<TrackItemProps> = ({ track }) => {
+const TrackItem: React.FC<TrackItemProps> = ({track}) => {
     const {active, pause, currentTime, duration} = useTypedSelector(state => state.player);
     const {playTrack, pauseTrack, setActiveTrack} = useAction();
     const [ deleteTrack ] = useDeleteTrackMutation();

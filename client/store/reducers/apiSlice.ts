@@ -5,46 +5,77 @@ export const api = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: "http://localhost:5000/"
     }),
-    refetchOnFocus: true,
     refetchOnReconnect: true,
-    tagTypes: [ "Tracks" ],
-    endpoints: build => ( {
+    tagTypes: [ "Tracks", "Comments" ],
+    endpoints: build => ({
         getTracks: build.query({
             query: () => "tracks/"
         }),
-        
+
         // A query endpoint with an argument
         searchTracks: build.query({
-            query: ({ query, selectedSort }) => `tracks/search?query=${query}&sort=${selectedSort}`,
+            query: ({query, selectedSort}) => `tracks/search?query=${query}&sort=${selectedSort}`,
             providesTags: [ "Tracks" ]
         }),
-        
-        deleteTrack: build.mutation(( {
-            query: (id: string) => ( {
+
+        deleteTrack: build.mutation(({
+            query: (id: string) => ({
                 url: "/tracks/" + id,
                 method: "DELETE",
                 body: id
-            } ),
+            }),
             invalidatesTags: [ "Tracks" ]
-        } )),
-        
-        addTrack: build.mutation(( {
-            query: (track: FormData) => ( {
+        })),
+
+        addTrack: build.mutation(({
+            query: (track: FormData) => ({
                 url: "/tracks",
                 method: "POST",
                 body: track
-            } ),
+            }),
             invalidatesTags: [ "Tracks" ]
-        } )),
-        
-        addListen: build.mutation(( {
-            query: (id: string) => ( {
+        })),
+
+        addListen: build.mutation(({
+            query: (id: string) => ({
                 url: "/tracks/listen/" + id,
                 method: "POST",
                 body: id
-            } )
-        } ))
+            })
+        })),
+
+        getAllComments: build.query(({
+            query: (id: string) => ({
+                url: "/tracks/" + id + "/comments",
+            }),
+            providesTags: [ "Comments" ]
+        })),
+
+        addComment: build.mutation(({
+            query: (comment) => ({
+                url: "/tracks/comment",
+                method: "POST",
+                body: comment
+            }),
+            invalidatesTags: [ "Comments" ]
+        })),
+
+        deleteComment: build.mutation(({
+            query: ({trackId, commentId}) => ({
+                url: "/tracks/" + trackId + "/comments/" + commentId,
+                method: "DELETE"
+            }),
+            invalidatesTags: [ "Comments" ]
+        }))
     } )
 });
 
-export const { useAddListenMutation, useSearchTracksQuery, useDeleteTrackMutation, useAddTrackMutation } = api;
+export const {
+    useSearchTracksQuery,
+    useAddTrackMutation,
+    useDeleteTrackMutation,
+    useAddListenMutation,
+    useGetAllCommentsQuery,
+    useAddCommentMutation,
+    useDeleteCommentMutation,
+} = api;

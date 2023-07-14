@@ -6,15 +6,27 @@ import { useAddListenMutation } from "../store/reducers/apiSlice";
 let audio: HTMLAudioElement;
 
 const useAudioPlayer = () => {
-    const { active, pause, volume, currentTime, duration } = useTypedSelector((state) => state.player);
-    const { playTrack, pauseTrack, setVolume, setCurrentTime, setDuration } = useAction();
+    const {
+        active,
+        pause,
+        volume,
+        currentTime,
+        duration
+    } = useTypedSelector((state) => state.player);
+    const {
+        playTrack,
+        pauseTrack,
+        setVolume,
+        setCurrentTime,
+        setDuration
+    } = useAction();
     const [ addListen ] = useAddListenMutation();
-    
+
     const setAudio = () => {
         if (active) {
             audio.src = `http://localhost:5000/${active.audio}`;
             audio.volume = volume / 100;
-            
+
             // As track downloaded
             audio.onloadedmetadata = () => {
                 setDuration(Math.trunc(audio.duration));
