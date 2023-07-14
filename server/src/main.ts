@@ -1,12 +1,14 @@
-import * as process from 'process';
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
-import { config } from 'dotenv';
+import * as process from "process";
+import { NestFactory } from "@nestjs/core";
+import { AppModule } from "./app.module";
+import { config } from "dotenv";
 
-const cors = require('cors');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const cors = require("cors")
+
 const corsOptions = {
     // разрешение на отправление запросов с localhost:3000 на localhost:5000
-    origin: '*',
+    origin: "*",
     credentials: true,
     optionSuccessStatus: 200,
 };
@@ -27,4 +29,4 @@ const start = async () => {
     }
 };
 
-start();
+start().then(() => true);

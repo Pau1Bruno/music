@@ -18,7 +18,7 @@ export class AuthController {
     }
 
     @UseGuards(JwtAuthGuard) // returns an object with two properties: "username" and "role"
-    @Get('profile')
+    @Get('/profile')
     getProfile(@Request() req) {
         return req.user;
     }

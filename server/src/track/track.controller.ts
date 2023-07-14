@@ -72,4 +72,9 @@ export class TrackController {
     ) {
         return this.trackService.deleteCurrentComment(trackId, commId);
     }
+
+    @Delete(":trackId/comments")
+    deleteAllComments(@Param("trackId") trackId: mongoose.ObjectId) {
+        return this.trackService.deleteAllComments(trackId);
+    }
 }

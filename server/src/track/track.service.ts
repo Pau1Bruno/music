@@ -1,5 +1,5 @@
-import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
+import { Injectable } from "@nestjs/common";
+import { InjectModel } from "@nestjs/mongoose";
 import { Track, TrackDocument } from './schemas/track.schema';
 import mongoose, { Model } from 'mongoose';
 import { Comment, CommentDocument } from './schemas/comment.schema';
@@ -17,7 +17,6 @@ export class TrackService {
     } // to pass to it use "this"
 
     async create(dto: CreateTrackDto, picture, audio): Promise<Track> {
-        console.log(dto);
         const picturePath = this.fileService.createFile(FileType.IMAGE, picture);
         const audioPath = this.fileService.createFile(FileType.AUDIO, audio);
         const createdTrack = new this.trackModel({
@@ -35,13 +34,17 @@ export class TrackService {
     }
 
     async search(query: string, sort: string): Promise<Track[]> {
-        const sortObject= {};
-        sortObject[sort] = 'descending';
+        const sortedObj = {};
+        //TODO: Try to make it more concise;
+        sort === "name"
+            ? sortedObj[sort] = "1"
+            : sortedObj[sort] = "-1";
         const tracks = await this.trackModel
             .find({
-                name: {$regex: new RegExp(query, 'i')},
+                name: {$regex: new RegExp(query, "i")},
             })
-            .sort(sortObject)
+            .collation({locale: "en"})
+            .sort(sortedObj);
         return tracks;
     }
 
@@ -66,6 +69,7 @@ export class TrackService {
     async addComment(dto: CreateCommentDto): Promise<Comment> {
         const track = await this.trackModel.findById(dto.trackId);
         const comment = await this.commentModel.create({...dto});
+        console.log("dto", dto);
         track.comments.push(comment._id);
         await track.save();
         return comment;
@@ -78,26 +82,23 @@ export class TrackService {
         return track.listens;
     }
 
-    async getAllComments(id: mongoose.ObjectId): Promise<Comment[]> {
-        const track = await this.trackModel.findById(id);
-        const commIdArr = track.comments.map((e) => e.toString());
-        const comments = [];
-        for (let i = 0; i < commIdArr.length; i++) {
-            comments.push(await this.commentModel.findById(commIdArr[i]));
-        }
-        return comments;
+    async getAllComments(id: mongoose.ObjectId): Promise<any> {
+        const track = await this.trackModel.findById(id).populate("comments");
+        return track.comments;
     }
 
     async deleteCurrentComment(
         trackId: mongoose.ObjectId,
         commId: mongoose.ObjectId,
-    ): Promise<Comment> {
-        const comment = await this.commentModel.findByIdAndDelete(
-            commId.toString(),
-        );
+    ): Promise<string> {
         await this.trackModel
-            .find()
-            .update({trackId}, {$pull: {comments: null}});
-        return comment;
+            .findByIdAndUpdate(trackId, {"$pull": {comments: commId}});
+        return "The comment with commId: " + commId + " is deleted";
+    }
+
+    async deleteAllComments(trackId: mongoose.ObjectId): Promise<string> {
+        await this.trackModel
+            .findByIdAndUpdate(trackId, {"$pull": {comments: {$type: "objectId"}}});
+        return "All comments from " + trackId + " track are deleted";
     }
 }
