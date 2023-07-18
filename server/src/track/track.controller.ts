@@ -25,14 +25,20 @@ export class TrackController {
 
     @Public()
     @Get()
-    getAllTracks(@Query("count") count: number, @Query("offset") offset: number) {
+    getAllTracks(@Query("count") count: number,
+                 @Query("offset") offset: number
+    ) {
         return this.trackService.getAllTracks(count, offset);
     }
 
     @Public()
     @Get("/search")
-    search(@Query("query") query: string, @Query("sort") sort: string) {
-        return this.trackService.search(query, sort);
+    search(@Query("query") query: string,
+           @Query("sort") sort: string,
+           @Query("count") count: number,
+           @Query("offset") offset: number
+    ) {
+        return this.trackService.search(query, sort, count, offset);
     }
 
     @Get(":id")

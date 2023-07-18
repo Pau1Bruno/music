@@ -10,9 +10,9 @@ interface IOption {
 
 interface MySelectProps {
     options: IOption[],
-    defaultValue: string,
-    value: string,
-    onChange: (sort: React.ChangeEvent<HTMLSelectElement>) => void
+    defaultValue: string | number,
+    value: string | number,
+    onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void
 }
 
 const MySelect: FC<MySelectProps> = ({ options, defaultValue, value, onChange }) => {

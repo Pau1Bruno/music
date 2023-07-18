@@ -18,7 +18,9 @@ const Index = () => {
         search,
         sortTracks,
         isFetching,
-        currentData
+        currentData,
+        count,
+        countTracks
     } = useSearch();
 
     const darkMode = useContextSelector(DarkModeContext,
@@ -46,17 +48,36 @@ const Index = () => {
                             onChange={search}
                         />
 
-                        <MySelect
-                            value={selectedSort}
-                            onChange={sortTracks}
-                            defaultValue={"Sort by"}
-                            options={[
-                                { name: "name", value: "name" },
-                                { name: "popularity", value: "listens" }
-                            ]}
-                        />
+                        <div className={styles.selects}>
 
-                        {!isFetching && currentData && <TrackList serverTracks={serverTracks} />}
+                            <MySelect
+                                value={selectedSort}
+                                onChange={sortTracks}
+                                defaultValue={"Sort by"}
+                                options={[
+                                    {name: "name", value: "name"},
+                                    {name: "popularity", value: "listens"}
+                                ]}
+                            />
+
+                            <MySelect
+                                value={count}
+                                onChange={countTracks}
+                                defaultValue={"limit"}
+                                options={[
+                                    {name: "5", value: "5"},
+                                    {name: "2", value: "2"},
+                                    {name: "10", value: "10"},
+                                    {name: "20", value: "20"}
+                                ]}
+                            />
+
+                        </div>
+
+                        <div className={styles.list}>
+                            {!isFetching && currentData && <TrackList serverTracks={serverTracks}/>}
+                        </div>
+
                     </div>
                 </div>
             </div>

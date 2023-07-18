@@ -33,7 +33,7 @@ export class TrackService {
         return tracks;
     }
 
-    async search(query: string, sort: string): Promise<Track[]> {
+    async search(query: string, sort: string, count: number, offset: number): Promise<Track[]> {
         const sortedObj = {};
         //TODO: Try to make it more concise;
         sort === "name"
@@ -43,6 +43,8 @@ export class TrackService {
             .find({
                 name: {$regex: new RegExp(query, "i")},
             })
+            .skip(offset)
+            .limit(count)
             .collation({locale: "en"})
             .sort(sortedObj);
         return tracks;

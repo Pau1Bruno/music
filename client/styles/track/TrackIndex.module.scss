@@ -3,6 +3,7 @@
 @include themify() {
   .page {
     padding: 20px 0 100px 0;
+
     .container {
       margin: auto;
 
@@ -19,7 +20,6 @@
       .tracks {
         display: flex;
         justify-content: space-around;
-        text-align: center;
 
         h3 {
           margin: 0;
@@ -28,6 +28,7 @@
         a {
           font-size: 1.2rem;
           color: themed("accent");
+          margin: 0;
         }
 
       }
@@ -37,11 +38,16 @@
       display: flex;
       justify-content: center;
       width: 100%;
-      margin: 20px auto;
+      margin: 10px auto;
       text-align: center;
       background-color: themed("third");
       height: 50px;
       border-radius: 20px;
+    }
+
+    .selects {
+      display: flex;
+      justify-content: space-between;
     }
   }
 }

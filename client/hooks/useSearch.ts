@@ -5,6 +5,8 @@ const useSearch = () => {
     const [ query, setQuery ] = useState<string>("");
     const [ timer, setTimer ] = useState<null | ReturnType<typeof setTimeout>>(null);
     const [ skip, setSkip ] = useState(false);
+    const [ count, setCount ] = useState("5");
+    const [ offset, setOffset ] = useState("0");
     const [ selectedSort, setSelectedSort ] = useState<string>("name");
 
     const {
@@ -12,7 +14,7 @@ const useSearch = () => {
         isFetching,
         currentData,
         error
-    } = useSearchTracksQuery({query, selectedSort}, {
+    } = useSearchTracksQuery({query, selectedSort, offset, count}, {
         skip: skip,
         pollingInterval: 100000
     });
@@ -20,6 +22,10 @@ const useSearch = () => {
     const sortTracks = (sort: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedSort(sort.target.value);
     };
+
+    const countTracks = (count: React.ChangeEvent<HTMLSelectElement>) => {
+        setCount(count.target.value);
+    }
 
     // Function which send get query to a server after you end typing in search field
     const search = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,7 +53,10 @@ const useSearch = () => {
         currentData,
         error,
         query,
-        selectedSort
+        selectedSort,
+        count,
+        offset,
+        countTracks
     }
 };
 
