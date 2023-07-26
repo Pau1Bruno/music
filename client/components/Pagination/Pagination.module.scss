@@ -1,0 +1,28 @@
+@import "../../styles/theme.module";
+
+@include themify {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+
+  .container {
+    display: flex;
+    gap: 1rem;
+
+    .page {
+      text-align: center;
+      width: 25px;
+      border-radius: 8px;
+      background: themed("primary");
+    }
+
+    .pageActive {
+      text-align: center;
+      width: 25px;
+      border-radius: 8px;
+      background: themed("accent");
+    }
+
+
+  }
+}

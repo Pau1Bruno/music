@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useContextSelector } from "use-context-selector";
 import MainLayout from "../../layouts/MainLayout";
 import TrackList from "../../components/TrackList/TrackList";
@@ -8,8 +8,13 @@ import styles from "../../styles/track/TrackIndex.module.scss";
 import MySelect from "../../components/MySelect/MySelect";
 import ErrorData from "../../components/ErrorData/ErrorData";
 import useSearch from "../../hooks/useSearch";
+import Pagination from "../../components/Pagination/Pagination";
+import { useGetAllTracksCountQuery } from "../../store/reducers/apiSlice";
 
 const Index = () => {
+    const [offset, setOffset] = useState("0");
+    const {data: tracksCount} = useGetAllTracksCountQuery();
+    console.log(tracksCount)
     const {
         error,
         query,
@@ -21,7 +26,7 @@ const Index = () => {
         currentData,
         count,
         countTracks
-    } = useSearch();
+    } = useSearch(offset);
 
     const darkMode = useContextSelector(DarkModeContext,
         (state) => state.darkMode);
@@ -79,6 +84,8 @@ const Index = () => {
                         </div>
 
                     </div>
+
+                    <Pagination tracksCount={tracksCount} count={Number(count)} setOffset={setOffset}/>
                 </div>
             </div>
         </MainLayout>

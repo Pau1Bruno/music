@@ -31,6 +31,11 @@ export class TrackController {
         return this.trackService.getAllTracks(count, offset);
     }
 
+    @Get("/count")
+    getAllTracksCount() {
+        return this.trackService.getAllTracksCount();
+    }
+
     @Public()
     @Get("/search")
     search(@Query("query") query: string,

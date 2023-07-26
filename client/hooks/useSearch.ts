@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { useSearchTracksQuery } from "../store/reducers/apiSlice";
 
-const useSearch = () => {
+const useSearch = (offset: string) => {
     const [ query, setQuery ] = useState<string>("");
     const [ timer, setTimer ] = useState<null | ReturnType<typeof setTimeout>>(null);
     const [ skip, setSkip ] = useState(false);
     const [ count, setCount ] = useState("5");
-    const [ offset, setOffset ] = useState("0");
     const [ selectedSort, setSelectedSort ] = useState<string>("name");
 
     const {
@@ -55,7 +54,6 @@ const useSearch = () => {
         query,
         selectedSort,
         count,
-        offset,
         countTracks
     }
 };

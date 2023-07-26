@@ -18,47 +18,47 @@ export const api = createApi({
             providesTags: [ "Tracks" ]
         }),
 
-        deleteTrack: build.mutation(({
+        deleteTrack: build.mutation({
             query: (id: string) => ({
                 url: "/tracks/" + id,
                 method: "DELETE",
                 body: id
             }),
             invalidatesTags: [ "Tracks" ]
-        })),
+        }),
 
-        addTrack: build.mutation(({
+        addTrack: build.mutation({
             query: (track: FormData) => ({
                 url: "/tracks",
                 method: "POST",
                 body: track
             }),
             invalidatesTags: [ "Tracks" ]
-        })),
+        }),
 
-        addListen: build.mutation(({
+        addListen: build.mutation({
             query: (id: string) => ({
                 url: "/tracks/listen/" + id,
                 method: "POST",
                 body: id
             })
-        })),
+        }),
 
-        getAllComments: build.query(({
+        getAllComments: build.query({
             query: (id: string) => ({
                 url: "/tracks/" + id + "/comments",
             }),
             providesTags: [ "Comments" ]
-        })),
+        }),
 
-        addComment: build.mutation(({
+        addComment: build.mutation({
             query: (comment) => ({
                 url: "/tracks/comment",
                 method: "POST",
                 body: comment
             }),
             invalidatesTags: [ "Comments" ]
-        })),
+        }),
 
         deleteComment: build.mutation(({
             query: ({trackId, commentId}) => ({
@@ -66,6 +66,10 @@ export const api = createApi({
                 method: "DELETE"
             }),
             invalidatesTags: [ "Comments" ]
+        })),
+
+        getAllTracksCount: build.query<void, void>(({
+            query: () => "/tracks/count"
         }))
     } )
 });
@@ -78,4 +82,5 @@ export const {
     useGetAllCommentsQuery,
     useAddCommentMutation,
     useDeleteCommentMutation,
+    useGetAllTracksCountQuery
 } = api;

@@ -103,4 +103,9 @@ export class TrackService {
             .findByIdAndUpdate(trackId, {"$pull": {comments: {$type: "objectId"}}});
         return "All comments from " + trackId + " track are deleted";
     }
+
+    async getAllTracksCount (): Promise<number> {
+        const count = await this.trackModel.find().count();
+        return count;
+    }
 }
