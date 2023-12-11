@@ -1,27 +1,28 @@
 import React from "react";
-import { useContextSelector } from "use-context-selector";
-import { ITrack } from "../../../types/tracks";
+import {useContextSelector} from "use-context-selector";
+import {ITrack} from "../../../types/tracks";
 import IconButton from "@mui/material/IconButton";
-import { Delete, Pause, PlayArrow } from "@mui/icons-material";
-import { useAction } from "../../../hooks/useAction";
-import { useTypedSelector } from "../../../hooks/useTypedSelector";
-import { useTimeConverter } from "../../../hooks/useTimeConverter";
-import { useDeleteTrackMutation } from "../../../store/reducers/apiSlice";
+import {Delete, Pause, PlayArrow} from "@mui/icons-material";
+import {useAction} from "../../../hooks/useAction";
+import {useTypedSelector} from "../../../hooks/useTypedSelector";
+import {useTimeConverter} from "../../../hooks/useTimeConverter";
+import {useDeleteTrackMutation} from "../../../store/reducers/apiSlice";
 import Image from "next/image";
-import { DarkModeContext } from "../../../context/ThemesContext";
+import {DarkModeContext} from "../../../context/ThemesContext";
 import styles from "./TrackItem.module.scss";
-import { useRouter } from "next/router";
+import {useRouter} from "next/router";
 
 interface TrackItemProps {
     track: ITrack,
 }
 
-const TrackItem: React.FC<TrackItemProps> = ({ track }) => {
+const TrackItem: React.FC<TrackItemProps> = ({track}) => {
     const {active, pause, currentTime, duration} = useTypedSelector(state => state.player);
     const {playTrack, pauseTrack, setActiveTrack} = useAction();
-    const [ deleteTrack ] = useDeleteTrackMutation();
+    const [deleteTrack] = useDeleteTrackMutation();
 
     const router = useRouter();
+    const link = "https://server-pau1bruno.vercel.app/";
 
     const darkMode = useContextSelector(DarkModeContext,
         (state) => state.darkMode);
@@ -39,15 +40,15 @@ const TrackItem: React.FC<TrackItemProps> = ({ track }) => {
             pauseTrack();
         }
     };
-    
+
     const deleteTrackFunction = (e: React.MouseEvent) => {
         e.preventDefault();
         e.stopPropagation();
         deleteTrack(track._id);
     };
 
-    const trackLogo: string = 'https://server-six-delta.vercel.app/' + track.picture;
-    
+    const trackLogo: string = link + track.picture;
+
     return (
         <div className={darkMode ? styles.dark : styles.light}>
             <div className={styles.container}>

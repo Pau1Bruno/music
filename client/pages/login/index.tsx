@@ -15,6 +15,8 @@ const Login = () => {
             { username: "", password: "" }
         );
     const router = useRouter();
+
+    const link = "https://server-pau1bruno.vercel.app/";
     
     const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
         setUser({ ...user, [e.target.name]: e.target.value });
@@ -29,7 +31,7 @@ const Login = () => {
         }
         
         try {
-            const response = await fetch("https://server-six-delta.vercel.app/auth/login", {
+            const response = await fetch(`${link}auth/login`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(user)

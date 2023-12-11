@@ -14,6 +14,8 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import styles from "../../styles/track/Track[id].module.scss";
 import { DarkModeContext } from "../../context/ThemesContext";
 
+const link = "https://server-pau1bruno.vercel.app/";
+
 const TrackPage = ({ serverTrack }: { serverTrack: ITrack }) => {
     const [ track, setTrack ] = useState<ITrack>(serverTrack);
     const router = useRouter();
@@ -21,13 +23,14 @@ const TrackPage = ({ serverTrack }: { serverTrack: ITrack }) => {
     const comment = useInput("");
     const imgRef = useRef(null);
 
+
     const darkMode = useContextSelector(DarkModeContext,
         (state) => state.darkMode);
 
     const addComment = async () => {
         try {
 
-            const response = await axios.post("https://server-six-delta.vercel.app/tracks/comment/", {
+            const response = await axios.post(`${link}/tracks/comment/`, {
                 username: username.value,
                 text: comment.value,
                 trackId: track._id
@@ -40,7 +43,7 @@ const TrackPage = ({ serverTrack }: { serverTrack: ITrack }) => {
     
     const deleteComment = async (id: string) => {
         try {
-            await axios.delete(`https://server-six-delta.vercel.app/tracks/${track._id}/comments/${id}`);
+            await axios.delete(`${link}/tracks/${track._id}/comments/${id}`);
             setTrack({ ...track, comments: [ ...track.comments.filter(comm => comm._id !== id) ] });
         } catch (error) {
             console.error(error);
@@ -62,7 +65,7 @@ const TrackPage = ({ serverTrack }: { serverTrack: ITrack }) => {
                         <div className={styles.track}>
                             <Image
                                 ref={imgRef}
-                                src={`https://server-six-delta.vercel.app/${track.picture}`}
+                                src={link + track.picture}
                                 width={128}
                                 height={128}
                                 alt={"ryo"}
@@ -112,7 +115,7 @@ const TrackPage = ({ serverTrack }: { serverTrack: ITrack }) => {
 export default TrackPage;
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-    const response = await axios.get("https://server-six-delta.vercel.app/tracks/" + params?.id);
+    const response = await axios.get(`${link}/tracks/` + params?.id);
     
     return {
         props: {
