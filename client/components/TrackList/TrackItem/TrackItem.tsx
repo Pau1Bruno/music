@@ -46,7 +46,7 @@ const TrackItem: React.FC<TrackItemProps> = ({ track }) => {
         deleteTrack(track._id);
     };
 
-    const trackLogo: string = 'http://localhost:5000/' + track.picture;
+    const trackLogo: string = 'https://server-six-delta.vercel.app/' + track.picture;
     
     return (
         <div className={darkMode ? styles.dark : styles.light}>

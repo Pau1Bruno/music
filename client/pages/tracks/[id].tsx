@@ -27,7 +27,7 @@ const TrackPage = ({ serverTrack }: { serverTrack: ITrack }) => {
     const addComment = async () => {
         try {
 
-            const response = await axios.post("http://localhost:5000/tracks/comment/", {
+            const response = await axios.post("https://server-six-delta.vercel.app/tracks/comment/", {
                 username: username.value,
                 text: comment.value,
                 trackId: track._id
@@ -40,7 +40,7 @@ const TrackPage = ({ serverTrack }: { serverTrack: ITrack }) => {
     
     const deleteComment = async (id: string) => {
         try {
-            await axios.delete(`http://localhost:5000/tracks/${track._id}/comments/${id}`);
+            await axios.delete(`https://server-six-delta.vercel.app/tracks/${track._id}/comments/${id}`);
             setTrack({ ...track, comments: [ ...track.comments.filter(comm => comm._id !== id) ] });
         } catch (error) {
             console.error(error);
@@ -62,7 +62,7 @@ const TrackPage = ({ serverTrack }: { serverTrack: ITrack }) => {
                         <div className={styles.track}>
                             <Image
                                 ref={imgRef}
-                                src={`http://localhost:5000/${track.picture}`}
+                                src={`https://server-six-delta.vercel.app/${track.picture}`}
                                 width={128}
                                 height={128}
                                 alt={"ryo"}
