@@ -3,22 +3,22 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { config } from 'dotenv';
 
-const cors = require('cors');
-const corsOptions = {
-    // разрешение на отправление запросов с localhost:3000 на localhost:5000
-    origin: true,
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-    credentials: true,
-    optionSuccessStatus: 200,
-};
+// const cors = require('cors');
+// const corsOptions = {
+//     // разрешение на отправление запросов с localhost:3000 на localhost:5000
+//     origin: true,
+//     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+//     credentials: true,
+//     optionSuccessStatus: 200,
+// };
 
 const start = async () => {
     try {
         config();
         const PORT = process.env.PORT || 5000;
-        const app = await NestFactory.create(AppModule);
+        const app = await NestFactory.create(AppModule, {cors: false});
 
-        app.use(cors(corsOptions));
+        // app.use(cors(corsOptions));
 
         await app.listen(PORT, () => {
             console.log(`server starts on PORT ${PORT}`);
